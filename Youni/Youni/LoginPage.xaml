@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Youni.LoginPage">
 	<ContentPage.Content>
-        <StackLayout HorizontalOptions="Fill" VerticalOptions="Center" Padding="30">
-            <Image Source="login_icon.png" />
-            <Entry x:Name="emailEntry" Placeholder="Email" />
-            <Entry x:Name="passwordEntry" Placeholder="Password" IsPassword="true" />
-            <Button Text="Login" />
+        <StackLayout VerticalOptions="Center" Padding="25">
+            <Image Source="login_icon.png" WidthRequest="100" HeightRequest="100" Margin="0,0,0,25" />
+            <Entry x:Name="emailEntry" Placeholder="Email" FontSize="Large" HeightRequest="50" />
+            <Entry x:Name="passwordEntry" Placeholder="Password" FontSize="Large" IsPassword="true" HeightRequest="50"/>
+            <Button Text="Login" TextColor="White" FontSize="Large" BackgroundColor="#3A8FDA" HorizontalOptions="Center" WidthRequest="150" Margin="0,25,0,0"/>
             <Label x:Name="messageLabel" />
         </StackLayout>
 	</ContentPage.Content>
