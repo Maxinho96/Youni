@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Youni.LoginPage">
-	<ContentPage.Content>
-        <StackLayout VerticalOptions="Center" Padding="25">
-            <Image Source="login_icon.png" WidthRequest="100" HeightRequest="100" Margin="0,0,0,25" />
-            <Entry x:Name="emailEntry" Placeholder="Email" FontSize="Large" HeightRequest="50" />
-            <Entry x:Name="passwordEntry" Placeholder="Password" FontSize="Large" IsPassword="true" HeightRequest="50"/>
-            <Button Text="Login" TextColor="White" FontSize="Large" BackgroundColor="#3A8FDA" HorizontalOptions="Center" WidthRequest="150" Margin="0,25,0,0"/>
-            <Label x:Name="messageLabel" />
-        </StackLayout>
-	</ContentPage.Content>
+    <AbsoluteLayout>
+        <Image Source="login_icon.png" AbsoluteLayout.LayoutBounds=".5, .215, .3, .3" AbsoluteLayout.LayoutFlags="All" />
+        <Entry x:Name="emailEntry" AbsoluteLayout.LayoutBounds=".5, .6, .9, .07" AbsoluteLayout.LayoutFlags="All" Placeholder="Email" Keyboard="Email" />
+        <Entry x:Name="passwordEntry" AbsoluteLayout.LayoutBounds=".5, .68, .9, .07" AbsoluteLayout.LayoutFlags="All" Placeholder="Password" IsPassword="true" />
+        <Button x:Name="loginButton" AbsoluteLayout.LayoutBounds=".5, .85, .4, .07" AbsoluteLayout.LayoutFlags="All" Text="Login" TextColor="White" BackgroundColor="#3A8FDA" />
+    </AbsoluteLayout>
 </ContentPage>

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using KeyboardOverlap.Forms.Plugin.iOSUnified;
 
 using Foundation;
 using UIKit;
@@ -13,6 +14,9 @@ namespace Youni.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+
+            // La tastiera non si sovrapporrà al contenuto
+            KeyboardOverlapRenderer.Init();
 
             LoadApplication(new App());
 
