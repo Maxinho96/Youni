@@ -25,7 +25,10 @@ namespace Youni
             
         }
 
-        async void Handle_Released(object sender, System.EventArgs e)
+        #if __ANDROID__
+            async
+        #endif
+        void Handle_Released(object sender, System.EventArgs e)
         {
             #if __ANDROID__
             registerButton.TextColor = Color.FromHex("#45BFEE");
