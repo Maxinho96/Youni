@@ -34,7 +34,7 @@ namespace Youni
             else
             {
                 // Non è la prima volta
-                MainPage = new LoginPage();
+                MainPage = new PresentationPage();
             }
         }
 
