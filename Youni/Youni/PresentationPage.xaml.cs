@@ -12,6 +12,11 @@ namespace Youni
             InitializeComponent();
         }
 
+        void Register_Handle_Clicked(object sender, System.EventArgs e)
+        {
+            this.Navigation.PopModalAsync();
+        }
+
         void RegistrationSwitch_Handle_Pressed(object sender, System.EventArgs e)
         {
 #if __ANDROID__
@@ -36,6 +41,11 @@ namespace Youni
             this.CurrentPage = RegistrationPage;
         }
 
+        void Login_Handle_Clicked(object sender, System.EventArgs e)
+        {
+            this.Navigation.PopModalAsync();
+        }
+
         void LoginSwitch_Handle_Pressed(object sender, System.EventArgs e)
         {
 #if __ANDROID__
@@ -58,6 +68,11 @@ namespace Youni
         void LoginSwitch_Handle_Clicked(object sender, System.EventArgs e)
         {
             this.CurrentPage = LoginPage;
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            return true;
         }
     }
 }

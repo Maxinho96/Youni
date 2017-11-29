@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Youni.PresentationPage">
-    <ContentPage x:Name="LoginPage">
-        <AbsoluteLayout Padding="0" Margin="0">
-            <Image Source="login_icon.png" AbsoluteLayout.LayoutBounds=".5, .215, .3, .3" AbsoluteLayout.LayoutFlags="All" />
-            <StackLayout Orientation="Vertical" AbsoluteLayout.LayoutBounds=".5, .6, .9, .14" AbsoluteLayout.LayoutFlags="All">
-                <Entry x:Name="EmailEntry" VerticalOptions="FillAndExpand" Placeholder="Email" Keyboard="Email" />
-                <Entry x:Name="PasswordEntry" VerticalOptions="FillAndExpand" Placeholder="Password" IsPassword="true" />
-            </StackLayout>
-            <Button x:Name="LoginButton" AbsoluteLayout.LayoutBounds=".5, .85, .3, .07" AbsoluteLayout.LayoutFlags="All" Text="Login" TextColor="White" BackgroundColor="#3A8FDA" />
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" AbsoluteLayout.LayoutBounds=".5, 1, 1, .1" AbsoluteLayout.LayoutFlags="All">
-                <StackLayout.Spacing>
-                    <OnPlatform x:TypeArguments="x:Double">
-                        <On Platform="Android" Value="-10" />
-                        <On Platform="iOS" Value="3" />
-                    </OnPlatform>
-                </StackLayout.Spacing>
-                <Label Text="Ancora senza account?" FontSize="Small" YAlign="Center" XAlign="Center" />
-                <Button x:Name="RegistrationSwitchButton" Pressed="RegistrationSwitch_Handle_Pressed" Released="RegistrationSwitch_Handle_Released" Clicked="RegistrationSwitch_Handle_Clicked" Text="Registrati" FontSize="Small" TextColor="#45BFEE" BackgroundColor="Transparent" />
-            </StackLayout>
-        </AbsoluteLayout>
-    </ContentPage>
     <ContentPage x:Name="RegistrationPage">
         <AbsoluteLayout Padding="0" Margin="0">
             <Image Source="login_icon.png" AbsoluteLayout.LayoutBounds=".5, .0, .3, .3" AbsoluteLayout.LayoutFlags="All" />
@@ -30,7 +10,7 @@
                 <Entry x:Name="newEmailEntry" VerticalOptions="FillAndExpand" Placeholder="Email" Keyboard="Email" />
                 <Entry x:Name="newPasswordEntry" VerticalOptions="FillAndExpand" Placeholder="Password" IsPassword="true" />
             </StackLayout>
-            <Button x:Name="RegisterButton" AbsoluteLayout.LayoutBounds=".5, .85, .3, .07" AbsoluteLayout.LayoutFlags="All" Text="Registrati" TextColor="White" BackgroundColor="#3A8FDA" />
+            <Button x:Name="RegisterButton" Clicked="Register_Handle_Clicked" AbsoluteLayout.LayoutBounds=".5, .85, .3, .07" AbsoluteLayout.LayoutFlags="All" Text="Registrati" TextColor="White" BackgroundColor="#3A8FDA" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" AbsoluteLayout.LayoutBounds=".5, 1, 1, .1" AbsoluteLayout.LayoutFlags="All">
                 <StackLayout.Spacing>
                     <OnPlatform x:TypeArguments="x:Double">
@@ -40,6 +20,26 @@
                 </StackLayout.Spacing>
                 <Label Text="Sei già registrato?" FontSize="Small" YAlign="Center" XAlign="Center" />
                 <Button x:Name="LoginSwitchButton" Pressed="LoginSwitch_Handle_Pressed" Released="LoginSwitch_Handle_Released" Clicked="LoginSwitch_Handle_Clicked" Text="Passa al login" FontSize="Small" TextColor="#45BFEE" BackgroundColor="Transparent" /> <!-- Pressed="Log_Handle_Pressed" Released="Log_Handle_Released" Clicked="Log_Handle_Clicked" -->
+            </StackLayout>
+        </AbsoluteLayout>
+    </ContentPage>
+    <ContentPage x:Name="LoginPage">
+        <AbsoluteLayout Padding="0" Margin="0">
+            <Image Source="login_icon.png" AbsoluteLayout.LayoutBounds=".5, .215, .3, .3" AbsoluteLayout.LayoutFlags="All" />
+            <StackLayout Orientation="Vertical" AbsoluteLayout.LayoutBounds=".5, .6, .9, .14" AbsoluteLayout.LayoutFlags="All">
+                <Entry x:Name="EmailEntry" VerticalOptions="FillAndExpand" Placeholder="Email" Keyboard="Email" />
+                <Entry x:Name="PasswordEntry" VerticalOptions="FillAndExpand" Placeholder="Password" IsPassword="true" />
+            </StackLayout>
+            <Button x:Name="LoginButton" Clicked="Login_Handle_Clicked" AbsoluteLayout.LayoutBounds=".5, .85, .3, .07" AbsoluteLayout.LayoutFlags="All" Text="Login" TextColor="White" BackgroundColor="#3A8FDA" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" AbsoluteLayout.LayoutBounds=".5, 1, 1, .1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout.Spacing>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="Android" Value="-10" />
+                        <On Platform="iOS" Value="3" />
+                    </OnPlatform>
+                </StackLayout.Spacing>
+                <Label Text="Ancora senza account?" FontSize="Small" YAlign="Center" XAlign="Center" />
+                <Button x:Name="RegistrationSwitchButton" Pressed="RegistrationSwitch_Handle_Pressed" Released="RegistrationSwitch_Handle_Released" Clicked="RegistrationSwitch_Handle_Clicked" Text="Registrati" FontSize="Small" TextColor="#45BFEE" BackgroundColor="Transparent" />
             </StackLayout>
         </AbsoluteLayout>
     </ContentPage>

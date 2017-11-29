@@ -8,7 +8,7 @@ namespace Youni
     public partial class App : Application
     {
 
-        public string IsFirstTime
+        /*public string IsFirstTime
         {
             get { return Settings.GeneralSettings; }
             set
@@ -18,24 +18,28 @@ namespace Youni
                 Settings.GeneralSettings = value;
                 OnPropertyChanged();
             }
-        }
+        }*/
 
         public App()
         {
             InitializeComponent();
 
-            // L'app è stata aperta per la prima volta?
-            if (IsFirstTime == "yes")
+            /* L'app è stata aperta per la prima volta?
+            if (IsFirstTime == "yes") // E' la prima volta
             {
-                // E' la prima volta
                 IsFirstTime = "no";
-                MainPage = new PresentationPage();
             }
-            else
+            else // Non è la prima volta
             {
-                // Non è la prima volta
-                MainPage = new PresentationPage();
+                
+            }*/
+
+            if (!Properties.ContainsKey("IsLoggedIn")) // E' la prima volta che si apre l'app
+            {
+                Properties["IsLoggedIn"] = false;
             }
+
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
