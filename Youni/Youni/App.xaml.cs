@@ -2,7 +2,6 @@
 using Xamarin.Forms.Xaml;
 using Youni.Helpers;
 
-[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Youni
 {
     public partial class App : Application

@@ -8,6 +8,8 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using CarouselView.FormsPlugin.Android;
+
 namespace Youni.Droid
 {
     [Activity(Label = "Youni.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
@@ -22,6 +24,8 @@ namespace Youni.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+
+            CarouselViewRenderer.Init(); // Fa funzionare la CarouselView
 
             LoadApplication(new App());
         }

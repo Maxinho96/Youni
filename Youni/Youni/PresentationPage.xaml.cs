@@ -5,23 +5,24 @@ using Xamarin.Forms;
 
 namespace Youni
 {
-    public partial class PresentationPage : CarouselPage
+    public partial class PresentationPage : ContentPage
     {
         public PresentationPage()
         {
             InitializeComponent();
         }
 
-        void Register_Handle_Clicked(object sender, System.EventArgs e)
+        async void Register_Handle_Clicked(object sender, System.EventArgs e)
         {
-            this.Navigation.PopModalAsync();
+            await this.Navigation.PopModalAsync();
         }
 
         void RegistrationSwitch_Handle_Pressed(object sender, System.EventArgs e)
         {
 #if __ANDROID__
-            RegistrationSwitchButton.TextColor = Color.Gray;
-            RegistrationSwitchButton.Opacity = 0.1;
+            var button = (Button)sender;
+            button.TextColor = Color.Gray;
+            button.Opacity = 0.1;
 #endif
         }
 
@@ -31,26 +32,28 @@ namespace Youni
         void RegistrationSwitch_Handle_Released(object sender, System.EventArgs e)
         {
 #if __ANDROID__
-            RegistrationSwitchButton.TextColor = Color.FromHex("#45BFEE");
-            await RegistrationSwitchButton.FadeTo(1, 500);
+            var button = (Button)sender;
+            button.TextColor = Color.FromHex("#45BFEE");
+            await button.FadeTo(1, 500);
 #endif
         }
 
         void RegistrationSwitch_Handle_Clicked(object sender, System.EventArgs e)
         {
-            this.CurrentPage = RegistrationPage;
+            Carousel.Position = 0;
         }
 
-        void Login_Handle_Clicked(object sender, System.EventArgs e)
+        async void Login_Handle_Clicked(object sender, System.EventArgs e)
         {
-            this.Navigation.PopModalAsync();
+            await this.Navigation.PopModalAsync();
         }
 
         void LoginSwitch_Handle_Pressed(object sender, System.EventArgs e)
         {
 #if __ANDROID__
-            LoginSwitchButton.TextColor = Color.Gray;
-            LoginSwitchButton.Opacity = 0.1;
+            var button = (Button)sender; 
+            button.TextColor = Color.Gray;
+            button.Opacity = 0.1;
 #endif
         }
 
@@ -60,14 +63,15 @@ namespace Youni
         void LoginSwitch_Handle_Released(object sender, System.EventArgs e)
         {
 #if __ANDROID__
-            LoginSwitchButton.TextColor = Color.FromHex("#45BFEE");
-            await LoginSwitchButton.FadeTo(1, 500);
+            var button = (Button)sender;
+            button.TextColor = Color.FromHex("#45BFEE");
+            await button.FadeTo(1, 500);
 #endif
         }
 
         void LoginSwitch_Handle_Clicked(object sender, System.EventArgs e)
         {
-            this.CurrentPage = LoginPage;
+            Carousel.Position = 1;
         }
 
         protected override bool OnBackButtonPressed()
