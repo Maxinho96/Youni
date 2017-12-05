@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
+    xmlns:local="clr-namespace:Youni"
+    x:Class="Youni.LoginRegistrationPage">
+    <ContentPage.BindingContext>
+        <local:LoginRegistrationViewModel CurrentPage="0"/>
+    </ContentPage.BindingContext>
+    <controls:CarouselViewControl
+        x:Name="Carousel"
+        Orientation="Vertical"
+        IsSwipingEnabled="false"
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand"
+        Position="{Binding CurrentPage}"
+        ItemsSource="{Binding Pages}"/>
+</ContentPage>

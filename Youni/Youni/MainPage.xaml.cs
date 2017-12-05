@@ -14,7 +14,7 @@ namespace Youni
             // L'utente è loggato?
             if (!(bool) Application.Current.Properties["IsLoggedIn"]) // Non è loggato
             {
-                this.Navigation.PushModalAsync(new PresentationPage());
+                this.Navigation.PushModalAsync(new LoginRegistrationPage());
             }
         }
     }
