@@ -10,23 +10,23 @@
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)App.xaml" />
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)PresentationPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)RegistrationView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Old\LoginRegistrationPageOld.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)LoginView.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Old\LoginView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)LoginRegistrationPage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Old\RegistrationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Users\LoginRegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -35,25 +35,28 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)PresentationPage.xaml.cs">
-      <DependentUpon>PresentationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\Settings.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)RegistrationView.xaml.cs">
-      <DependentUpon>RegistrationView.xaml</DependentUpon>
+    <Compile Include="$(MSBuildThisFileDirectory)Old\LoginRegistrationPageOld.xaml.cs">
+      <DependentUpon>LoginRegistrationPageOld.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)LoginView.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Old\LoginRegistrationViewModelOld.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Old\LoginView.xaml.cs">
       <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)LoginRegistrationPage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Old\RegistrationView.xaml.cs">
+      <DependentUpon>RegistrationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Users\LoginRegistrationPage.xaml.cs">
       <DependentUpon>LoginRegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)LoginRegistrationViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Users\LoginRegistrationViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Old\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Users\" />
   </ItemGroup>
 </Project>
