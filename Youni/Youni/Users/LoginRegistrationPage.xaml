@@ -6,15 +6,14 @@
     xmlns:local="clr-namespace:Youni"
     x:Class="Youni.LoginRegistrationPage">
     <ContentPage.BindingContext>
-        <local:LoginRegistrationViewModel CurrentPage="0"/>
+        <local:LoginRegistrationViewModel />
     </ContentPage.BindingContext>
     <controls:CarouselViewControl
         x:Name="Carousel"
         Orientation="Vertical"
         IsSwipeEnabled="false"
         VerticalOptions="FillAndExpand"
-        HorizontalOptions="FillAndExpand"
-        Position="{Binding CurrentPage}">
+        HorizontalOptions="FillAndExpand">
         <controls:CarouselViewControl.ItemsSource>
             <x:Array
                 Type="{x:Type View}">
@@ -36,26 +35,25 @@
                                 FontAttributes="Bold"
                                 HorizontalTextAlignment="Center" />
                             <Entry
-                                x:Name="NameEntry"
+                                Text="{Binding RegName}"
                                 VerticalOptions="FillAndExpand"
                                 Placeholder="Nome" />
                             <Entry
-                                x:Name="SurnameEntry"
+                                Text="{Binding RegSurname}"
                                 VerticalOptions="FillAndExpand"
                                 Placeholder="Cognome" />
                             <Entry
-                                x:Name="NewEmailEntry"
+                                Text="{Binding RegEmail}"
                                 VerticalOptions="FillAndExpand"
                                 Placeholder="Email"
                                 Keyboard="Email" />
                             <Entry
-                                x:Name="NewPasswordEntry"
+                                Text="{Binding RegPassword}"
                                 VerticalOptions="FillAndExpand"
                                 Placeholder="Password"
                                 IsPassword="true" />
                         </StackLayout>
                         <Button
-                            x:Name="RegisterButton"
                             Command="{Binding RegisterCommand}"
                             AbsoluteLayout.LayoutBounds=".5, .85, .3, .07"
                             AbsoluteLayout.LayoutFlags="All"
@@ -108,18 +106,17 @@
                             AbsoluteLayout.LayoutBounds=".5, .6, .9, .14"
                             AbsoluteLayout.LayoutFlags="All">
                             <Entry
-                                x:Name="EmailEntry"
+                                Text="{Binding LogEmail}"
                                 VerticalOptions="FillAndExpand"
                                 Placeholder="Email"
                                 Keyboard="Email" />
                             <Entry
-                                x:Name="PasswordEntry"
+                                Text="{Binding LogPassword}"
                                 VerticalOptions="FillAndExpand"
                                 Placeholder="Password"
                                 IsPassword="true" />
                         </StackLayout>
                         <Button
-                            x:Name="LoginButton"
                             Command="{Binding LoginCommand}"
                             AbsoluteLayout.LayoutBounds=".5, .85, .3, .07"
                             AbsoluteLayout.LayoutFlags="All"

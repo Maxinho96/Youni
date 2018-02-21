@@ -11,7 +11,7 @@
     <controls:CarouselViewControl
         x:Name="Carousel"
         Orientation="Vertical"
-        IsSwipingEnabled="false"
+        IsSwipeEnabled="false"
         VerticalOptions="FillAndExpand"
         HorizontalOptions="FillAndExpand"
         Position="{Binding CurrentPage}"

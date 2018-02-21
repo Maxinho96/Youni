@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using KeyboardOverlap.Forms.Plugin.iOSUnified;
 
 using Foundation;
 using UIKit;
@@ -18,8 +17,6 @@ namespace Youni.iOS
             global::Xamarin.Forms.Forms.Init();
 
             CarouselViewRenderer.Init(); // Fa funzionare la CarouselView
-
-            KeyboardOverlapRenderer.Init(); // La tastiera non si sovrapporrà al contenuto
 
             LoadApplication(new App());
 

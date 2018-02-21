@@ -10,24 +10,33 @@ namespace Youni
 {
     public class LoginRegistrationViewModel
     {
-        public int CurrentPage { get; set; } // Pagina corrente (0=RegistrationView, 1=LoginView)
+        //public int CurrentPage { get; set; } // Pagina corrente (0=RegistrationView, 1=LoginView)
         public Command LoginCommand { get; set; }
         public Command RegisterCommand { get; set; }
+        public string RegName { get; set; }
+        public string RegSurname { get; set; }
+        public string RegEmail { get; set; }
+        public string RegPassword { get; set; }
+        public string LogEmail { get; set; }
+        public string LogPassword { get; set; }
+        private DataBaseHandler DBHandler;
 
         public LoginRegistrationViewModel()
         {
+            DBHandler = new DataBaseHandler();
+
             LoginCommand = new Command(async () =>
            {
-               //var connString = "Host=younidb.cw9vlhucwihr.eu-central-1.rds.amazonaws.com;Port=5432;Username=younidbmaster;Password=Y982fZhd9B8r;Database=younidb";
-               //var conn = new NpgsqlConnection(connString);
-               //conn.Open();
-               //String query = "SELECT * FROM utenti WHERE email='mas.bruni@stud.uniroma3.it' AND password='max'";
-               //var cmd = new NpgsqlCommand(query, conn);
-               //cmd.Prepare();
-               //if (await cmd.ExecuteScalarAsync() != null)
-               await Application.Current.MainPage.Navigation.PopModalAsync();
-               //else
-               //   await Application.Current.MainPage.DisplayAlert("Errore", "Email e/o password errati", "Riprova");
+                var query = String.Format("SELECT * FROM utenti WHERE email='{0}' AND password='{1}'", LogEmail, LogPassword);
+                if(await DBHandler.IsQueryEmptyAsync(query))
+                {
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Email e/o password errati", "Riprova");
+                    //Application.Current.Properties["IsLoggedIn"] = true;
+                }
+                else
+                {
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
             });
 
             RegisterCommand = new Command(async () =>

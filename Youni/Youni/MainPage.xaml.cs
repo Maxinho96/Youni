@@ -10,11 +10,16 @@ namespace Youni
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
 
             // L'utente è loggato?
-            if (!(bool) Application.Current.Properties["IsLoggedIn"]) // Non è loggato
+            if (!(bool)Application.Current.Properties["IsLoggedIn"]) // Non è loggato
             {
-                this.Navigation.PushModalAsync(new LoginRegistrationPage());
+                await this.Navigation.PushModalAsync(new LoginRegistrationPage());
             }
         }
     }
