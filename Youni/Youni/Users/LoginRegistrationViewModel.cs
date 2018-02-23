@@ -29,9 +29,22 @@ namespace Youni
            {
                try
                {
-                   if (String.IsNullOrWhiteSpace(this.LogEmail) || String.IsNullOrWhiteSpace(this.LogPassword))
+                   bool noEmal = String.IsNullOrWhiteSpace(this.LogEmail), noPassword = String.IsNullOrWhiteSpace(this.LogPassword);
+                   if (noEmal && noPassword)
                    {
-                       await Application.Current.MainPage.DisplayAlert("Errore", "Devi inserire un'email ed una password", "Riprova");
+                       await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi inserire un'email ed una password", "Riprova");
+                   }
+                   else if (noEmal)
+                   {
+                       await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi inserire l'email", "Riprova");
+                   }
+                   else if (noPassword)
+                   {
+                       await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi inserire la password", "Riprova");
+                   }
+                   else if (!(await DBHandler.IsRegisteredAsync(this.LogEmail)))
+                   {
+                       await Application.Current.MainPage.DisplayAlert("Errore", "Email non registrata", "Riprova");
                    }
                    else if (await this.DBHandler.CheckCredentialsAsync(this.LogEmail, this.LogPassword))
                    {
@@ -39,7 +52,7 @@ namespace Youni
                    }
                    else
                    {
-                       await Application.Current.MainPage.DisplayAlert("Errore", "Email e/o password errati", "Riprova");
+                       await Application.Current.MainPage.DisplayAlert("Errore", "Password errata", "Riprova");
                        //Application.Current.Properties["IsLoggedIn"] = true;
                    }
                }
@@ -53,9 +66,9 @@ namespace Youni
             {
                 try
                 {
-                    if (String.IsNullOrWhiteSpace(this.RegEmail) || String.IsNullOrWhiteSpace(this.RegPassword) || String.IsNullOrWhiteSpace(this.RegName) || String.IsNullOrWhiteSpace(this.RegPassword))
+                    if (String.IsNullOrWhiteSpace(this.RegEmail) || String.IsNullOrWhiteSpace(this.RegPassword) || String.IsNullOrWhiteSpace(this.RegName) || String.IsNullOrWhiteSpace(this.RegSurname))
                     {
-                        await Application.Current.MainPage.DisplayAlert("Errore", "Devi riempire tutti i campi", "Riprova");
+                        await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi riempire tutti i campi", "Riprova");
                     }
                     else if (await this.DBHandler.IsRegisteredAsync(this.RegEmail))
                     {

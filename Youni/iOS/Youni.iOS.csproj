@@ -110,6 +110,9 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\packages\Xamarin.Forms.2.5.0.280555\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
+    <Reference Include="BCrypt.Net-Next">
+      <HintPath>..\packages\BCrypt.Net-Next.2.1.2\lib\netstandard2.0\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json" />

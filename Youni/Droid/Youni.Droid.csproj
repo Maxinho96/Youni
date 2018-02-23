@@ -135,6 +135,9 @@
     <Reference Include="CarouselView.FormsPlugin.Android">
       <HintPath>..\packages\CarouselView.FormsPlugin.5.2.0\lib\MonoAndroid\CarouselView.FormsPlugin.Android.dll</HintPath>
     </Reference>
+    <Reference Include="BCrypt.Net-Next">
+      <HintPath>..\packages\BCrypt.Net-Next.2.1.2\lib\netstandard2.0\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
