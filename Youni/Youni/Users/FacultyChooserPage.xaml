@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Youni.FacultyChooserPage">
+    <AbsoluteLayout
+        Padding="0"
+        Margin="0">
+        <Image
+            Source="blue_background.png"
+            Aspect="Fill"
+            AbsoluteLayout.LayoutBounds=".5, .0, 1, .06"
+            AbsoluteLayout.LayoutFlags="All" />
+        <Image
+            Source="icon.png"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutBounds=".5, .0, .1, .06"
+            AbsoluteLayout.LayoutFlags="All" />
+        <Label
+            Text="Scegli la tua facoltà"
+            FontSize="Large"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            AbsoluteLayout.LayoutBounds=".5, .1, 1, .1"
+            AbsoluteLayout.LayoutFlags="All"/>
+        <Image
+            Source="login_icon.png"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutBounds=".5, .2, .9, .13"        
+            AbsoluteLayout.LayoutFlags="All" />
+        <Image
+            Source="login_icon.png"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutBounds=".5, .43, .9, .13"
+            AbsoluteLayout.LayoutFlags="All" />
+        <Image
+            Source="login_icon.png"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutBounds=".5, .66, .9, .13"
+            AbsoluteLayout.LayoutFlags="All" />
+        <Image
+            Source="login_icon.png"
+            Aspect="AspectFill"
+            AbsoluteLayout.LayoutBounds=".5, .89, .9, .13"
+            AbsoluteLayout.LayoutFlags="All" />
+    </AbsoluteLayout>
+</ContentPage>

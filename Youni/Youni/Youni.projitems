@@ -30,6 +30,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Users\FacultyChooserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -53,6 +57,9 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Users\LoginRegistrationViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\DataBaseHandler.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Users\FacultyChooserPage.xaml.cs">
+      <DependentUpon>FacultyChooserPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

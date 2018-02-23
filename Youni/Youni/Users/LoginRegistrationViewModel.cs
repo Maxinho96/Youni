@@ -10,7 +10,7 @@ namespace Youni
 {
     public class LoginRegistrationViewModel
     {
-        //public int CurrentPage { get; set; } // Pagina corrente (0=RegistrationView, 1=LoginView)
+        //public int CurrentPage { get; set; } // Current Page (0=RegistrationView, 1=LoginView)
         public Command LoginCommand { get; set; }
         public Command RegisterCommand { get; set; }
         public string RegName { get; set; }
