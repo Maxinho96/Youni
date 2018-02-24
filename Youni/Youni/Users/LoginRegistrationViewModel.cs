@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
 
 using Xamarin.Forms;
-
-using Npgsql;
 
 namespace Youni
 {
@@ -13,6 +9,10 @@ namespace Youni
         //public int CurrentPage { get; set; } // Current Page (0=RegistrationView, 1=LoginView)
         public Command LoginCommand { get; set; }
         public Command RegisterCommand { get; set; }
+        public Command MecEngCommand { get; set; }
+        public Command SofEngCommand { get; set; }
+        public Command EleEngCommand { get; set; }
+        public Command CivEngCommand { get; set; }
         public string RegName { get; set; }
         public string RegSurname { get; set; }
         public string RegEmail { get; set; }
@@ -74,17 +74,46 @@ namespace Youni
                     {
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Questa email risulta già registrata", "OK");
                     }
-                    else if (await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname))
+                    //else if (await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname))
+                    //{
+                    //    await Application.Current.MainPage.DisplayAlert("Complimenti!", "Ora sei un nuovo membro di Youni!", "OK");
+                    //    await Application.Current.MainPage.Navigation.PopModalAsync();
+                    //    //Application.Current.Properties["IsLoggedIn"] = true;
+                    //}
+                    else
                     {
-                        await Application.Current.MainPage.DisplayAlert("Complimenti!", "Ora sei un nuovo membro di Youni!", "OK");
-                        await Application.Current.MainPage.Navigation.PopModalAsync();
-                        //Application.Current.Properties["IsLoggedIn"] = true;
+                        await Application.Current.MainPage.Navigation.PopModalAsync(false);
+                        await Application.Current.MainPage.Navigation.PushModalAsync(new FacultyChooserPage());
                     }
                 }
                 catch (System.Net.Sockets.SocketException)
                 {
                     await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
                 }
+            });
+
+            MecEngCommand = new Command(async () =>
+            {
+                //await Application.Current.MainPage.Navigation.PopModalAsync();
+                await Application.Current.MainPage.Navigation.PopModalAsync();
+            });
+
+            SofEngCommand = new Command(async () =>
+            {
+                //await Application.Current.MainPage.Navigation.PopModalAsync();
+                await Application.Current.MainPage.Navigation.PopModalAsync();
+            });
+
+            EleEngCommand = new Command(async () =>
+            {
+                //await Application.Current.MainPage.Navigation.PopModalAsync();
+                await Application.Current.MainPage.Navigation.PopModalAsync();
+            });
+
+            CivEngCommand = new Command(async () =>
+            {
+                //await Application.Current.MainPage.Navigation.PopModalAsync();
+                await Application.Current.MainPage.Navigation.PopModalAsync();
             });
         }
     }

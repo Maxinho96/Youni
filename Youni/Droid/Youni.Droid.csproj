@@ -157,6 +157,10 @@
     <AndroidResource Include="Resources\drawable\login_icon.png" />
     <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\drawable\blue_background.png" />
+    <AndroidResource Include="Resources\drawable\civ_eng_wallpaper.jpeg" />
+    <AndroidResource Include="Resources\drawable\ele_eng_wallpaper.jpeg" />
+    <AndroidResource Include="Resources\drawable\mec_eng_wallpaper.jpeg" />
+    <AndroidResource Include="Resources\drawable\sof_eng_wallpaper.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />

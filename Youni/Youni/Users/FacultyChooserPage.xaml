@@ -2,46 +2,116 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Youni"
     x:Class="Youni.FacultyChooserPage">
+    <ContentPage.BindingContext>
+        <local:LoginRegistrationViewModel />
+    </ContentPage.BindingContext>
     <AbsoluteLayout
         Padding="0"
         Margin="0">
         <Image
             Source="blue_background.png"
             Aspect="Fill"
-            AbsoluteLayout.LayoutBounds=".5, .0, 1, .06"
-            AbsoluteLayout.LayoutFlags="All" />
+            AbsoluteLayout.LayoutFlags="All">
+            <Image.AbsoluteLayout.LayoutBounds>
+                <OnPlatform
+                    x:TypeArguments="Rectangle">
+                    <On
+                        Platform="Android"
+                        Value=".5, .0, 1, .06" />
+                    <On
+                        Platform="iOS"
+                        Value=".5, .0, 1, .1" />
+                </OnPlatform>
+            </Image.AbsoluteLayout.LayoutBounds>
+        </Image>
         <Image
             Source="icon.png"
             Aspect="AspectFill"
-            AbsoluteLayout.LayoutBounds=".5, .0, .1, .06"
-            AbsoluteLayout.LayoutFlags="All" />
+            AbsoluteLayout.LayoutFlags="All">
+            <Image.AbsoluteLayout.LayoutBounds>
+                <OnPlatform
+                    x:TypeArguments="Rectangle">
+                    <On
+                        Platform="Android"
+                        Value=".5, .0, .1, .06" />
+                    <On
+                        Platform="iOS"
+                        Value=".5, .04, .1, .06" />
+                </OnPlatform>
+            </Image.AbsoluteLayout.LayoutBounds>
+        </Image>
         <Label
             Text="Scegli la tua facoltà"
             FontSize="Large"
             FontAttributes="Bold"
             HorizontalTextAlignment="Center"
-            AbsoluteLayout.LayoutBounds=".5, .1, 1, .1"
-            AbsoluteLayout.LayoutFlags="All"/>
-        <Image
-            Source="login_icon.png"
-            Aspect="AspectFill"
-            AbsoluteLayout.LayoutBounds=".5, .2, .9, .13"        
+            AbsoluteLayout.LayoutBounds=".5, .13, 1, .1"
             AbsoluteLayout.LayoutFlags="All" />
-        <Image
-            Source="login_icon.png"
-            Aspect="AspectFill"
+        <StackLayout
+            Spacing="1"
+            AbsoluteLayout.LayoutBounds=".5, .2, .9, .13"
+            AbsoluteLayout.LayoutFlags="All">
+            <Image
+                Source="mec_eng_wallpaper.jpeg"
+                Aspect="AspectFill" />
+            <Label
+                Text="Ingegneria Meccanica"
+                FontSize="Large"
+                HorizontalTextAlignment="Center" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding MecEngCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
+            Spacing="1"
             AbsoluteLayout.LayoutBounds=".5, .43, .9, .13"
-            AbsoluteLayout.LayoutFlags="All" />
-        <Image
-            Source="login_icon.png"
-            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All">
+            <Image
+                Source="sof_eng_wallpaper.jpeg"
+                Aspect="AspectFill" />
+            <Label
+                Text="Ingegneria Informatica"
+                FontSize="Large"
+                HorizontalTextAlignment="Center" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding SofEngCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
+            Spacing="1"
             AbsoluteLayout.LayoutBounds=".5, .66, .9, .13"
-            AbsoluteLayout.LayoutFlags="All" />
-        <Image
-            Source="login_icon.png"
-            Aspect="AspectFill"
+            AbsoluteLayout.LayoutFlags="All">
+            <Image
+                Source="ele_eng_wallpaper.jpeg"
+                Aspect="AspectFill" />
+            <Label
+                Text="Ingegneria Elettronica"
+                FontSize="Large"
+                HorizontalTextAlignment="Center" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding EleEngCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
+        <StackLayout
+            Spacing="1"
             AbsoluteLayout.LayoutBounds=".5, .89, .9, .13"
-            AbsoluteLayout.LayoutFlags="All" />
+            AbsoluteLayout.LayoutFlags="All">
+            <Image
+                Source="civ_eng_wallpaper.jpeg"
+                Aspect="AspectFill" />
+            <Label
+                Text="Ingegneria Civile"
+                FontSize="Large"
+                HorizontalTextAlignment="Center" />
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding CivEngCommand}" />
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
     </AbsoluteLayout>
 </ContentPage>

@@ -123,6 +123,16 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iTunesArtwork%402x.png" />
     <ImageAsset Include="Assets.xcassets\blue_background.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\blue_background.imageset\blue_background.png" />
+    <ImageAsset Include="Assets.xcassets\icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon.png" />
+    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\sof_eng_wallpaper.jpeg" />
+    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\ele_eng_wallpaper.jpeg" />
+    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\civ_eng_wallpaper.jpeg" />
+    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\mec_eng_wallpaper.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -131,6 +141,12 @@
     <Folder Include="Assets.xcassets\login_icon.imageset\" />
     <Folder Include="Helpers\" />
     <Folder Include="Assets.xcassets\blue_background.imageset\" />
+    <Folder Include="Assets.xcassets\icon.imageset\" />
+    <Folder Include="Assets.xcassets\civ_eng_wallpaper.imageset\" />
+    <Folder Include="Assets.xcassets\ele_eng_wallpaper.imageset\" />
+    <Folder Include="Assets.xcassets\sof_eng_wallpaper.imageset\" />
+    <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
+    <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
