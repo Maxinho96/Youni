@@ -19,7 +19,7 @@ namespace Youni
             // Is user logged in?
             if (!(bool)Application.Current.Properties["IsLoggedIn"]) // He is not logged in
             {
-                await this.Navigation.PushModalAsync(new NavigationPage(new LoginRegistrationPage()));
+                await this.Navigation.PushModalAsync(new NavigationPage(new LoginRegistrationPage(new LoginRegistrationViewModel())));
             }
         }
     }

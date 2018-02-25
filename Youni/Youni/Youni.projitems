@@ -60,7 +60,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Users\FacultyChooserPage.xaml.cs">
       <DependentUpon>FacultyChooserPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Old\FacultyChooserViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Users\FacultyChooserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

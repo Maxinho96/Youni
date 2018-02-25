@@ -4,9 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Youni"
     x:Class="Youni.FacultyChooserPage">
-    <ContentPage.BindingContext>
-        <local:LoginRegistrationViewModel />
-    </ContentPage.BindingContext>
     <!--AbsoluteLayout
         Padding="0"
         Margin="0">

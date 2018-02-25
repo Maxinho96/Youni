@@ -11,5 +11,11 @@ namespace Youni
         {
             InitializeComponent();
         }
+
+        public FacultyChooserPage(FacultyChooserViewModel facultyChooserViewModel) : this()
+        {
+            facultyChooserViewModel.Navigation = this.Navigation;
+            this.BindingContext = facultyChooserViewModel;
+        }
     }
 }
