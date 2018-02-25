@@ -15,6 +15,7 @@ namespace Youni
             }
 
             MainPage = new MainPage();
+            //MainPage = new FacultyChooserPage();
         }
 
         protected override void OnStart()

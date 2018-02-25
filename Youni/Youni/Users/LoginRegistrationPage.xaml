@@ -5,9 +5,9 @@
     xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
     xmlns:local="clr-namespace:Youni"
     x:Class="Youni.LoginRegistrationPage">
-    <ContentPage.BindingContext>
+    <!--ContentPage.BindingContext>
         <local:LoginRegistrationViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext-->
     <controls:CarouselViewControl
         x:Name="Carousel"
         Orientation="Vertical"

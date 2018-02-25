@@ -13,6 +13,8 @@ namespace Youni
         public LoginRegistrationPage()
         {
             InitializeComponent();
+
+            this.BindingContext = new LoginRegistrationViewModel(this.Navigation);
         }
 
         void RegistrationSwitch_Handle_Pressed(object sender, System.EventArgs e)

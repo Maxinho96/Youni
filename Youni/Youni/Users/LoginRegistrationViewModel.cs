@@ -20,6 +20,7 @@ namespace Youni
         public string LogEmail { get; set; }
         public string LogPassword { get; set; }
         private DataBaseHandler DBHandler;
+        private INavigation Navigation;
 
         public LoginRegistrationViewModel()
         {
@@ -74,16 +75,9 @@ namespace Youni
                     {
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Questa email risulta già registrata", "OK");
                     }
-                    //else if (await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname))
-                    //{
-                    //    await Application.Current.MainPage.DisplayAlert("Complimenti!", "Ora sei un nuovo membro di Youni!", "OK");
-                    //    await Application.Current.MainPage.Navigation.PopModalAsync();
-                    //    //Application.Current.Properties["IsLoggedIn"] = true;
-                    //}
                     else
                     {
-                        await Application.Current.MainPage.Navigation.PopModalAsync(false);
-                        await Application.Current.MainPage.Navigation.PushModalAsync(new FacultyChooserPage());
+                        await this.Navigation.PushAsync(new FacultyChooserPage());
                     }
                 }
                 catch (System.Net.Sockets.SocketException)
@@ -94,27 +88,60 @@ namespace Youni
 
             MecEngCommand = new Command(async () =>
             {
-                //await Application.Current.MainPage.Navigation.PopModalAsync();
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                try
+                {
+                    await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname, "Ingegneria Meccanica");
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
+                catch (System.Net.Sockets.SocketException)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                }
             });
 
             SofEngCommand = new Command(async () =>
             {
-                //await Application.Current.MainPage.Navigation.PopModalAsync();
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                try
+                {
+                    await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname, "Ingegneria Informatica");
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
+                catch (System.Net.Sockets.SocketException)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                }
             });
 
             EleEngCommand = new Command(async () =>
             {
-                //await Application.Current.MainPage.Navigation.PopModalAsync();
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                try
+                {
+                    await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname, "Ingegneria Elettronica");
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
+                catch (System.Net.Sockets.SocketException)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                }
             });
 
             CivEngCommand = new Command(async () =>
             {
-                //await Application.Current.MainPage.Navigation.PopModalAsync();
-                await Application.Current.MainPage.Navigation.PopModalAsync();
+                try
+                {
+                    await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname, "Ingegneria Civile");
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                }
+                catch (System.Net.Sockets.SocketException)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                }
             });
+        }
+
+        public LoginRegistrationViewModel(INavigation navigation) : this()
+        {
+            this.Navigation = navigation;
         }
     }
 }
