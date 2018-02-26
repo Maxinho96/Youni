@@ -4,13 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:CarouselView.FormsPlugin.Abstractions;assembly=CarouselView.FormsPlugin.Abstractions"
     xmlns:local="clr-namespace:Youni"
-    x:Class="Youni.LoginRegistrationPage">
+    x:Class="Youni.LoginRegistrationPage"
+    Title="{Binding PageTitle}">
     <controls:CarouselViewControl
         x:Name="Carousel"
         Orientation="Vertical"
         IsSwipeEnabled="false"
         VerticalOptions="FillAndExpand"
-        HorizontalOptions="FillAndExpand">
+        HorizontalOptions="FillAndExpand"
+        Position="{Binding CurrentPage}">
         <controls:CarouselViewControl.ItemsSource>
             <x:Array
                 Type="{x:Type View}">
@@ -82,7 +84,7 @@
                                 x:Name="LoginSwitchButton"
                                 Pressed="LoginSwitch_Handle_Pressed"
                                 Released="LoginSwitch_Handle_Released"
-                                Clicked="LoginSwitch_Handle_Clicked"
+                                Command="{Binding LoginSwitchCommand}"
                                 Text="Passa al login"
                                 FontSize="Small"
                                 TextColor="#45BFEE"
@@ -145,7 +147,7 @@
                                 x:Name="RegistrationSwitchButton"
                                 Pressed="RegistrationSwitch_Handle_Pressed"
                                 Released="RegistrationSwitch_Handle_Released"
-                                Clicked="RegistrationSwitch_Handle_Clicked"
+                                Command="{Binding RegistrationSwitchCommand}"
                                 Text="Registrati"
                                 FontSize="Small"
                                 TextColor="#45BFEE"

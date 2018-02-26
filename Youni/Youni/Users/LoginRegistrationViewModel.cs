@@ -4,11 +4,34 @@ using Xamarin.Forms;
 
 namespace Youni
 {
-    public class LoginRegistrationViewModel
+    public class LoginRegistrationViewModel : BindableObject
     {
-        //public int CurrentPage { get; set; } // Current Page (0=RegistrationView, 1=LoginView)
-        public Command LoginCommand { get; set; }
-        public Command RegisterCommand { get; set; }
+        private int currentPage;
+        public int CurrentPage // Current Page (0=RegistrationView, 1=LoginView)
+        {
+            get
+            {
+                return currentPage;
+            }
+            set
+            {
+                this.currentPage = value;
+                OnPropertyChanged("CurrentPage");
+            }
+        }
+        private string pageTitle;
+        public string PageTitle
+        {
+            get
+            {
+                return pageTitle;
+            }
+            set
+            {
+                this.pageTitle = value;
+                OnPropertyChanged("PageTitle");
+            }
+        }
         public string RegName { get; set; }
         public string RegSurname { get; set; }
         public string RegEmail { get; set; }
@@ -17,12 +40,17 @@ namespace Youni
         public string LogPassword { get; set; }
         private DataBaseHandler DBHandler;
         public INavigation Navigation;
+        public Command LoginCommand { get; set; }
+        public Command RegisterCommand { get; set; }
+        public Command RegistrationSwitchCommand { get; set; }
+        public Command LoginSwitchCommand { get; set; }
 
         public LoginRegistrationViewModel()
         {
-            DBHandler = new DataBaseHandler();
+            this.DBHandler = new DataBaseHandler();
+            this.PageTitle = "Registrazione";
 
-            LoginCommand = new Command(async () =>
+            this.LoginCommand = new Command(async () =>
            {
                try
                {
@@ -59,7 +87,7 @@ namespace Youni
                }
            });
 
-            RegisterCommand = new Command(async () =>
+            this.RegisterCommand = new Command(async () =>
             {
                 try
                 {
@@ -80,6 +108,18 @@ namespace Youni
                 {
                     await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
                 }
+            });
+
+            this.RegistrationSwitchCommand = new Command(() =>
+           {
+               this.CurrentPage = 0;
+               this.PageTitle = "Registrazione";
+           });
+
+            this.LoginSwitchCommand = new Command(() =>
+            {
+                this.CurrentPage = 1;
+                this.PageTitle = "Login";
             });
         }
 

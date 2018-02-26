@@ -5,16 +5,16 @@ namespace Youni
 {
     public class FacultyChooserViewModel
     {
-        public Command MecEngCommand { get; set; }
-        public Command SofEngCommand { get; set; }
-        public Command EleEngCommand { get; set; }
-        public Command CivEngCommand { get; set; }
         public string RegName { get; set; }
         public string RegSurname { get; set; }
         public string RegEmail { get; set; }
         public string RegPassword { get; set; }
         private DataBaseHandler DBHandler;
         public INavigation Navigation;
+        public Command MecEngCommand { get; set; }
+        public Command SofEngCommand { get; set; }
+        public Command EleEngCommand { get; set; }
+        public Command CivEngCommand { get; set; }
 
         public FacultyChooserViewModel()
         {
