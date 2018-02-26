@@ -16,7 +16,8 @@
         <controls:CarouselViewControl.ItemsSource>
             <x:Array
                 Type="{x:Type View}">
-                <ScrollView>
+                <ScrollView
+                    VerticalOptions="Start">
                     <AbsoluteLayout
                         Padding="0"
                         Margin="0">
@@ -26,7 +27,7 @@
                             AbsoluteLayout.LayoutFlags="All" />
                         <StackLayout
                             Orientation="Vertical"
-                            AbsoluteLayout.LayoutBounds=".5, .5, .9, .35"
+                            AbsoluteLayout.LayoutBounds=".5, .65, .9, .5"
                             AbsoluteLayout.LayoutFlags="All">
                             <Label
                                 Text="Unisciti a Youni!"
@@ -35,26 +36,22 @@
                                 HorizontalTextAlignment="Center" />
                             <Entry
                                 Text="{Binding RegName}"
-                                VerticalOptions="FillAndExpand"
                                 Placeholder="Nome" />
                             <Entry
                                 Text="{Binding RegSurname}"
-                                VerticalOptions="FillAndExpand"
                                 Placeholder="Cognome" />
                             <Entry
                                 Text="{Binding RegEmail}"
-                                VerticalOptions="FillAndExpand"
                                 Placeholder="Email"
                                 Keyboard="Email" />
                             <Entry
                                 Text="{Binding RegPassword}"
-                                VerticalOptions="FillAndExpand"
                                 Placeholder="Password"
                                 IsPassword="true" />
                         </StackLayout>
                         <Button
                             Command="{Binding RegisterCommand}"
-                            AbsoluteLayout.LayoutBounds=".5, .85, .3, .07"
+                            AbsoluteLayout.LayoutBounds=".5, .85, .3, .08"
                             AbsoluteLayout.LayoutFlags="All"
                             Text="Registrati"
                             TextColor="White"
@@ -117,7 +114,7 @@
                         </StackLayout>
                         <Button
                             Command="{Binding LoginCommand}"
-                            AbsoluteLayout.LayoutBounds=".5, .85, .3, .07"
+                            AbsoluteLayout.LayoutBounds=".5, .85, .3, .08"
                             AbsoluteLayout.LayoutFlags="All"
                             Text="Login"
                             TextColor="White"

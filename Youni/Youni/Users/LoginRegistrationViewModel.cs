@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 using Xamarin.Forms;
 
@@ -94,6 +95,10 @@ namespace Youni
                     if (String.IsNullOrWhiteSpace(this.RegEmail) || String.IsNullOrWhiteSpace(this.RegPassword) || String.IsNullOrWhiteSpace(this.RegName) || String.IsNullOrWhiteSpace(this.RegSurname))
                     {
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi riempire tutti i campi", "Riprova");
+                    }
+                    else if (!(new Regex(@"^.*@stud.uniroma3\.it$").IsMatch(this.RegEmail)))
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi inserire la tua email istituzionale (es. mario.rossi@stud.uniroma3.it", "Riprova");
                     }
                     else if (await this.DBHandler.IsRegisteredAsync(this.RegEmail))
                     {
