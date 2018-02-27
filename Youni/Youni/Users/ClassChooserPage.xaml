@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Youni.ClassChooserPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="50" />
+                </Grid.RowDefinitions>
+                <Image
+                    Source="blue_background.png"
+                    Aspect="Fill"
+                    Grid.Row="0"
+                    Grid.Column="0" />
+                <Image
+                    Source="icon.png"
+                    Aspect="AspectFit"
+                    Grid.Row="0"
+                    Grid.Column="0" />
+            </Grid>
+            <Grid
+                Padding="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="*" />
+                </Grid.RowDefinitions>
+                <Label
+                    Text="Scegli i tuoi corsi"
+                    FontSize="Large"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    TextColor="#174668"
+                    Grid.Row="0"
+                    Grid.Column="0" />
+                <Label
+                    Text="Primo anno"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    BackgroundColor="#3A8FDA"
+                    TextColor="White"
+                    Grid.Row="1"
+                    Grid.Column="0" />
+                <Grid
+                    Grid.Row="2"
+                    Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="0" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="1" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="2" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="1"
+                        Grid.Column="0" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="1"
+                        Grid.Column="1" />
+                </Grid>
+                <!--Image.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Command="{Binding MecEngCommand}" />
+                    </Image.GestureRecognizers-->
+                <Label
+                    Text="Secondo anno"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    BackgroundColor="#3A8FDA"
+                    TextColor="White"
+                    Grid.Row="3"
+                    Grid.Column="0" />
+                <Grid
+                    Grid.Row="4"
+                    Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="0" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="1" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="2" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="1"
+                        Grid.Column="0" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="1"
+                        Grid.Column="1" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="1"
+                        Grid.Column="2" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="2"
+                        Grid.Column="0" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="2"
+                        Grid.Column="1" />
+                </Grid>
+                <Label
+                    Text="Terzo anno"
+                    FontAttributes="Bold"
+                    HorizontalTextAlignment="Center"
+                    BackgroundColor="#3A8FDA"
+                    TextColor="White"
+                    Grid.Row="5"
+                    Grid.Column="0" />
+                <Grid
+                    Grid.Row="6"
+                    Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="*" />
+                        <RowDefinition
+                            Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="0" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="1" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="0"
+                        Grid.Column="2" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="1"
+                        Grid.Column="0" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="1"
+                        Grid.Column="1" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="1"
+                        Grid.Column="2" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="2"
+                        Grid.Column="0" />
+                    <Image
+                        Source="icon.png"
+                        Aspect="AspectFit"
+                        Grid.Row="2"
+                        Grid.Column="1" />
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

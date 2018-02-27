@@ -14,7 +14,8 @@ namespace Youni
                 Properties["IsLoggedIn"] = false;
             }
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
+            MainPage = new ClassChooserPage();
         }
 
         protected override void OnStart()

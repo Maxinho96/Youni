@@ -117,8 +117,7 @@
         </StackLayout>
     </AbsoluteLayout-->
     <StackLayout>
-        <Grid
-            RowSpacing="0">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="50" />
@@ -161,6 +160,7 @@
                 FontSize="Large"
                 FontAttributes="Bold"
                 HorizontalTextAlignment="Center"
+                TextColor="#174668"
                 Grid.Row="0"
                 Grid.Column="0" />
             <Image
@@ -177,6 +177,7 @@
                 Text="Ingegneria Meccanica"
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
+                TextColor="#174668"
                 Grid.Row="2"
                 Grid.Column="0">
                 <Label.GestureRecognizers>
@@ -198,6 +199,7 @@
                 Text="Ingegneria Informatica"
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
+                TextColor="#174668"
                 Grid.Row="4"
                 Grid.Column="0">
                 <Label.GestureRecognizers>
@@ -219,6 +221,7 @@
                 Text="Ingegneria Elettronica"
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
+                TextColor="#174668"
                 Grid.Row="6"
                 Grid.Column="0">
                 <Label.GestureRecognizers>
@@ -240,6 +243,7 @@
                 Text="Ingegneria Civile"
                 FontSize="Large"
                 HorizontalTextAlignment="Center"
+                TextColor="#174668"
                 Grid.Row="8"
                 Grid.Column="0">
                 <Label.GestureRecognizers>

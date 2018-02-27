@@ -96,7 +96,7 @@ namespace Youni
                     {
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi riempire tutti i campi", "Riprova");
                     }
-                    else if (!(new Regex(@"^.*@stud.uniroma3\.it$").IsMatch(this.RegEmail)))
+                    else if (!(new Regex(@"^.*@stud\.uniroma3\.it$").IsMatch(this.RegEmail)))
                     {
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi inserire la tua email istituzionale (es. mario.rossi@stud.uniroma3.it", "Riprova");
                     }

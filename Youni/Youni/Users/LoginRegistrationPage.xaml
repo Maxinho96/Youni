@@ -33,7 +33,8 @@
                                 Text="Unisciti a Youni!"
                                 FontSize="Large"
                                 FontAttributes="Bold"
-                                HorizontalTextAlignment="Center" />
+                                HorizontalTextAlignment="Center"
+                                TextColor="#174668" />
                             <Entry
                                 Text="{Binding RegName}"
                                 Placeholder="Nome" />
