@@ -63,6 +63,7 @@ namespace Youni
 #endif
         }
 
+        /* Disables back button on Android */
         protected override bool OnBackButtonPressed()
         {
             return true;

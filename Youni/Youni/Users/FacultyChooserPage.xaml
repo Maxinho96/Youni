@@ -116,8 +116,16 @@
             </StackLayout>
         </StackLayout>
     </AbsoluteLayout-->
-    <StackLayout>
-        <Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0" >
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="50" />
@@ -134,7 +142,10 @@
                 Grid.Column="0" />
         </Grid>
         <Grid
-            Padding="10">
+            Padding="10"
+            VerticalOptions="FillAndExpand"
+            Grid.Row="1"
+            Grid.Column="0" >
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="Auto" />
@@ -252,5 +263,5 @@
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
-    </StackLayout>
+    </Grid>
 </ContentPage>

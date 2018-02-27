@@ -37,6 +37,7 @@ namespace Youni
         public string RegSurname { get; set; }
         public string RegEmail { get; set; }
         public string RegPassword { get; set; }
+        public string RegPasswordConfirm { get; set; }
         public string LogEmail { get; set; }
         public string LogPassword { get; set; }
         private DataBaseHandler DBHandler;
@@ -99,6 +100,10 @@ namespace Youni
                     else if (!(new Regex(@"^.*@stud\.uniroma3\.it$").IsMatch(this.RegEmail)))
                     {
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi inserire la tua email istituzionale (es. mario.rossi@stud.uniroma3.it", "Riprova");
+                    }
+                    else if (this.RegPassword != this.RegPasswordConfirm)
+                    {
+                        await Application.Current.MainPage.DisplayAlert("Attenzione", "Le due password devono coincidere", "Riprova");
                     }
                     else if (await this.DBHandler.IsRegisteredAsync(this.RegEmail))
                     {
