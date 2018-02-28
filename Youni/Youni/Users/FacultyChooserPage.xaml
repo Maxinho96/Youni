@@ -119,33 +119,25 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
-                Height="Auto" />
+                Height="50" />
             <RowDefinition
                 Height="*" />
         </Grid.RowDefinitions>
-        <Grid
+        <Image
+            Source="blue_background.png"
+            Aspect="Fill"
             Grid.Row="0"
-            Grid.Column="0" >
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="50" />
-            </Grid.RowDefinitions>
-            <Image
-                Source="blue_background.png"
-                Aspect="Fill"
-                Grid.Row="0"
-                Grid.Column="0" />
-            <Image
-                Source="icon.png"
-                Aspect="AspectFit"
-                Grid.Row="0"
-                Grid.Column="0" />
-        </Grid>
+            Grid.Column="0" />
+        <Image
+            Source="icon.png"
+            Aspect="AspectFit"
+            Grid.Row="0"
+            Grid.Column="0" />
         <Grid
             Padding="10"
             VerticalOptions="FillAndExpand"
             Grid.Row="1"
-            Grid.Column="0" >
+            Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="Auto" />

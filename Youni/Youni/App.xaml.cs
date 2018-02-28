@@ -15,6 +15,7 @@ namespace Youni
             }
 
             MainPage = new MainPage();
+            //MainPage = new LoginRegistrationPage();
             //MainPage = new ClassChooserPage();
             //MainPage = new FacultyChooserPage();
         }
