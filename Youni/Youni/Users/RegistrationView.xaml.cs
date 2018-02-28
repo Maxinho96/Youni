@@ -4,11 +4,21 @@ using Xamarin.Forms;
 
 namespace Youni
 {
-    public partial class RegistrationView : ScrollView
+    public partial class RegistrationView : ContentView
     {
         public RegistrationView()
         {
             InitializeComponent();
+
+            this.RegNameEntry.ReturnCommand = new Command(() => RegSurnameEntry.Focus());
+            this.RegSurnameEntry.ReturnCommand = new Command(() => RegEmailEntry.Focus());
+            this.RegEmailEntry.ReturnCommand = new Command(() => RegPasswordEntry.Focus());
+            this.RegPasswordEntry.ReturnCommand = new Command(() => RegPasswordConfirmEntry.Focus());
+        }
+
+        public RegistrationView(LoginRegistrationViewModel loginRegistrationViewModel) : this()
+        {
+            this.BindingContext = loginRegistrationViewModel;
         }
 
         void LoginSwitch_Handle_Pressed(object sender, System.EventArgs e)

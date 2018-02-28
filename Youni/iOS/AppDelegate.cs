@@ -16,7 +16,8 @@ namespace Youni.iOS
         {
             global::Xamarin.Forms.Forms.Init();
 
-            CarouselViewRenderer.Init(); // Fa funzionare la CarouselView
+            CarouselViewRenderer.Init(); // Makes CarouselView work
+            EntryCustomReturn.Forms.Plugin.iOS.CustomReturnEntryRenderer.Init(); // Makes CostumReturnEntry work
 
             LoadApplication(new App());
 

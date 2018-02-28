@@ -25,7 +25,8 @@ namespace Youni.Droid
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
 
-            CarouselViewRenderer.Init(); // Fa funzionare la CarouselView
+            CarouselViewRenderer.Init(); // Makes CarouselView work
+            EntryCustomReturn.Forms.Plugin.Android.CustomReturnEntryRenderer.Init(); // Makes CustomReturnEntry work
 
             LoadApplication(new App());
         }
