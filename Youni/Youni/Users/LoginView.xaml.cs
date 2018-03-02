@@ -13,10 +13,10 @@ namespace Youni
             this.LogEmailEntry.ReturnCommand = new Command(() => LogPasswordEntry.Focus());
         }
 
-        public LoginView(LoginRegistrationViewModel loginRegistrationViewModel) : this()
-        {
-            this.BindingContext = loginRegistrationViewModel;
-        }
+        //public LoginView(LoginRegistrationViewModel loginRegistrationViewModel) : this()
+        //{
+        //    this.BindingContext = loginRegistrationViewModel;
+        //}
 
         void RegistrationSwitch_Handle_Pressed(object sender, System.EventArgs e)
         {

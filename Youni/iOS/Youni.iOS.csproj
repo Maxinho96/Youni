@@ -140,9 +140,9 @@
     <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%401x.png" />
     <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%402x.png" />
     <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%403x.png" />
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%403x.png" />
     <ImageAsset Include="Assets.xcassets\icon.imageset\icon%401x.png" />
     <ImageAsset Include="Assets.xcassets\icon.imageset\icon%402x.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

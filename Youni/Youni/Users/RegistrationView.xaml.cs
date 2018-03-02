@@ -16,10 +16,10 @@ namespace Youni
             this.RegPasswordEntry.ReturnCommand = new Command(() => RegPasswordConfirmEntry.Focus());
         }
 
-        public RegistrationView(LoginRegistrationViewModel loginRegistrationViewModel) : this()
-        {
-            this.BindingContext = loginRegistrationViewModel;
-        }
+        //public RegistrationView(LoginRegistrationViewModel loginRegistrationViewModel) : this()
+        //{
+        //    this.BindingContext = loginRegistrationViewModel;
+        //}
 
         void LoginSwitch_Handle_Pressed(object sender, System.EventArgs e)
         {
