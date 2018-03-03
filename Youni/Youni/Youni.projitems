@@ -68,6 +68,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Users\RegistrationView.xaml.cs">
       <DependentUpon>RegistrationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Users\Faculty.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

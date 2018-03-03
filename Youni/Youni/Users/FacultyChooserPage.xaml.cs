@@ -17,5 +17,12 @@ namespace Youni
             facultyChooserViewModel.Navigation = this.Navigation;
             this.BindingContext = facultyChooserViewModel;
         }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await ((FacultyChooserViewModel)this.BindingContext).OnAppearing();
+        }
     }
 }

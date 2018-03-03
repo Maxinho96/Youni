@@ -6,8 +6,7 @@
     xmlns:entryCustomReturn="clr-namespace:EntryCustomReturn.Forms.Plugin.Abstractions;assembly=EntryCustomReturn.Forms.Plugin.Abstractions"
     x:Class="Youni.RegistrationView">
     <ScrollView>
-        <Grid
-            RowSpacing="6">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition
                     Height="0.7*" />

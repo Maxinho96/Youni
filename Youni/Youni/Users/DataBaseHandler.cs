@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 
 using Npgsql;
 
@@ -62,7 +63,6 @@ namespace Youni
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<bool> InsertUserAsync(string email, string password, string name, string surname, string faculty)
         {
-            Console.WriteLine(email+" "+password+" "+name+" "+surname+" "+faculty);
             string commandText = "INSERT INTO utenti (email, password, nome, cognome, facolta) VALUES (@email, @password, @name, @surname, @faculty)";
             using (var conn = new NpgsqlConnection(ConnString))
             {
@@ -75,6 +75,32 @@ namespace Youni
                     cmd.Parameters.AddWithValue("@surname", surname);
                     cmd.Parameters.AddWithValue("@faculty", faculty);
                     return (await cmd.ExecuteNonQueryAsync()) > 0;
+                }
+            }
+        }
+
+        /// <summary>Used to get all the faculties from the DataBase</summary>
+        /// <returns>An ObservableCollection of Faculties, taken from the DataBase</returns>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task<ObservableCollection<Faculty>> GetFacultiesAsync()
+        {
+            string query = "SELECT nome, percorso_immagine FROM facolta";
+            using (var conn = new NpgsqlConnection(ConnString))
+            {
+                conn.Open();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    using(var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        ObservableCollection<Faculty> faculties = new ObservableCollection<Faculty>();
+                        while(await reader.ReadAsync())
+                        {
+                            Console.WriteLine(reader.GetString(0));
+                            Console.WriteLine(reader.GetString(1));
+                            faculties.Add(new Faculty(reader.GetString(0), reader.GetString(1)));
+                        }
+                        return faculties;
+                    }
                 }
             }
         }

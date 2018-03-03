@@ -1,6 +1,8 @@
 ﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+using DLToolkit.Forms.Controls;
+
 namespace Youni
 {
     public partial class App : Application
@@ -8,6 +10,8 @@ namespace Youni
         public App()
         {
             InitializeComponent();
+
+            FlowListView.Init(); // Makes FlowListView work
 
             if (!Properties.ContainsKey("IsLoggedIn")) // E' la prima volta che si apre l'app
             {
@@ -17,7 +21,7 @@ namespace Youni
             MainPage = new MainPage();
             //MainPage = new LoginRegistrationPage();
             //MainPage = new ClassChooserPage();
-            //MainPage = new FacultyChooserPage();
+            //MainPage = new FacultyChooserPage(new FacultyChooserViewModel());
         }
 
         protected override void OnStart()

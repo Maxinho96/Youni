@@ -3,120 +3,10 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Youni"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="Youni.FacultyChooserPage"
     Title="Facoltà">
-    <!--AbsoluteLayout
-        Padding="0"
-        Margin="0">
-        <Image
-            Source="blue_background.png"
-            Aspect="Fill"
-            AbsoluteLayout.LayoutFlags="All">
-            <Image.AbsoluteLayout.LayoutBounds>
-                <OnPlatform
-                    x:TypeArguments="Rectangle">
-                    <On
-                        Platform="Android"
-                        Value=".5, .0, 1, .06" />
-                    <On
-                        Platform="iOS"
-                        Value=".5, .0, 1, .1" />
-                </OnPlatform>
-            </Image.AbsoluteLayout.LayoutBounds>
-        </Image>
-        <Image
-            Source="icon.png"
-            Aspect="AspectFill"
-            AbsoluteLayout.LayoutFlags="All">
-            <Image.AbsoluteLayout.LayoutBounds>
-                <OnPlatform
-                    x:TypeArguments="Rectangle">
-                    <On
-                        Platform="Android"
-                        Value=".5, .0, .1, .06" />
-                    <On
-                        Platform="iOS"
-                        Value=".5, .04, .1, .06" />
-                </OnPlatform>
-            </Image.AbsoluteLayout.LayoutBounds>
-        </Image>
-        <StackLayout
-            AbsoluteLayout.LayoutFlags="All">
-            <StackLayout.AbsoluteLayout.LayoutBounds>
-                <OnPlatform
-                    x:TypeArguments="Rectangle">
-                    <On
-                        Platform="Android"
-                        Value=".5, .13, .8, .5" />
-                    <On
-                        Platform="iOS"
-                        Value=".5, .21, .8, .5" />
-                </OnPlatform>
-            </StackLayout.AbsoluteLayout.LayoutBounds>
-            <Label
-                Text="Scegli la tua facoltà"
-                FontSize="Large"
-                FontAttributes="Bold"
-                HorizontalTextAlignment="Center" />
-            <StackLayout
-                Spacing="1">
-                <Image
-                    Source="mec_eng_wallpaper.jpeg"
-                    Aspect="AspectFill" />
-                <Label
-                    Text="Ingegneria Meccanica"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Center" />
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding MecEngCommand}" />
-                </StackLayout.GestureRecognizers>
-            </StackLayout>
-            <StackLayout
-                Spacing="1">
-                <Image
-                    Source="sof_eng_wallpaper.jpeg"
-                    Aspect="AspectFill" />
-                <Label
-                    Text="Ingegneria Informatica"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Center" />
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding SofEngCommand}" />
-                </StackLayout.GestureRecognizers>
-            </StackLayout>
-            <StackLayout
-                Spacing="1">
-                <Image
-                    Source="ele_eng_wallpaper.jpeg"
-                    Aspect="AspectFill" />
-                <Label
-                    Text="Ingegneria Elettronica"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Center" />
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding EleEngCommand}" />
-                </StackLayout.GestureRecognizers>
-            </StackLayout>
-            <StackLayout
-                Spacing="1">
-                <Image
-                    Source="civ_eng_wallpaper.jpeg"
-                    Aspect="AspectFill" />
-                <Label
-                    Text="Ingegneria Civile"
-                    FontSize="Large"
-                    HorizontalTextAlignment="Center" />
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding CivEngCommand}" />
-                </StackLayout.GestureRecognizers>
-            </StackLayout>
-        </StackLayout>
-    </AbsoluteLayout-->
-    <Grid>
+    <!--<Grid>
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="50" />
@@ -255,5 +145,68 @@
                 </Label.GestureRecognizers>
             </Label>
         </Grid>
+    </Grid>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="50" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+        <Image
+            Source="blue_background.png"
+            Aspect="Fill"
+            Grid.Row="0" />
+        <Image
+            Source="icon.png"
+            Aspect="AspectFit"
+            Grid.Row="0" />
+        <Label
+            Text="Scegli la tua facoltà"
+            FontSize="Large"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            TextColor="#174668"
+            Grid.Row="1" />
+        <flv:FlowListView
+            SeparatorVisibility="None"
+            HasUnevenRows="true"
+            FlowItemsSource="{Binding Faculties}"
+            FlowColumnCount="1"
+            FlowItemTappedCommand="{Binding FacultyChoosedCommand}"
+            FlowLastTappedItem="{Binding FacultyTapped}"
+            Grid.Row="2">
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="10"
+                        Padding="0"
+                        HasShadow="false"
+                        OutlineColor="#174668">
+                        <Grid
+                            RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Image
+                                Source="{Binding Path}"
+                                Aspect="AspectFill"
+                                Grid.Row="0" />
+                            <Label
+                                Text="{Binding Name}"
+                                FontSize="Large"
+                                HorizontalTextAlignment="Center"
+                                TextColor="#174668"
+                                Grid.Row="1" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
     </Grid>
 </ContentPage>
