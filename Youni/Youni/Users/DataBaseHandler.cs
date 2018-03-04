@@ -95,8 +95,6 @@ namespace Youni
                         ObservableCollection<Faculty> faculties = new ObservableCollection<Faculty>();
                         while(await reader.ReadAsync())
                         {
-                            Console.WriteLine(reader.GetString(0));
-                            Console.WriteLine(reader.GetString(1));
                             faculties.Add(new Faculty(reader.GetString(0), reader.GetString(1)));
                         }
                         return faculties;

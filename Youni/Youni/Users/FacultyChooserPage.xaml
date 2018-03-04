@@ -6,146 +6,6 @@
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="Youni.FacultyChooserPage"
     Title="Facoltà">
-    <!--<Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition
-                Height="50" />
-            <RowDefinition
-                Height="*" />
-        </Grid.RowDefinitions>
-        <Image
-            Source="blue_background.png"
-            Aspect="Fill"
-            Grid.Row="0"
-            Grid.Column="0" />
-        <Image
-            Source="icon.png"
-            Aspect="AspectFit"
-            Grid.Row="0"
-            Grid.Column="0" />
-        <Grid
-            Padding="10"
-            VerticalOptions="FillAndExpand"
-            Grid.Row="1"
-            Grid.Column="0">
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="Auto" />
-                <RowDefinition
-                    Height="*" />
-                <RowDefinition
-                    Height="Auto" />
-                <RowDefinition
-                    Height="*" />
-                <RowDefinition
-                    Height="Auto" />
-                <RowDefinition
-                    Height="*" />
-                <RowDefinition
-                    Height="Auto" />
-                <RowDefinition
-                    Height="*" />
-                <RowDefinition
-                    Height="Auto" />
-            </Grid.RowDefinitions>
-            <Label
-                Text="Scegli la tua facoltà"
-                FontSize="Large"
-                FontAttributes="Bold"
-                HorizontalTextAlignment="Center"
-                TextColor="#174668"
-                Grid.Row="0"
-                Grid.Column="0" />
-            <Image
-                Source="mec_eng_wallpaper.jpeg"
-                Aspect="AspectFill"
-                Grid.Row="1"
-                Grid.Column="0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding MecEngCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Label
-                Text="Ingegneria Meccanica"
-                FontSize="Large"
-                HorizontalTextAlignment="Center"
-                TextColor="#174668"
-                Grid.Row="2"
-                Grid.Column="0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding MecEngCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
-            <Image
-                Source="sof_eng_wallpaper.jpeg"
-                Aspect="AspectFill"
-                Grid.Row="3"
-                Grid.Column="0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding SofEngCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Label
-                Text="Ingegneria Informatica"
-                FontSize="Large"
-                HorizontalTextAlignment="Center"
-                TextColor="#174668"
-                Grid.Row="4"
-                Grid.Column="0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding SofEngCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
-            <Image
-                Source="ele_eng_wallpaper.jpeg"
-                Aspect="AspectFill"
-                Grid.Row="5"
-                Grid.Column="0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding EleEngCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Label
-                Text="Ingegneria Elettronica"
-                FontSize="Large"
-                HorizontalTextAlignment="Center"
-                TextColor="#174668"
-                Grid.Row="6"
-                Grid.Column="0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding EleEngCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
-            <Image
-                Source="civ_eng_wallpaper.jpeg"
-                Aspect="AspectFill"
-                Grid.Row="7"
-                Grid.Column="0">
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding CivEngCommand}" />
-                </Image.GestureRecognizers>
-            </Image>
-            <Label
-                Text="Ingegneria Civile"
-                FontSize="Large"
-                HorizontalTextAlignment="Center"
-                TextColor="#174668"
-                Grid.Row="8"
-                Grid.Column="0">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer
-                        Command="{Binding CivEngCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
-        </Grid>
-    </Grid>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -208,5 +68,12 @@
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
         </flv:FlowListView>
+        <ActivityIndicator
+            IsVisible="{Binding IsLoading}"
+            IsRunning="{Binding IsLoading}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Color="#174668"
+            Grid.Row="2" />
     </Grid>
 </ContentPage>
