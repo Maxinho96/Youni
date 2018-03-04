@@ -17,8 +17,10 @@
         <controls:CarouselViewControl.ItemsSource>
             <x:Array
                 Type="{x:Type View}">
-                <local:RegistrationView/>
-                <local:LoginView/>
+                <local:RegistrationView
+                    IsEnabled="{Binding IsInteractionEnabled}" />
+                <local:LoginView
+                    IsEnabled="{Binding IsInteractionEnabled}" />
             </x:Array>
         </controls:CarouselViewControl.ItemsSource>
     </controls:CarouselViewControl>

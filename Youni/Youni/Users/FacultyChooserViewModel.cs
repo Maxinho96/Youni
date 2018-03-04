@@ -54,7 +54,7 @@ namespace Youni
                     await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname, this.FacultyTapped.Name);
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }
-                catch (System.Net.Sockets.SocketException)
+                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
                 {
                     await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
                 }

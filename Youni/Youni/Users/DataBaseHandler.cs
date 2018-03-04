@@ -19,13 +19,14 @@ namespace Youni
         /// <param name="email">The user email to check</param>
         /// <param name="password">The user password to check</param>
         /// <returns>true if the credentials are correct, false otherwise</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<bool> CheckCredentialsAsync(string email, string password)
         {
             string query = "SELECT password FROM utenti WHERE email=@email";
-            using (var conn = new NpgsqlConnection(ConnString))
+            using (var conn = new NpgsqlConnection(this.ConnString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@email", email);
@@ -38,13 +39,14 @@ namespace Youni
         /// <summary>Checks if a user is registered</summary>
         /// <param name="email">The user email to check</param>
         /// <returns>true if the user is registered, false otherwise</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<bool> IsRegisteredAsync(string email)
         {
             string query = "SELECT * FROM utenti WHERE email=@email";
-            using (var conn = new NpgsqlConnection(ConnString))
+            using (var conn = new NpgsqlConnection(this.ConnString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@email", email);
@@ -60,13 +62,14 @@ namespace Youni
         /// <param name="surname">The user surname to insert</param>
         /// <returns>true if the user is inserted, false otherwise</returns>
         /// <exception cref="Npgsql.PostgresException">Thrown if the user already exists</exception>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<bool> InsertUserAsync(string email, string password, string name, string surname, string faculty)
         {
             string commandText = "INSERT INTO utenti (email, password, nome, cognome, facolta) VALUES (@email, @password, @name, @surname, @faculty)";
-            using (var conn = new NpgsqlConnection(ConnString))
+            using (var conn = new NpgsqlConnection(this.ConnString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new NpgsqlCommand(commandText, conn))
                 {
                     cmd.Parameters.AddWithValue("@email", email);
@@ -81,13 +84,14 @@ namespace Youni
 
         /// <summary>Used to get all the faculties from the DataBase</summary>
         /// <returns>An ObservableCollection of Faculties, taken from the DataBase</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<ObservableCollection<Faculty>> GetFacultiesAsync()
         {
             string query = "SELECT nome, percorso_immagine FROM facolta";
-            using (var conn = new NpgsqlConnection(ConnString))
+            using (var conn = new NpgsqlConnection(this.ConnString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     using(var reader = await cmd.ExecuteReaderAsync())

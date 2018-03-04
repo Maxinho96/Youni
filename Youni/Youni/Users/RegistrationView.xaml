@@ -126,6 +126,16 @@
                     TextColor="#45BFEE"
                     BackgroundColor="Transparent" />
             </StackLayout>
+            <Frame
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                OutlineColor="#174668"
+                IsVisible="{Binding IsLoading}"
+                Grid.RowSpan="9">
+                <ActivityIndicator
+                    IsRunning="{Binding IsLoading}"
+                    Color="#174668" />
+            </Frame>
         </Grid>
     </ScrollView>
 </ContentView>
