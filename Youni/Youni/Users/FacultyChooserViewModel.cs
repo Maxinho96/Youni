@@ -51,7 +51,7 @@ namespace Youni
             {
                 try
                 {
-                    await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname, this.FacultyTapped.Name);
+                    await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname);
                     await Application.Current.MainPage.Navigation.PopModalAsync();
                 }
                 catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)

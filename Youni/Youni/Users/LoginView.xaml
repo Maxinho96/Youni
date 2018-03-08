@@ -84,6 +84,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 OutlineColor="#174668"
+                HasShadow="false"
                 IsVisible="{Binding IsLoading}"
                 Grid.RowSpan="5">
                 <ActivityIndicator

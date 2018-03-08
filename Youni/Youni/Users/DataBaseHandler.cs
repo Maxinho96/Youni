@@ -64,9 +64,9 @@ namespace Youni
         /// <exception cref="Npgsql.PostgresException">Thrown if the user already exists</exception>
         /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
-        public async Task<bool> InsertUserAsync(string email, string password, string name, string surname, string faculty)
+        public async Task<bool> InsertUserAsync(string email, string password, string name, string surname)
         {
-            string commandText = "INSERT INTO utenti (email, password, nome, cognome, facolta) VALUES (@email, @password, @name, @surname, @faculty)";
+            string commandText = "INSERT INTO utenti (email, password, nome, cognome) VALUES (@email, @password, @name, @surname)";
             using (var conn = new NpgsqlConnection(this.ConnString))
             {
                 await conn.OpenAsync();
@@ -76,7 +76,6 @@ namespace Youni
                     cmd.Parameters.AddWithValue("@password", BCrypt.Net.BCrypt.HashPassword(password));
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@surname", surname);
-                    cmd.Parameters.AddWithValue("@faculty", faculty);
                     return (await cmd.ExecuteNonQueryAsync()) > 0;
                 }
             }

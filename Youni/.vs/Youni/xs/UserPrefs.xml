@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{29D73EDF-2DF8-4F7C-8FB2-EC214D27A028}|Default">
+  <MonoDevelop.Ide.ItemProperties.Youni.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.8DD41AE9-6238-4B4F-91B9-2CEAA9B9D98A" automaticSigning="False" />
+  <MonoDevelop.Ide.Workbench>
+    <Files>
+      <File FileName="Youni/Users/LoginRegistrationPage.xaml" Line="27" Column="15" />
+      <File FileName="Youni/Users/LoginRegistrationPage.xaml.cs" Line="23" Column="10" />
+      <File FileName="Youni/Users/LoginRegistrationViewModel.cs" Line="124" Column="39" />
+      <File FileName="Youni/Users/FacultyChooserPage.xaml" Line="79" Column="15" />
+      <File FileName="Youni/Users/FacultyChooserViewModel.cs" Line="54" Column="120" />
+      <File FileName="Youni/Users/DataBaseHandler.cs" Line="69" Column="85" />
+      <File FileName="Youni/Users/LoginView.xaml" Line="96" Column="15" />
+      <File FileName="Youni/Users/RegistrationView.xaml" Line="142" Column="15" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Youni.Droid PreferredExecutionTarget="Android.Android_Accelerated_Nougat" AndroidDesignerPreferredTheme="Theme.DeviceDefault.NoActionBar.Fullscreen" />
+  <MultiItemStartupConfigurations />
+</Properties>
