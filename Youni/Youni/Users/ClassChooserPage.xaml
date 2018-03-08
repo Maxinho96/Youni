@@ -2,9 +2,9 @@
 <ContentPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="Youni.ClassChooserPage">
-    <ContentPage.Content>
-        <StackLayout>
+    <!--        <StackLayout>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition
@@ -100,10 +100,6 @@
                         Grid.Row="1"
                         Grid.Column="1" />
                 </Grid>
-                <!--Image.GestureRecognizers>
-                        <TapGestureRecognizer
-                            Command="{Binding MecEngCommand}" />
-                    </Image.GestureRecognizers-->
                 <Label
                     Text="Secondo anno"
                     FontAttributes="Bold"
@@ -241,6 +237,92 @@
                         Grid.Column="1" />
                 </Grid>
             </Grid>
-        </StackLayout>
-    </ContentPage.Content>
+        </StackLayout>-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="50" />
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="*" />
+        </Grid.RowDefinitions>
+        <Image
+            Source="blue_background.png"
+            Aspect="Fill"
+            Grid.Row="0" />
+        <Image
+            Source="icon.png"
+            Aspect="AspectFit"
+            Grid.Row="0" />
+        <Label
+            Text="Scegli i tuoi corsi"
+            FontSize="Large"
+            FontAttributes="Bold"
+            HorizontalTextAlignment="Center"
+            TextColor="#174668"
+            Grid.Row="1" />
+        <flv:FlowListView
+            SeparatorVisibility="None"
+            HasUnevenRows="true"
+            IsGroupingEnabled="true"
+            FlowColumnCount="3"
+            FlowItemsSource="{Binding GroupedClasses}"
+            FlowItemTappedCommand="{Binding ClassChoosedCommand}"
+            FlowLastTappedItem="{Binding ClassTapped}"
+            Grid.Row="2">
+            <flv:FlowListView.GroupHeaderTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Label
+                            Text="{Binding Key}"
+                            TextColor="White"
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center"
+                            HorizontalOptions="Fill"
+                            BackgroundColor="#3A8FDA" />
+                    </ViewCell>
+                </DataTemplate>
+            </flv:FlowListView.GroupHeaderTemplate>
+            <flv:FlowListView.FlowColumnTemplate>
+                <DataTemplate>
+                    <Frame
+                        Margin="10"
+                        Padding="0"
+                        HasShadow="false">
+                        <Grid
+                            RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="*" />
+                                <RowDefinition
+                                    Height="*" />
+                            </Grid.RowDefinitions>
+                            <Button
+                                Text="{Binding ShortName}"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                BackgroundColor="#174668"
+                                Grid.Row="0" />
+                            <Label
+                                Text="{Binding Name}"
+                                HorizontalTextAlignment="Center"
+                                TextColor="#174668"
+                                Grid.Row="1" />
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </flv:FlowListView.FlowColumnTemplate>
+        </flv:FlowListView>
+        <!--        <ActivityIndicator
+            IsVisible="{Binding IsLoading}"
+            IsRunning="{Binding IsLoading}"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Color="#174668"
+            Grid.Row="2" />-->
+    </Grid>
 </ContentPage>

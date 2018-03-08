@@ -105,5 +105,30 @@ namespace Youni
                 }
             }
         }
+
+        /// <summary>Used to get all the classes of a given faculty</summary>
+        /// <returns>An ObservableCollection of Classes, taken from the DataBase</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task<ObservableCollection<Class>> GetClassesAsync()
+        {
+            string query = "SELECT nome, nome_corto, anno FROM esami";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        ObservableCollection<Class> classes = new ObservableCollection<Class>();
+                        while (await reader.ReadAsync())
+                        {
+                            classes.Add(new Class(reader.GetString(0), reader.GetString(1), reader.GetInt16(2)));
+                        }
+                        return classes;
+                    }
+                }
+            }
+        }
     }
 }

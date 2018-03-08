@@ -69,6 +69,9 @@
       <DependentUpon>RegistrationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Users\Faculty.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Users\Class.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Users\ClassGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Users\ClassChooserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />

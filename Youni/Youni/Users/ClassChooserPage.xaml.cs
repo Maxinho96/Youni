@@ -11,5 +11,18 @@ namespace Youni
         {
             InitializeComponent();
         }
+
+        public ClassChooserPage(ClassChooserViewModel classChooserViewModel) : this()
+        {
+            classChooserViewModel.Navigation = this.Navigation;
+            this.BindingContext = classChooserViewModel;
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            await ((ClassChooserViewModel)this.BindingContext).OnAppearing();
+        }
     }
 }

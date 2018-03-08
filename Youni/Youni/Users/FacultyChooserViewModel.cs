@@ -77,7 +77,7 @@ namespace Youni
                 this.Faculties = await this.DBHandler.GetFacultiesAsync();
                 this.IsLoading = false;
             }
-            catch (System.Net.Sockets.SocketException)
+            catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
                 await this.OnAppearing();

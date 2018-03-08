@@ -18,9 +18,9 @@ namespace Youni
                 Properties["IsLoggedIn"] = false;
             }
 
-            MainPage = new MainPage();
+            //MainPage = new MainPage();
             //MainPage = new LoginRegistrationPage();
-            //MainPage = new ClassChooserPage();
+            MainPage = new ClassChooserPage(new ClassChooserViewModel());
             //MainPage = new FacultyChooserPage(new FacultyChooserViewModel());
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Youni
 {
     public class Faculty
