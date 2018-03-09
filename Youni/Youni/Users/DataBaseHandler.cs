@@ -106,18 +106,20 @@ namespace Youni
             }
         }
 
-        /// <summary>Used to get all the classes of a given faculty</summary>
+        /// <summary>Used to get all the classes of a given faculty in a given year</summary>
         /// <returns>An ObservableCollection of Classes, taken from the DataBase</returns>
         /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
-        public async Task<ObservableCollection<Class>> GetClassesAsync()
+        public async Task<ObservableCollection<Class>> GetClassesAsync(Faculty faculty, int year)
         {
-            string query = "SELECT nome, nome_corto, anno FROM esami";
+            string query = "SELECT nome, nome_corto, anno FROM esami WHERE facolta=@faculty AND anno=@year";
             using (var conn = new NpgsqlConnection(this.ConnString))
             {
                 await conn.OpenAsync();
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
+                    cmd.Parameters.AddWithValue("@faculty", faculty.Name);
+                    cmd.Parameters.AddWithValue("@year", year);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         ObservableCollection<Class> classes = new ObservableCollection<Class>();

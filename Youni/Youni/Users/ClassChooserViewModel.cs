@@ -39,6 +39,7 @@ namespace Youni
             }
         }
         public Command ClassChoosedCommand { get; set; }
+        public Command GroupTappedCommand { get; set; }
         private DataBaseHandler DBHandler;
         public INavigation Navigation;
 
@@ -46,6 +47,47 @@ namespace Youni
         {
             this.IsLoading = true;
             this.DBHandler = new DataBaseHandler();
+
+            this.GroupTappedCommand = new Command(async (groupName) =>
+            {
+                //ObservableCollection<ClassGroup> groups = this.GroupedClasses;
+                //foreach (ClassGroup g in groups)
+                //{
+                //    if(g.Key == (string) groupName)
+                //    {
+                //        foreach(Class c in g)
+                //        {
+                //            c.IsVisible = true;
+                //        }
+                //    }
+                //    else
+                //    {
+                //        foreach (Class c in g)
+                //        {
+                //            c.IsVisible = false;
+                //        }
+                //    }
+                //}
+                //this.GroupedClasses = groups;
+                ObservableCollection<ClassGroup> groups = this.GroupedClasses;
+                foreach (ClassGroup g in groups)
+                {
+                    if(g.Key == (string) groupName)
+                    {
+                        g.Clear();
+                        ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync(new Faculty("Ingegneria Informatica", "boh"), g.Year);
+                        foreach(Class c in classes)
+                        {
+                            g.Add(c);
+                        }
+                    }
+                    else
+                    {
+                        g.Clear();
+                    }
+                }
+                this.GroupedClasses = groups;
+            });
 
             this.ClassChoosedCommand = new Command(async () =>
             {
@@ -74,25 +116,33 @@ namespace Youni
             try
             {
                 this.IsLoading = true;
-                ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync();
-                ClassGroup g1 = new ClassGroup("Primo anno");
-                ClassGroup g2 = new ClassGroup("Secondo anno");
-                ClassGroup g3 = new ClassGroup("Terzo anno");
-                foreach(Class c in classes)
-                {
-                    switch(c.Year)
-                    {
-                        case 1:
-                            g1.Add(c);
-                            break;
-                        case 2:
-                            g2.Add(c);
-                            break;
-                        case 3:
-                            g3.Add(c);
-                            break;
-                    }
-                }
+                //ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync();
+                //ClassGroup g1 = new ClassGroup("Primo anno");
+                //ClassGroup g2 = new ClassGroup("Secondo anno");
+                //ClassGroup g3 = new ClassGroup("Terzo anno");
+                //foreach (Class c in classes)
+                //{
+                //    switch (c.Year)
+                //    {
+                //        case 1:
+                //            g1.Add(c);
+                //            break;
+                //        case 2:
+                //            g2.Add(c);
+                //            break;
+                //        case 3:
+                //            g3.Add(c);
+                //            break;
+                //    }
+                //}
+                //ObservableCollection<ClassGroup> groups = new ObservableCollection<ClassGroup>();
+                //groups.Add(g1);
+                //groups.Add(g2);
+                //groups.Add(g3);
+                //this.GroupedClasses = groups;
+                ClassGroup g1 = new ClassGroup("Primo anno", 1);
+                ClassGroup g2 = new ClassGroup("Secondo anno", 2);
+                ClassGroup g3 = new ClassGroup("Terzo anno", 3);
                 ObservableCollection<ClassGroup> groups = new ObservableCollection<ClassGroup>();
                 groups.Add(g1);
                 groups.Add(g2);

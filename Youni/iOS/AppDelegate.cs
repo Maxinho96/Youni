@@ -6,6 +6,7 @@ using Foundation;
 using UIKit;
 
 using CarouselView.FormsPlugin.iOS;
+using XFShapeView.iOS;
 
 namespace Youni.iOS
 {
@@ -18,6 +19,7 @@ namespace Youni.iOS
 
             CarouselViewRenderer.Init(); // Makes CarouselView work
             EntryCustomReturn.Forms.Plugin.iOS.CustomReturnEntryRenderer.Init(); // Makes CostumReturnEntry work
+            ShapeRenderer.Init(); // Makes ShapeView work
 
             LoadApplication(new App());
 

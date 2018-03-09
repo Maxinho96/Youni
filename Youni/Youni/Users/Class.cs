@@ -1,7 +1,9 @@
 ﻿using System;
+using Xamarin.Forms;
+
 namespace Youni
 {
-    public class Class
+    public class Class : BindableObject
     {
         public string Name { get; set; }
         public string ShortName { get; set; }

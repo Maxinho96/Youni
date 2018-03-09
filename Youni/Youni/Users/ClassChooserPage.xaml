@@ -3,249 +3,16 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+    xmlns:xfShapeView="clr-namespace:XFShapeView;assembly=XFShapeView"
     x:Class="Youni.ClassChooserPage">
-    <!--        <StackLayout>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="50" />
-                </Grid.RowDefinitions>
-                <Image
-                    Source="blue_background.png"
-                    Aspect="Fill"
-                    Grid.Row="0"
-                    Grid.Column="0" />
-                <Image
-                    Source="icon.png"
-                    Aspect="AspectFit"
-                    Grid.Row="0"
-                    Grid.Column="0" />
-            </Grid>
-            <Grid
-                Padding="10">
-                <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="*" />
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="*" />
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="*" />
-                </Grid.RowDefinitions>
-                <Label
-                    Text="Scegli i tuoi corsi"
-                    FontSize="Large"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    TextColor="#174668"
-                    Grid.Row="0"
-                    Grid.Column="0" />
-                <Label
-                    Text="Primo anno"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    BackgroundColor="#3A8FDA"
-                    TextColor="White"
-                    Grid.Row="1"
-                    Grid.Column="0" />
-                <Grid
-                    Grid.Row="2"
-                    Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition
-                            Height="*" />
-                        <RowDefinition
-                            Height="*" />
-                        <RowDefinition
-                            Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="*" />
-                        <ColumnDefinition
-                            Width="*" />
-                        <ColumnDefinition
-                            Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="0" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="1" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="2" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="1"
-                        Grid.Column="0" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="1"
-                        Grid.Column="1" />
-                </Grid>
-                <Label
-                    Text="Secondo anno"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    BackgroundColor="#3A8FDA"
-                    TextColor="White"
-                    Grid.Row="3"
-                    Grid.Column="0" />
-                <Grid
-                    Grid.Row="4"
-                    Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition
-                            Height="*" />
-                        <RowDefinition
-                            Height="*" />
-                        <RowDefinition
-                            Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="*" />
-                        <ColumnDefinition
-                            Width="*" />
-                        <ColumnDefinition
-                            Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="0" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="1" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="2" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="1"
-                        Grid.Column="0" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="1"
-                        Grid.Column="1" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="1"
-                        Grid.Column="2" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="2"
-                        Grid.Column="0" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="2"
-                        Grid.Column="1" />
-                </Grid>
-                <Label
-                    Text="Terzo anno"
-                    FontAttributes="Bold"
-                    HorizontalTextAlignment="Center"
-                    BackgroundColor="#3A8FDA"
-                    TextColor="White"
-                    Grid.Row="5"
-                    Grid.Column="0" />
-                <Grid
-                    Grid.Row="6"
-                    Grid.Column="0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition
-                            Height="*" />
-                        <RowDefinition
-                            Height="*" />
-                        <RowDefinition
-                            Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition
-                            Width="*" />
-                        <ColumnDefinition
-                            Width="*" />
-                        <ColumnDefinition
-                            Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="0" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="1" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="0"
-                        Grid.Column="2" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="1"
-                        Grid.Column="0" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="1"
-                        Grid.Column="1" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="1"
-                        Grid.Column="2" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="2"
-                        Grid.Column="0" />
-                    <Image
-                        Source="icon.png"
-                        Aspect="AspectFit"
-                        Grid.Row="2"
-                        Grid.Column="1" />
-                </Grid>
-            </Grid>
-        </StackLayout>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="50" />
             <RowDefinition
-                Height="Auto" />
-            <RowDefinition
                 Height="*" />
+            <RowDefinition
+                Height="2*" />
         </Grid.RowDefinitions>
         <Image
             Source="blue_background.png"
@@ -260,9 +27,11 @@
             FontSize="Large"
             FontAttributes="Bold"
             HorizontalTextAlignment="Center"
+            VerticalOptions="Center"
             TextColor="#174668"
             Grid.Row="1" />
         <flv:FlowListView
+            x:Name="ClassChooserListView"
             SeparatorVisibility="None"
             HasUnevenRows="true"
             IsGroupingEnabled="true"
@@ -274,15 +43,24 @@
             <flv:FlowListView.GroupHeaderTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label
-                            Text="{Binding Key}"
-                            TextColor="White"
-                            FontSize="Large"
-                            FontAttributes="Bold"
-                            HorizontalTextAlignment="Center"
-                            VerticalTextAlignment="Center"
-                            HorizontalOptions="Fill"
-                            BackgroundColor="#3A8FDA" />
+                        <ContentView
+                            Padding="10,0,10,0"
+                            BackgroundColor="White">
+                            <ContentView.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding Source={x:Reference ClassChooserListView}, Path=BindingContext.GroupTappedCommand}"
+                                    CommandParameter="{Binding Key}" />
+                            </ContentView.GestureRecognizers>
+                            <Label
+                                Text="{Binding Key}"
+                                TextColor="White"
+                                FontSize="Large"
+                                FontAttributes="Bold"
+                                BackgroundColor="#3A8FDA"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center">
+                            </Label>
+                        </ContentView>
                     </ViewCell>
                 </DataTemplate>
             </flv:FlowListView.GroupHeaderTemplate>
@@ -296,17 +74,26 @@
                             RowSpacing="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition
-                                    Height="*" />
+                                    Height="Auto" />
                                 <RowDefinition
-                                    Height="*" />
+                                    Height="Auto" />
                             </Grid.RowDefinitions>
-                            <Button
-                                Text="{Binding ShortName}"
-                                TextColor="White"
-                                FontAttributes="Bold"
-                                FontSize="Large"
-                                BackgroundColor="#174668"
-                                Grid.Row="0" />
+                            <xfShapeView:ShapeView
+                                ShapeType="Circle"
+                                Color="#174668"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center"
+                                WidthRequest="60"
+                                HeightRequest="60"
+                                Grid.Row="0">
+                                <Label
+                                    Text="{Binding ShortName}"
+                                    TextColor="White"
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="Center" />
+                            </xfShapeView:ShapeView>
                             <Label
                                 Text="{Binding Name}"
                                 HorizontalTextAlignment="Center"
