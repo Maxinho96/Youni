@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
+using Naxam.Controls.Forms;
+
 namespace Youni
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : BottomTabbedPage
     {
         public MainPage()
         {

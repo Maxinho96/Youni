@@ -1,5 +1,28 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Youni.MainPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
-</ContentPage>
+<?xml version="1.0" encoding="UTF-8"?>
+<naxam:BottomTabbedPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Youni"
+    xmlns:naxam="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Controls.Forms"
+    x:Class="Youni.MainPage">
+    <NavigationPage
+        Title="Corsi">
+        <x:Arguments>
+            <local:LoginRegistrationPage>
+                <local:ClassChooserPage.BindingContext>
+                    <local:LoginRegistrationViewModel />
+                </local:ClassChooserPage.BindingContext>
+            </local:LoginRegistrationPage>
+        </x:Arguments>
+    </NavigationPage>
+    <NavigationPage
+        Title="Corsi">
+        <x:Arguments>
+            <local:LoginRegistrationPage>
+                <local:ClassChooserPage.BindingContext>
+                    <local:LoginRegistrationViewModel />
+                </local:ClassChooserPage.BindingContext>
+            </local:LoginRegistrationPage>
+        </x:Arguments>
+    </NavigationPage>
+</naxam:BottomTabbedPage>

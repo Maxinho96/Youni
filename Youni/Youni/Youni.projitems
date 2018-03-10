@@ -74,7 +74,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Users\ClassChooserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Old\" />
     <Folder Include="$(MSBuildThisFileDirectory)Users\" />
   </ItemGroup>

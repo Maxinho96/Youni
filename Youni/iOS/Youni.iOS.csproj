@@ -122,6 +122,9 @@
     <Reference Include="Npgsql">
       <HintPath>..\packages\Npgsql.3.2.7\lib\netstandard2.0\Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="Naxam.BottomTabbedPage.Forms">
+      <HintPath>..\packages\Naxam.BottomTabbedPage.0.2.0.1\lib\netstandard2.0\Naxam.BottomTabbedPage.Forms.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json" />

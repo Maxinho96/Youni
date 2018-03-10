@@ -102,6 +102,7 @@ namespace Youni
                    }
                    else if (await this.DBHandler.CheckCredentialsAsync(this.LogEmail, this.LogPassword))
                    {
+                       Application.Current.Properties["IsLoggedIn"] = true;
                        await Application.Current.MainPage.Navigation.PopModalAsync();
                        this.IsLoading = false;
                    }
@@ -109,7 +110,6 @@ namespace Youni
                    {
                        this.IsLoading = false;
                        await Application.Current.MainPage.DisplayAlert("Errore", "Password errata", "Riprova");
-                       //Application.Current.Properties["IsLoggedIn"] = true;
                    }
                }
                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
