@@ -112,7 +112,7 @@ namespace Youni
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<ObservableCollection<Class>> GetClassesAsync(Faculty faculty, Year year)
         {
-            string query = "SELECT nome, nome_corto, anno FROM esami WHERE facolta=@faculty AND anno=@year";
+            string query = "SELECT nome, nome_corto FROM esami WHERE facolta=@faculty AND anno=@year";
             using (var conn = new NpgsqlConnection(this.ConnString))
             {
                 await conn.OpenAsync();
@@ -125,7 +125,7 @@ namespace Youni
                         ObservableCollection<Class> classes = new ObservableCollection<Class>();
                         while (await reader.ReadAsync())
                         {
-                            classes.Add(new Class(reader.GetString(0), reader.GetString(1), reader.GetInt16(2)));
+                            classes.Add(new Class(reader.GetString(0), reader.GetString(1)));
                         }
                         return classes;
                     }

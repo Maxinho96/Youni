@@ -85,9 +85,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Npgsql">
-      <HintPath>..\packages\Npgsql.3.2.6\lib\netstandard2.0\Npgsql.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Threading.Tasks.Extensions">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.4.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
@@ -122,11 +119,8 @@
     <Reference Include="DLToolkit.Forms.Controls.FlowListView">
       <HintPath>..\packages\DLToolkit.Forms.Controls.FlowListView.2.0.10\lib\portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+Xamarin.iOS10+netstandard1.0\DLToolkit.Forms.Controls.FlowListView.dll</HintPath>
     </Reference>
-    <Reference Include="XFShapeView">
-      <HintPath>..\packages\VG.XFShapeView.1.0.5\lib\Xamarin.iOS10\XFShapeView.dll</HintPath>
-    </Reference>
-    <Reference Include="XFShapeView.iOS">
-      <HintPath>..\packages\VG.XFShapeView.1.0.5\lib\Xamarin.iOS10\XFShapeView.iOS.dll</HintPath>
+    <Reference Include="Npgsql">
+      <HintPath>..\packages\Npgsql.3.2.7\lib\netstandard2.0\Npgsql.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

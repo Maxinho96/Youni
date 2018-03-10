@@ -3,7 +3,6 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
-    xmlns:xfShapeView="clr-namespace:XFShapeView;assembly=XFShapeView"
     x:Class="Youni.ClassChooserPage"
     Title="Corsi">
     <Grid>
@@ -39,7 +38,7 @@
             FlowColumnCount="3"
             FlowItemsSource="{Binding Years}"
             FlowItemTappedCommand="{Binding ClassChoosedCommand}"
-            FlowLastTappedItem="{Binding ClassTapped}"
+            FlowLastTappedItem="{Binding TappedClass}"
             Grid.Row="2">
             <flv:FlowListView.GroupHeaderTemplate>
                 <DataTemplate>
@@ -67,44 +66,49 @@
             </flv:FlowListView.GroupHeaderTemplate>
             <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                        <Grid
-                            Margin="10"
-                            RowSpacing="0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition
-                                    Height="60" />
-                                <RowDefinition
-                                    Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <xfShapeView:ShapeView
-                                ShapeType="Circle"
-                                Color="#174668"
-                                HorizontalOptions="Fill"
-                                VerticalOptions="Fill"
-                                Grid.Row="0">
-                                <Label
-                                    Text="{Binding ShortName}"
-                                    TextColor="White"
-                                    FontAttributes="Bold"
-                                    FontSize="Large"
-                                    HorizontalOptions="Center"
-                                    VerticalOptions="Center" />
-                            </xfShapeView:ShapeView>
+                    <Grid
+                        Margin="10"
+                        RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition
+                                Height="Auto" />
+                            <RowDefinition
+                                Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Frame
+                            Padding="0"
+                            Margin="0"
+                            BackgroundColor="{Binding ButtonColor}"
+                            HasShadow="false"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HeightRequest="60"
+                            WidthRequest="60"
+                            CornerRadius="30"
+                            Grid.Row="0">
                             <Label
-                                Text="{Binding Name}"
-                                HorizontalTextAlignment="Center"
-                                TextColor="#174668"
-                                Grid.Row="1" />
-                        </Grid>
+                                Text="{Binding ShortName}"
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalOptions="Center"
+                                VerticalOptions="Center" />
+                        </Frame>
+                        <Label
+                            Text="{Binding Name}"
+                            HorizontalTextAlignment="Center"
+                            TextColor="#174668"
+                            Grid.Row="1" />
+                    </Grid>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
         </flv:FlowListView>
-        <!--        <ActivityIndicator
+        <ActivityIndicator
             IsVisible="{Binding IsLoading}"
             IsRunning="{Binding IsLoading}"
             HorizontalOptions="Center"
-            VerticalOptions="Center"
+            VerticalOptions="End"
             Color="#174668"
-            Grid.Row="2" />-->
+            Grid.Row="1" />
     </Grid>
 </ContentPage>

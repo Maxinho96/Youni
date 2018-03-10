@@ -36,7 +36,7 @@
             FlowItemsSource="{Binding Faculties}"
             FlowColumnCount="1"
             FlowItemTappedCommand="{Binding FacultyChoosedCommand}"
-            FlowLastTappedItem="{Binding FacultyTapped}"
+            FlowLastTappedItem="{Binding TappedFaculty}"
             Grid.Row="2">
             <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>

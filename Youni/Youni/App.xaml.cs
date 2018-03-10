@@ -18,9 +18,9 @@ namespace Youni
                 Properties["IsLoggedIn"] = false;
             }
 
-            //MainPage = new MainPage();
+            MainPage = new MainPage();
             //MainPage = new LoginRegistrationPage();
-            MainPage = new ClassChooserPage(new ClassChooserViewModel("a", "b", "b@stud.uniroma3.it", "a", new Faculty("Ingegneria Informatica", "a")));
+            //MainPage = new ClassChooserPage(new ClassChooserViewModel("a", "b", "b@stud.uniroma3.it", "a", new Faculty("Ingegneria Informatica", "a")));
             //MainPage = new FacultyChooserPage(new FacultyChooserViewModel());
         }
 

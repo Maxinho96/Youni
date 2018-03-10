@@ -11,7 +11,7 @@ namespace Youni
         public string RegSurname { get; set; }
         public string RegEmail { get; set; }
         public string RegPassword { get; set; }
-        public Faculty FacultyTapped { get; set; }
+        public Faculty TappedFaculty { get; set; }
         private bool isLoading;
         public bool IsLoading
         {
@@ -25,7 +25,7 @@ namespace Youni
                 OnPropertyChanged("IsLoading");
             }
         }
-        public Class ClassTapped { get; set; }
+        public Class TappedClass { get; set; }
         private ObservableCollection<Year> years;
         public ObservableCollection<Year> Years
         {
@@ -39,6 +39,7 @@ namespace Youni
                 OnPropertyChanged("Years");
             }
         }
+        private Collection<Class> SelectedClasses;
         public Command ClassChoosedCommand { get; set; }
         public Command YearTappedCommand { get; set; }
         private DataBaseHandler DBHandler;
@@ -48,58 +49,73 @@ namespace Youni
         {
             this.IsLoading = true;
             this.DBHandler = new DataBaseHandler();
+            this.SelectedClasses = new Collection<Class>();
 
             this.YearTappedCommand = new Command(async (descriptionTapped) =>
             {
-                foreach (Year y in this.Years)
+                this.IsLoading = true;
+                try
                 {
-                    if(y.Key == (string) descriptionTapped)
+                    foreach (Year y in this.Years)
                     {
-                        y.Clear();
-                        ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync(this.FacultyTapped, y);
-                        foreach(Class c in classes)
+                        if (y.Key == (string)descriptionTapped)
                         {
-                            y.Add(c);
+                            y.Clear();
+                            ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync(this.TappedFaculty, y);
+                            foreach (Class c in classes)
+                            {
+                                y.Add(c);
+                            }
+                        }
+                        else
+                        {
+                            y.Clear();
                         }
                     }
-                    else
-                    {
-                        y.Clear();
-                    }
+                    this.IsLoading = false;
+                }
+                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
+                {
+                    this.IsLoading = false;
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                    await this.LoadYears();
                 }
             });
 
-            this.ClassChoosedCommand = new Command(async () =>
+            this.ClassChoosedCommand = new Command(() =>
             {
-                //try
-                //{
-                //    await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname);
-                //    await Application.Current.MainPage.Navigation.PopModalAsync();
-                //}
-                //catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
-                //{
-                //    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
-                //}
+                this.TappedClass.ChangeButtonColor();
+                if (this.SelectedClasses.Contains(this.TappedClass))
+                {
+                    this.SelectedClasses.Remove(this.TappedClass);
+                }
+                else
+                {
+                    this.SelectedClasses.Add(this.TappedClass);
+                }
             });
         }
 
-        public ClassChooserViewModel(string regName, string regSurname, string regEmail, string regPassword, Faculty facultyTapped) : this()
+        public ClassChooserViewModel(string regName, string regSurname, string regEmail, string regPassword, Faculty tappedFaculty) : this()
         {
             this.RegName = regName;
             this.RegSurname = regSurname;
             this.RegEmail = regEmail;
             this.RegPassword = regPassword;
-            this.FacultyTapped = facultyTapped;
+            this.TappedFaculty = tappedFaculty;
         }
 
         public async Task LoadYears()
         {
+            this.IsLoading = true;
             try
             {
-                this.Years = await this.DBHandler.GetYearsAsync(this.FacultyTapped);
+                this.Years = await this.DBHandler.GetYearsAsync(this.TappedFaculty);
+                this.IsLoading = false;
             }
             catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
             {
+                this.IsLoading = false;
                 await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
                 await this.LoadYears();
             }

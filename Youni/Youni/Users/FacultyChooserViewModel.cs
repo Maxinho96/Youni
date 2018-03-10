@@ -24,7 +24,7 @@ namespace Youni
                 OnPropertyChanged("IsLoading");
             }
         }
-        public Faculty FacultyTapped { get; set; }
+        public Faculty TappedFaculty { get; set; }
         private ObservableCollection<Faculty> faculties;
         public ObservableCollection<Faculty> Faculties
         {
@@ -49,15 +49,9 @@ namespace Youni
 
             this.FacultyChoosedCommand = new Command(async () =>
             {
-                try
-                {
-                    await this.DBHandler.InsertUserAsync(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname);
-                    await Application.Current.MainPage.Navigation.PopModalAsync();
-                }
-                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
-                {
-                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
-                }
+                await this.Navigation.PushAsync(new ClassChooserPage(new ClassChooserViewModel(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname, this.TappedFaculty)));
+                this.Faculties.Clear();
+                this.IsLoading = true;
             });
         }
 
