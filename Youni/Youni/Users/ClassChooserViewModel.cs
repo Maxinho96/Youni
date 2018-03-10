@@ -11,6 +11,7 @@ namespace Youni
         public string RegSurname { get; set; }
         public string RegEmail { get; set; }
         public string RegPassword { get; set; }
+        public Faculty FacultyTapped { get; set; }
         private bool isLoading;
         public bool IsLoading
         {
@@ -25,21 +26,21 @@ namespace Youni
             }
         }
         public Class ClassTapped { get; set; }
-        private ObservableCollection<ClassGroup> groupedClasses;
-        public ObservableCollection<ClassGroup> GroupedClasses
+        private ObservableCollection<Year> years;
+        public ObservableCollection<Year> Years
         {
             get
             {
-                return this.groupedClasses;
+                return this.years;
             }
             set
             {
-                this.groupedClasses = value;
-                OnPropertyChanged("GroupedClasses");
+                this.years = value;
+                OnPropertyChanged("Years");
             }
         }
         public Command ClassChoosedCommand { get; set; }
-        public Command GroupTappedCommand { get; set; }
+        public Command YearTappedCommand { get; set; }
         private DataBaseHandler DBHandler;
         public INavigation Navigation;
 
@@ -48,45 +49,24 @@ namespace Youni
             this.IsLoading = true;
             this.DBHandler = new DataBaseHandler();
 
-            this.GroupTappedCommand = new Command(async (groupName) =>
+            this.YearTappedCommand = new Command(async (descriptionTapped) =>
             {
-                //ObservableCollection<ClassGroup> groups = this.GroupedClasses;
-                //foreach (ClassGroup g in groups)
-                //{
-                //    if(g.Key == (string) groupName)
-                //    {
-                //        foreach(Class c in g)
-                //        {
-                //            c.IsVisible = true;
-                //        }
-                //    }
-                //    else
-                //    {
-                //        foreach (Class c in g)
-                //        {
-                //            c.IsVisible = false;
-                //        }
-                //    }
-                //}
-                //this.GroupedClasses = groups;
-                ObservableCollection<ClassGroup> groups = this.GroupedClasses;
-                foreach (ClassGroup g in groups)
+                foreach (Year y in this.Years)
                 {
-                    if(g.Key == (string) groupName)
+                    if(y.Key == (string) descriptionTapped)
                     {
-                        g.Clear();
-                        ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync(new Faculty("Ingegneria Informatica", "boh"), g.Year);
+                        y.Clear();
+                        ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync(this.FacultyTapped, y);
                         foreach(Class c in classes)
                         {
-                            g.Add(c);
+                            y.Add(c);
                         }
                     }
                     else
                     {
-                        g.Clear();
+                        y.Clear();
                     }
                 }
-                this.GroupedClasses = groups;
             });
 
             this.ClassChoosedCommand = new Command(async () =>
@@ -103,57 +83,25 @@ namespace Youni
             });
         }
 
-        public ClassChooserViewModel(string regName, string regSurname, string regEmail, string regPassword) : this()
+        public ClassChooserViewModel(string regName, string regSurname, string regEmail, string regPassword, Faculty facultyTapped) : this()
         {
             this.RegName = regName;
             this.RegSurname = regSurname;
             this.RegEmail = regEmail;
             this.RegPassword = regPassword;
+            this.FacultyTapped = facultyTapped;
         }
 
-        public async Task OnAppearing()
+        public async Task LoadYears()
         {
             try
             {
-                this.IsLoading = true;
-                //ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync();
-                //ClassGroup g1 = new ClassGroup("Primo anno");
-                //ClassGroup g2 = new ClassGroup("Secondo anno");
-                //ClassGroup g3 = new ClassGroup("Terzo anno");
-                //foreach (Class c in classes)
-                //{
-                //    switch (c.Year)
-                //    {
-                //        case 1:
-                //            g1.Add(c);
-                //            break;
-                //        case 2:
-                //            g2.Add(c);
-                //            break;
-                //        case 3:
-                //            g3.Add(c);
-                //            break;
-                //    }
-                //}
-                //ObservableCollection<ClassGroup> groups = new ObservableCollection<ClassGroup>();
-                //groups.Add(g1);
-                //groups.Add(g2);
-                //groups.Add(g3);
-                //this.GroupedClasses = groups;
-                ClassGroup g1 = new ClassGroup("Primo anno", 1);
-                ClassGroup g2 = new ClassGroup("Secondo anno", 2);
-                ClassGroup g3 = new ClassGroup("Terzo anno", 3);
-                ObservableCollection<ClassGroup> groups = new ObservableCollection<ClassGroup>();
-                groups.Add(g1);
-                groups.Add(g2);
-                groups.Add(g3);
-                this.GroupedClasses = groups;
-                this.IsLoading = false;
+                this.Years = await this.DBHandler.GetYearsAsync(this.FacultyTapped);
             }
             catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
-                await this.OnAppearing();
+                await this.LoadYears();
             }
         }
     }

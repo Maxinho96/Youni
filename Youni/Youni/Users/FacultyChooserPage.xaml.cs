@@ -22,7 +22,7 @@ namespace Youni
         {
             base.OnAppearing();
 
-            await ((FacultyChooserViewModel)this.BindingContext).OnAppearing();
+            await ((FacultyChooserViewModel)this.BindingContext).LoadFaculties();
         }
     }
 }

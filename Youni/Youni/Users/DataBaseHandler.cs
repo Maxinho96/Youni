@@ -110,7 +110,7 @@ namespace Youni
         /// <returns>An ObservableCollection of Classes, taken from the DataBase</returns>
         /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
-        public async Task<ObservableCollection<Class>> GetClassesAsync(Faculty faculty, int year)
+        public async Task<ObservableCollection<Class>> GetClassesAsync(Faculty faculty, Year year)
         {
             string query = "SELECT nome, nome_corto, anno FROM esami WHERE facolta=@faculty AND anno=@year";
             using (var conn = new NpgsqlConnection(this.ConnString))
@@ -119,7 +119,7 @@ namespace Youni
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@faculty", faculty.Name);
-                    cmd.Parameters.AddWithValue("@year", year);
+                    cmd.Parameters.AddWithValue("@year", year.Code);
                     using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         ObservableCollection<Class> classes = new ObservableCollection<Class>();
@@ -128,6 +128,32 @@ namespace Youni
                             classes.Add(new Class(reader.GetString(0), reader.GetString(1), reader.GetInt16(2)));
                         }
                         return classes;
+                    }
+                }
+            }
+        }
+
+        /// <summary>Used to get all the years of a given faculty</summary>
+        /// <returns>An ObservableCollection of years, taken from the DataBase</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task<ObservableCollection<Year>> GetYearsAsync(Faculty faculty)
+        {
+            string query = "SELECT DISTINCT codice, descrizione FROM facolta, esami, anni WHERE facolta.nome=esami.facolta AND esami.anno=anni.codice AND facolta=@faculty ORDER BY codice";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@faculty", faculty.Name);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        ObservableCollection<Year> years = new ObservableCollection<Year>();
+                        while (await reader.ReadAsync())
+                        {
+                            years.Add(new Year(reader.GetInt16(0), reader.GetString(1)));
+                        }
+                        return years;
                     }
                 }
             }

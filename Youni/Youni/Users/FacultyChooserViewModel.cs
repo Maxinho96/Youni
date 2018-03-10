@@ -69,7 +69,7 @@ namespace Youni
             this.RegPassword = regPassword;
         }
 
-        public async Task OnAppearing()
+        public async Task LoadFaculties()
         {
             try
             {
@@ -80,7 +80,7 @@ namespace Youni
             catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
             {
                 await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
-                await this.OnAppearing();
+                await this.LoadFaculties();
             }
         }
 

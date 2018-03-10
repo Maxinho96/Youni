@@ -4,7 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     xmlns:xfShapeView="clr-namespace:XFShapeView;assembly=XFShapeView"
-    x:Class="Youni.ClassChooserPage">
+    x:Class="Youni.ClassChooserPage"
+    Title="Corsi">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
@@ -36,7 +37,7 @@
             HasUnevenRows="true"
             IsGroupingEnabled="true"
             FlowColumnCount="3"
-            FlowItemsSource="{Binding GroupedClasses}"
+            FlowItemsSource="{Binding Years}"
             FlowItemTappedCommand="{Binding ClassChoosedCommand}"
             FlowLastTappedItem="{Binding ClassTapped}"
             Grid.Row="2">
@@ -44,11 +45,11 @@
                 <DataTemplate>
                     <ViewCell>
                         <ContentView
-                            Padding="10,0,10,0"
+                            Padding="10,5,10,5"
                             BackgroundColor="White">
                             <ContentView.GestureRecognizers>
                                 <TapGestureRecognizer
-                                    Command="{Binding Source={x:Reference ClassChooserListView}, Path=BindingContext.GroupTappedCommand}"
+                                    Command="{Binding Source={x:Reference ClassChooserListView}, Path=BindingContext.YearTappedCommand}"
                                     CommandParameter="{Binding Key}" />
                             </ContentView.GestureRecognizers>
                             <Label
@@ -66,25 +67,20 @@
             </flv:FlowListView.GroupHeaderTemplate>
             <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
-                    <Frame
-                        Margin="10"
-                        Padding="0"
-                        HasShadow="false">
                         <Grid
+                            Margin="10"
                             RowSpacing="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition
-                                    Height="Auto" />
+                                    Height="60" />
                                 <RowDefinition
                                     Height="Auto" />
                             </Grid.RowDefinitions>
                             <xfShapeView:ShapeView
                                 ShapeType="Circle"
                                 Color="#174668"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                WidthRequest="60"
-                                HeightRequest="60"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill"
                                 Grid.Row="0">
                                 <Label
                                     Text="{Binding ShortName}"
@@ -100,7 +96,6 @@
                                 TextColor="#174668"
                                 Grid.Row="1" />
                         </Grid>
-                    </Frame>
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
         </flv:FlowListView>
