@@ -137,7 +137,6 @@
     <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
       <HintPath>..\packages\Xamarin.Android.Support.v7.MediaRouter.27.0.2\lib\MonoAndroid81\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
     <Reference Include="Naxam.Ittianyu.BottomNavExtension">
       <HintPath>..\packages\Naxam.Ittianyu.BottomNavExtension.1.2.4\lib\MonoAndroid10\Naxam.Ittianyu.BottomNavExtension.dll</HintPath>
     </Reference>
@@ -146,19 +145,6 @@
     </Reference>
     <Reference Include="Naxam.BottomTabbedPage.Platform.Droid">
       <HintPath>..\packages\Naxam.BottomTabbedPage.0.2.0.1\lib\MonoAndroid10\Naxam.BottomTabbedPage.Platform.Droid.dll</HintPath>
-=======
-    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.2.5.1.340284-pre2\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.2.5.1.340284-pre2\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.Android, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.2.5.1.340284-pre2\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.2.5.1.340284-pre2\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
->>>>>>> marco
     </Reference>
   </ItemGroup>
   <ItemGroup>
