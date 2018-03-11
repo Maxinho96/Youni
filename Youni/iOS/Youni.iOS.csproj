@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Xamarin.Forms.2.5.0.280555\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.280555\build\netstandard1.0\Xamarin.Forms.props')" />
+  <Import Project="..\packages\Xamarin.Forms.2.5.1.340284-pre2\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.5.1.340284-pre2\build\netstandard1.0\Xamarin.Forms.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -11,6 +11,8 @@
     <AssemblyName>Youni.iOS</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -81,34 +83,34 @@
     <IOSDebugOverWiFi>false</IOSDebugOverWiFi>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntryCustomReturn.Forms.Plugin.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Forms.CustomReturnEntry.4.1.0-pre1\lib\Xamarin.iOS10\EntryCustomReturn.Forms.Plugin.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="EntryCustomReturn.Forms.Plugin.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xam.Plugins.Forms.CustomReturnEntry.4.1.0-pre1\lib\Xamarin.iOS10\EntryCustomReturn.Forms.Plugin.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.0-preview1-26216-02\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.5.1.340284-pre2\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.5.1.340284-pre2\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.iOS, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.5.1.340284-pre2\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Xamarin.Forms.2.5.1.340284-pre2\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.iOS" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Threading.Tasks.Extensions">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.4.0\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\packages\Xamarin.Forms.2.5.0.280555\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\packages\Xamarin.Forms.2.5.0.280555\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.iOS">
-      <HintPath>..\packages\Xamarin.Forms.2.5.0.280555\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\packages\Xamarin.Forms.2.5.0.280555\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
     <Reference Include="BCrypt.Net-Next">
       <HintPath>..\packages\BCrypt.Net-Next.2.1.2\lib\netstandard2.0\BCrypt.Net-Next.dll</HintPath>
-    </Reference>
-    <Reference Include="EntryCustomReturn.Forms.Plugin.Abstractions">
-      <HintPath>..\packages\Xam.Plugins.Forms.CustomReturnEntry.4.0.0\lib\Xamarin.iOS10\EntryCustomReturn.Forms.Plugin.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="EntryCustomReturn.Forms.Plugin.iOS">
-      <HintPath>..\packages\Xam.Plugins.Forms.CustomReturnEntry.4.0.0\lib\Xamarin.iOS10\EntryCustomReturn.Forms.Plugin.iOS.dll</HintPath>
     </Reference>
     <Reference Include="CarouselView.FormsPlugin.Abstractions">
       <HintPath>..\packages\CarouselView.FormsPlugin.5.2.0\lib\Xamarin.iOS10\CarouselView.FormsPlugin.Abstractions.dll</HintPath>
@@ -124,47 +126,90 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\login_icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iTunesArtwork%402x.png" />
-    <ImageAsset Include="Assets.xcassets\blue_background.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\blue_background.imageset\blue_background.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\sof_eng_wallpaper.jpeg" />
-    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\ele_eng_wallpaper.jpeg" />
-    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\civ_eng_wallpaper.jpeg" />
-    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\mec_eng_wallpaper.jpeg" />
-    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%401x.png" />
-    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%402x.png" />
-    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%401x.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\login_icon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iTunesArtwork%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\blue_background.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\blue_background.imageset\blue_background.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\sof_eng_wallpaper.jpeg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\ele_eng_wallpaper.jpeg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\civ_eng_wallpaper.jpeg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\mec_eng_wallpaper.jpeg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%401x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%401x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\" />
-    <Folder Include="Assets.xcassets\Icon.imageset\" />
     <Folder Include="Assets.xcassets\AppIcon.appiconset\" />
-    <Folder Include="Assets.xcassets\login_icon.imageset\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Assets.xcassets\blue_background.imageset\" />
-    <Folder Include="Assets.xcassets\icon.imageset\" />
     <Folder Include="Assets.xcassets\civ_eng_wallpaper.imageset\" />
     <Folder Include="Assets.xcassets\ele_eng_wallpaper.imageset\" />
+    <Folder Include="Assets.xcassets\Icon.imageset\" />
+    <Folder Include="Assets.xcassets\login_icon.imageset\" />
+    <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
     <Folder Include="Assets.xcassets\sof_eng_wallpaper.imageset\" />
-    <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
-    <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
@@ -175,5 +220,12 @@
   </ItemGroup>
   <Import Project="..\Youni\Youni.projitems" Label="Shared" Condition="Exists('..\Youni\Youni.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Import Project="..\packages\Xamarin.Forms.2.5.0.280555\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.280555\build\netstandard1.0\Xamarin.Forms.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Questo progetto fa riferimento a uno o più pacchetti NuGet che non sono presenti in questo computer. Usare lo strumento di ripristino dei pacchetti NuGet per scaricarli. Per altre informazioni, vedere http://go.microsoft.com/fwlink/?LinkID=322105. Il file mancante è {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.2.5.1.340284-pre2\build\netstandard1.0\Xamarin.Forms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.2.5.1.340284-pre2\build\netstandard1.0\Xamarin.Forms.props'))" />
+    <Error Condition="!Exists('..\packages\Xamarin.Forms.2.5.1.340284-pre2\build\netstandard1.0\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.2.5.1.340284-pre2\build\netstandard1.0\Xamarin.Forms.targets'))" />
+  </Target>
+  <Import Project="..\packages\Xamarin.Forms.2.5.1.340284-pre2\build\netstandard1.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.1.340284-pre2\build\netstandard1.0\Xamarin.Forms.targets')" />
 </Project>

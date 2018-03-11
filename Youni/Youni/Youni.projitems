@@ -38,6 +38,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Materie\TemplateMateria.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
@@ -68,14 +72,17 @@
     <Compile Include="$(MSBuildThisFileDirectory)Users\RegistrationView.xaml.cs">
       <DependentUpon>RegistrationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Materie\TemplateMateria.xaml.cs">
+      <DependentUpon>TemplateMateria.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Users\Faculty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\Class.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\Year.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\ClassChooserViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Helpers\" />
     <Folder Include="$(MSBuildThisFileDirectory)Old\" />
     <Folder Include="$(MSBuildThisFileDirectory)Users\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Materie\" />
   </ItemGroup>
 </Project>
