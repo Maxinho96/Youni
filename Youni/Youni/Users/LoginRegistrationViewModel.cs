@@ -103,6 +103,7 @@ namespace Youni
                    else if (await this.DBHandler.CheckCredentialsAsync(this.LogEmail, this.LogPassword))
                    {
                        Application.Current.Properties["IsLoggedIn"] = true;
+                       await Application.Current.SavePropertiesAsync();
                        await Application.Current.MainPage.Navigation.PopModalAsync();
                        this.IsLoading = false;
                    }

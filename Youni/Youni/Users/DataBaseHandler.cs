@@ -64,7 +64,7 @@ namespace Youni
         /// <exception cref="Npgsql.PostgresException">Thrown if the user already exists</exception>
         /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
-        public async Task<bool> InsertUserAsync(string email, string password, string name, string surname)
+        public async Task<bool> InsertUserAsync(string name, string surname, string email, string password)
         {
             string commandText = "INSERT INTO utenti (email, password, nome, cognome) VALUES (@email, @password, @name, @surname)";
             using (var conn = new NpgsqlConnection(this.ConnString))

@@ -42,6 +42,7 @@ namespace Youni
         private Collection<Class> SelectedClasses;
         public Command ClassChoosedCommand { get; set; }
         public Command YearTappedCommand { get; set; }
+        public Command SkipCommand { get; set; }
         private DataBaseHandler DBHandler;
         public INavigation Navigation;
 
@@ -92,6 +93,24 @@ namespace Youni
                 else
                 {
                     this.SelectedClasses.Add(this.TappedClass);
+                }
+            });
+
+            this.SkipCommand = new Command(async () =>
+            {
+                this.IsLoading = true;
+                try
+                {
+                    await this.DBHandler.InsertUserAsync(this.RegName, this.RegSurname, this.RegEmail, this.RegPassword);
+                    Application.Current.Properties["IsLoggedIn"] = true;
+                    await Application.Current.SavePropertiesAsync();
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                    this.IsLoading = false;
+                }
+                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
+                {
+                    this.IsLoading = false;
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
                 }
             });
         }

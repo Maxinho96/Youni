@@ -5,6 +5,12 @@
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="Youni.ClassChooserPage"
     Title="Corsi">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Salta"
+            Command="{Binding SkipCommand}">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition

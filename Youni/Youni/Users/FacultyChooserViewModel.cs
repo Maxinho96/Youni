@@ -49,7 +49,7 @@ namespace Youni
 
             this.FacultyChoosedCommand = new Command(async () =>
             {
-                await this.Navigation.PushAsync(new ClassChooserPage(new ClassChooserViewModel(this.RegEmail, this.RegPassword, this.RegName, this.RegSurname, this.TappedFaculty)));
+                await this.Navigation.PushAsync(new ClassChooserPage(new ClassChooserViewModel(this.RegName, this.RegSurname, this.RegEmail, this.RegPassword, this.TappedFaculty)));
                 this.Faculties.Clear();
                 this.IsLoading = true;
             });

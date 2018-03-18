@@ -13,7 +13,7 @@ namespace Youni
 
             FlowListView.Init(); // Makes FlowListView work
 
-            if (!Properties.ContainsKey("IsLoggedIn")) // E' la prima volta che si apre l'app
+            if (!Properties.ContainsKey("IsLoggedIn")) // First time opening the app
             {
                 Properties["IsLoggedIn"] = false;
             }
@@ -29,9 +29,10 @@ namespace Youni
             // Handle when your app starts
         }
 
-        protected override void OnSleep()
+        protected override async void OnSleep()
         {
             // Handle when your app sleeps
+            await this.SavePropertiesAsync();
         }
 
         protected override void OnResume()
