@@ -16,9 +16,11 @@
             <RowDefinition
                 Height="50" />
             <RowDefinition
-                Height="*" />
+                Height="Auto" />
             <RowDefinition
-                Height="2*" />
+                Height="3*" />
+            <RowDefinition
+                Height="*" />
         </Grid.RowDefinitions>
         <Image
             Source="blue_background.png"
@@ -109,12 +111,24 @@
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
         </flv:FlowListView>
-        <ActivityIndicator
-            IsVisible="{Binding IsLoading}"
-            IsRunning="{Binding IsLoading}"
+        <Button
+            Command="{Binding ConfirmCommand}"
+            Text="  Conferma  "
+            TextColor="White"
+            BackgroundColor="#3A8FDA"
+            VerticalOptions="Center"
             HorizontalOptions="Center"
-            VerticalOptions="End"
-            Color="#174668"
-            Grid.Row="1" />
+            Grid.Row="3" />
+        <Frame
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            OutlineColor="#174668"
+            HasShadow="false"
+            IsVisible="{Binding IsLoading}"
+            Grid.RowSpan="4">
+            <ActivityIndicator
+                IsRunning="{Binding IsLoading}"
+                Color="#174668" />
+        </Frame>
     </Grid>
 </ContentPage>

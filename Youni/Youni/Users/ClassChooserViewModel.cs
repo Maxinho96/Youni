@@ -43,6 +43,7 @@ namespace Youni
         public Command ClassChoosedCommand { get; set; }
         public Command YearTappedCommand { get; set; }
         public Command SkipCommand { get; set; }
+        public Command ConfirmCommand { get; set; }
         private DataBaseHandler DBHandler;
         public INavigation Navigation;
 
@@ -102,6 +103,25 @@ namespace Youni
                 try
                 {
                     await this.DBHandler.InsertUserAsync(this.RegName, this.RegSurname, this.RegEmail, this.RegPassword);
+                    Application.Current.Properties["IsLoggedIn"] = true;
+                    await Application.Current.SavePropertiesAsync();
+                    await Application.Current.MainPage.Navigation.PopModalAsync();
+                    this.IsLoading = false;
+                }
+                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
+                {
+                    this.IsLoading = false;
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                }
+            });
+
+            this.ConfirmCommand = new Command(async () =>
+            {
+                this.IsLoading = true;
+                try
+                {
+                    await this.DBHandler.InsertUserAsync(this.RegName, this.RegSurname, this.RegEmail, this.RegPassword);
+                    await this.DBHandler.InsertFavouritesAsync(this.RegEmail, this.TappedFaculty, this.SelectedClasses);
                     Application.Current.Properties["IsLoggedIn"] = true;
                     await Application.Current.SavePropertiesAsync();
                     await Application.Current.MainPage.Navigation.PopModalAsync();

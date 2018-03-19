@@ -55,7 +55,7 @@ namespace Youni
             }
         }
 
-        /// <summary>Inserts a new user (it doesn't have to exist already)</summary>
+        /// <summary>Inserts a new user (it mustn't exist already)</summary>
         /// <param name="email">The user email to insert</param>
         /// <param name="password">The user password to insert</param>
         /// <param name="name">The user name to insert</param>
@@ -154,6 +154,32 @@ namespace Youni
                             years.Add(new Year(reader.GetInt16(0), reader.GetString(1)));
                         }
                         return years;
+                    }
+                }
+            }
+        }
+
+        /// <summary>Inserts a collection of classes of a given faculty as favourites for a given user (the favourites mustn't exist already)</summary>
+        /// <param name="email">The user email to insert</param>
+        /// <param name="faculty">The faculty of the classes to insert</param>
+        /// <param name="classes">The classes to insert</param>
+        /// <exception cref="Npgsql.PostgresException">Thrown if one of the favourites already exists</exception>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task InsertFavouritesAsync(string email, Faculty faculty, Collection<Class> classes)
+        {
+            string commandText = "INSERT INTO preferiti (utente, facolta, esame) VALUES (@email, @faculty, @class)";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                foreach(Class c in classes)
+                {
+                    using (var cmd = new NpgsqlCommand(commandText, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@faculty", faculty.Name);
+                        cmd.Parameters.AddWithValue("@class", c.Name);
+                        await cmd.ExecuteNonQueryAsync();
                     }
                 }
             }
