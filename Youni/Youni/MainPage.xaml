@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:Youni"
     xmlns:naxam="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Controls.Forms"
     x:Class="Youni.MainPage">
-    <NavigationPage
+<!--    <NavigationPage
         Title="Corsi">
         <x:Arguments>
             <local:LoginRegistrationPage>
@@ -24,5 +24,5 @@
                 </local:ClassChooserPage.BindingContext>
             </local:LoginRegistrationPage>
         </x:Arguments>
-    </NavigationPage>
+    </NavigationPage>-->
 </naxam:BottomTabbedPage>

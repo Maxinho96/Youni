@@ -21,20 +21,39 @@
                         <RowDefinition
                             Height="0.6*" />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                    </Grid.ColumnDefinitions>
                     <Image
                         Source="login_icon.png"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
-                        Grid.Row="0" />
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2" />
                     <entryCustomReturn:CustomReturnEntry
                         x:Name="LogEmailEntryiOS"
                         Text="{Binding LogEmail}"
-                        VerticalOptions="FillAndExpand"
+                        VerticalOptions="Fill"
+                        HorizontalOptions="Fill"
                         Placeholder="Email"
                         Keyboard="Email"
                         ReturnType="Next"
-                        Margin="10,0,10,0"
-                        Grid.Row="1" />
+                        Margin="10,0,0,0"
+                        Grid.Row="1"
+                        Grid.Column="0" />
+                    <Label
+                        Text="@stud.uniroma3.it"
+                        FontSize="Large"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        Margin="0,0,10,0"
+                        Grid.Row="1"
+                        Grid.Column="1" />
                     <entryCustomReturn:CustomReturnEntry
                         x:Name="LogPasswordEntryiOS"
                         Text="{Binding LogPassword}"
@@ -44,7 +63,8 @@
                         ReturnType="Go"
                         ReturnCommand="{Binding LoginCommand}"
                         Margin="10,0,10,0"
-                        Grid.Row="2" />
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2" />
                     <Button
                         Command="{Binding LoginCommand}"
                         Text="  Login  "
@@ -52,11 +72,13 @@
                         BackgroundColor="#3A8FDA"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"
-                        Grid.Row="3" />
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2" />
                     <StackLayout
                         Orientation="Horizontal"
                         HorizontalOptions="Center"
-                        Grid.Row="4">
+                        Grid.Row="4"
+                        Grid.ColumnSpan="2">
                         <StackLayout.Spacing>
                             <OnPlatform
                                 x:TypeArguments="x:Double">
@@ -86,7 +108,8 @@
                         OutlineColor="#174668"
                         HasShadow="false"
                         IsVisible="{Binding IsLoading}"
-                        Grid.RowSpan="5">
+                        Grid.RowSpan="5"
+                        Grid.ColumnSpan="2">
                         <ActivityIndicator
                             IsRunning="{Binding IsLoading}"
                             Color="#174668" />
@@ -108,11 +131,18 @@
                     <RowDefinition
                         Height="0.6*" />
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="Auto" />
+                </Grid.ColumnDefinitions>
                 <Image
                     Source="login_icon.png"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    Grid.Row="0" />
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2" />
                 <entryCustomReturn:CustomReturnEntry
                     x:Name="LogEmailEntryAndroid"
                     Text="{Binding LogEmail}"
@@ -120,8 +150,19 @@
                     Placeholder="Email"
                     Keyboard="Email"
                     ReturnType="Next"
-                    Margin="10,0,10,0"
-                    Grid.Row="1" />
+                    Margin="10,0,0,0"
+                    Grid.Row="1"
+                    Grid.Column="0" />
+                <Label
+                    Text="@stud.uniroma3.it"
+                    FontSize="Large"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"
+                    Margin="0,0,10,0"
+                    Grid.Row="1"
+                    Grid.Column="1" />
                 <entryCustomReturn:CustomReturnEntry
                     x:Name="LogPasswordEntryAndroid"
                     Text="{Binding LogPassword}"
@@ -131,7 +172,8 @@
                     ReturnType="Go"
                     ReturnCommand="{Binding LoginCommand}"
                     Margin="10,0,10,0"
-                    Grid.Row="2" />
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2" />
                 <Button
                     Command="{Binding LoginCommand}"
                     Text="  Login  "
@@ -139,11 +181,13 @@
                     BackgroundColor="#3A8FDA"
                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    Grid.Row="3" />
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2" />
                 <StackLayout
                     Orientation="Horizontal"
                     HorizontalOptions="Center"
-                    Grid.Row="4">
+                    Grid.Row="4"
+                    Grid.ColumnSpan="2">
                     <StackLayout.Spacing>
                         <OnPlatform
                             x:TypeArguments="x:Double">
@@ -175,7 +219,8 @@
                     OutlineColor="#174668"
                     HasShadow="false"
                     IsVisible="{Binding IsLoading}"
-                    Grid.RowSpan="5">
+                    Grid.RowSpan="5"
+                    Grid.ColumnSpan="2">
                     <ActivityIndicator
                         IsRunning="{Binding IsLoading}"
                         Color="#174668" />

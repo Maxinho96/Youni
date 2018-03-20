@@ -56,10 +56,32 @@ namespace Youni
         }
         public string RegName { get; set; }
         public string RegSurname { get; set; }
-        public string RegEmail { get; set; }
+        private string regEmail;
+        public string RegEmail
+        {
+            get
+            {
+                return this.regEmail;
+            }
+            set
+            {
+                this.regEmail = value + "@stud.uniroma3.it";
+            }
+        }
         public string RegPassword { get; set; }
         public string RegPasswordConfirm { get; set; }
-        public string LogEmail { get; set; }
+        private string logEmail;
+        public string LogEmail
+        {
+            get
+            {
+                return this.logEmail;
+            }
+            set
+            {
+                this.logEmail = value + "@stud.uniroma3.it";
+            }
+        }
         public string LogPassword { get; set; }
         private DataBaseHandler DBHandler;
         public INavigation Navigation;
@@ -129,11 +151,6 @@ namespace Youni
                     {
                         this.IsLoading = false;
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi riempire tutti i campi", "Riprova");
-                    }
-                    else if (!(new Regex(@"^.*@stud\.uniroma3\.it$").IsMatch(this.RegEmail)))
-                    {
-                        this.IsLoading = false;
-                        await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi inserire la tua email istituzionale (es. mario.rossi@stud.uniroma3.it", "Riprova");
                     }
                     else if (this.RegPassword != this.RegPasswordConfirm)
                     {

@@ -26,10 +26,21 @@
         <Label
             Text="Scegli la tua facoltà"
             FontSize="Large"
-            FontAttributes="Bold"
             HorizontalTextAlignment="Center"
             TextColor="#174668"
-            Grid.Row="1" />
+            Grid.Row="1">
+            <Label.FontFamily>
+                <OnPlatform
+                    x:TypeArguments="x:String">
+                    <On
+                        Platform="iOS"
+                        Value="OpenSans-Bold" />
+                    <On
+                        Platform="Android"
+                        Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                </OnPlatform>
+            </Label.FontFamily>
+        </Label>
         <flv:FlowListView
             SeparatorVisibility="None"
             HasUnevenRows="true"

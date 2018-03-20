@@ -33,11 +33,22 @@
         <Label
             Text="Scegli i tuoi corsi"
             FontSize="Large"
-            FontAttributes="Bold"
             HorizontalTextAlignment="Center"
             VerticalOptions="Center"
             TextColor="#174668"
-            Grid.Row="1" />
+            Grid.Row="1">
+            <Label.FontFamily>
+                <OnPlatform
+                    x:TypeArguments="x:String">
+                    <On
+                        Platform="iOS"
+                        Value="OpenSans-Bold" />
+                    <On
+                        Platform="Android"
+                        Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                </OnPlatform>
+            </Label.FontFamily>
+        </Label>
         <flv:FlowListView
             x:Name="ClassChooserListView"
             SeparatorVisibility="None"
@@ -63,10 +74,20 @@
                                 Text="{Binding Key}"
                                 TextColor="White"
                                 FontSize="Large"
-                                FontAttributes="Bold"
                                 BackgroundColor="#3A8FDA"
                                 HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center">
+                                <Label.FontFamily>
+                                    <OnPlatform
+                                        x:TypeArguments="x:String">
+                                        <On
+                                            Platform="iOS"
+                                            Value="OpenSans-Bold" />
+                                        <On
+                                            Platform="Android"
+                                            Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                                    </OnPlatform>
+                                </Label.FontFamily>
                             </Label>
                         </ContentView>
                     </ViewCell>
@@ -90,17 +111,28 @@
                             HasShadow="false"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
-                            HeightRequest="60"
-                            WidthRequest="60"
-                            CornerRadius="30"
+                            HeightRequest="70"
+                            WidthRequest="70"
+                            CornerRadius="35"
                             Grid.Row="0">
                             <Label
                                 Text="{Binding ShortName}"
                                 TextColor="White"
-                                FontAttributes="Bold"
                                 FontSize="Large"
                                 HorizontalOptions="Center"
-                                VerticalOptions="Center" />
+                                VerticalOptions="Center">
+                                <Label.FontFamily>
+                                    <OnPlatform
+                                        x:TypeArguments="x:String">
+                                        <On
+                                            Platform="iOS"
+                                            Value="OpenSans-Bold" />
+                                        <On
+                                            Platform="Android"
+                                            Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                                    </OnPlatform>
+                                </Label.FontFamily>
+                            </Label>
                         </Frame>
                         <Label
                             Text="{Binding Name}"

@@ -30,22 +30,31 @@
                         <RowDefinition
                             Height="0.3*" />
                     </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                    </Grid.ColumnDefinitions>
                     <Image
                         Source="blue_background.png"
                         Aspect="Fill"
-                        Grid.Row="0" />
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2" />
                     <Image
                         Source="icon.png"
                         Grid.Row="0"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center"
+                        Grid.ColumnSpan="2" />
                     <Label
                         Text="Unisciti a Youni!"
                         FontSize="Large"
-                        FontAttributes="Bold"
+                        FontFamily="OpenSans-Bold"
                         HorizontalTextAlignment="Center"
                         TextColor="#174668"
                         Grid.Row="1"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center"
+                        Grid.ColumnSpan="2" />
                     <entryCustomReturn:CustomReturnEntry
                         x:Name="RegNameEntryiOS"
                         Text="{Binding RegName}"
@@ -53,7 +62,8 @@
                         VerticalOptions="FillAndExpand"
                         ReturnType="Next"
                         Margin="10,0,10,0"
-                        Grid.Row="2" />
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2" />
                     <entryCustomReturn:CustomReturnEntry
                         x:Name="RegSurnameEntryiOS"
                         Text="{Binding RegSurname}"
@@ -61,7 +71,8 @@
                         VerticalOptions="FillAndExpand"
                         ReturnType="Next"
                         Margin="10,0,10,0"
-                        Grid.Row="3" />
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2" />
                     <entryCustomReturn:CustomReturnEntry
                         x:Name="RegEmailEntryiOS"
                         Text="{Binding RegEmail}"
@@ -69,8 +80,19 @@
                         Keyboard="Email"
                         VerticalOptions="FillAndExpand"
                         ReturnType="Next"
-                        Margin="10,0,10,0"
-                        Grid.Row="4" />
+                        Margin="10,0,0,0"
+                        Grid.Row="4"
+                        Grid.Column="0" />
+                    <Label
+                        Text="@stud.uniroma3.it"
+                        FontSize="Large"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
+                        HorizontalTextAlignment="Start"
+                        VerticalTextAlignment="Center"
+                        Margin="0,0,10,0"
+                        Grid.Row="4"
+                        Grid.Column="1" />
                     <entryCustomReturn:CustomReturnEntry
                         x:Name="RegPasswordEntryiOS"
                         Text="{Binding RegPassword}"
@@ -79,7 +101,8 @@
                         VerticalOptions="FillAndExpand"
                         ReturnType="Next"
                         Margin="10,0,10,0"
-                        Grid.Row="5" />
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2" />
                     <entryCustomReturn:CustomReturnEntry
                         x:Name="RegPasswordConfirmEntryiOS"
                         Text="{Binding RegPasswordConfirm}"
@@ -89,7 +112,8 @@
                         ReturnType="Go"
                         ReturnCommand="{Binding RegisterCommand}"
                         Margin="10,0,10,0"
-                        Grid.Row="6" />
+                        Grid.Row="6"
+                        Grid.ColumnSpan="2" />
                     <Button
                         Command="{Binding RegisterCommand}"
                         Text="  Registrati  "
@@ -97,12 +121,14 @@
                         BackgroundColor="#3A8FDA"
                         Grid.Row="7"
                         HorizontalOptions="Center"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center"
+                        Grid.ColumnSpan="2" />
                     <StackLayout
                         Orientation="Horizontal"
                         HorizontalOptions="Center"
                         VerticalOptions="Center"
-                        Grid.Row="8">
+                        Grid.Row="8"
+                        Grid.ColumnSpan="2">
                         <StackLayout.Spacing>
                             <OnPlatform
                                 x:TypeArguments="x:Double">
@@ -132,7 +158,8 @@
                         OutlineColor="#174668"
                         HasShadow="false"
                         IsVisible="{Binding IsLoading}"
-                        Grid.RowSpan="9">
+                        Grid.RowSpan="9"
+                        Grid.ColumnSpan="2">
                         <ActivityIndicator
                             IsRunning="{Binding IsLoading}"
                             Color="#174668" />
@@ -162,22 +189,31 @@
                     <RowDefinition
                         Height="0.3*" />
                 </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="*" />
+                    <ColumnDefinition
+                        Width="Auto" />
+                </Grid.ColumnDefinitions>
                 <Image
                     Source="blue_background.png"
                     Aspect="Fill"
-                    Grid.Row="0" />
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2" />
                 <Image
                     Source="icon.png"
                     Grid.Row="0"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center"
+                    Grid.ColumnSpan="2" />
                 <Label
                     Text="Unisciti a Youni!"
                     FontSize="Large"
-                    FontAttributes="Bold"
+                    FontFamily="OpenSans-Bold.ttf#OpenSans-Bold"
                     HorizontalTextAlignment="Center"
                     TextColor="#174668"
                     Grid.Row="1"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center"
+                    Grid.ColumnSpan="2" />
                 <entryCustomReturn:CustomReturnEntry
                     x:Name="RegNameEntryAndroid"
                     Text="{Binding RegName}"
@@ -185,7 +221,8 @@
                     VerticalOptions="FillAndExpand"
                     ReturnType="Next"
                     Margin="10,0,10,0"
-                    Grid.Row="2" />
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2" />
                 <entryCustomReturn:CustomReturnEntry
                     x:Name="RegSurnameEntryAndroid"
                     Text="{Binding RegSurname}"
@@ -193,7 +230,8 @@
                     VerticalOptions="FillAndExpand"
                     ReturnType="Next"
                     Margin="10,0,10,0"
-                    Grid.Row="3" />
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2" />
                 <entryCustomReturn:CustomReturnEntry
                     x:Name="RegEmailEntryAndroid"
                     Text="{Binding RegEmail}"
@@ -201,8 +239,19 @@
                     Keyboard="Email"
                     VerticalOptions="FillAndExpand"
                     ReturnType="Next"
-                    Margin="10,0,10,0"
-                    Grid.Row="4" />
+                    Margin="10,0,0,0"
+                    Grid.Row="4"
+                    Grid.Column="0" />
+                <Label
+                    Text="@stud.uniroma3.it"
+                    FontSize="Large"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill"
+                    HorizontalTextAlignment="Start"
+                    VerticalTextAlignment="Center"
+                    Margin="0,0,10,0"
+                    Grid.Row="4"
+                    Grid.Column="1" />
                 <entryCustomReturn:CustomReturnEntry
                     x:Name="RegPasswordEntryAndroid"
                     Text="{Binding RegPassword}"
@@ -211,7 +260,8 @@
                     VerticalOptions="FillAndExpand"
                     ReturnType="Next"
                     Margin="10,0,10,0"
-                    Grid.Row="5" />
+                    Grid.Row="5"
+                    Grid.ColumnSpan="2" />
                 <entryCustomReturn:CustomReturnEntry
                     x:Name="RegPasswordConfirmEntryAndroid"
                     Text="{Binding RegPasswordConfirm}"
@@ -221,20 +271,23 @@
                     ReturnType="Go"
                     ReturnCommand="{Binding RegisterCommand}"
                     Margin="10,0,10,0"
-                    Grid.Row="6" />
+                    Grid.Row="6"
+                    Grid.ColumnSpan="2" />
                 <Button
                     Command="{Binding RegisterCommand}"
                     Text="  Registrati  "
                     TextColor="White"
                     BackgroundColor="#3A8FDA"
-                    Grid.Row="7"
                     HorizontalOptions="Center"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center"
+                    Grid.Row="7"
+                    Grid.ColumnSpan="2" />
                 <StackLayout
                     Orientation="Horizontal"
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
-                    Grid.Row="8">
+                    Grid.Row="8"
+                    Grid.ColumnSpan="2">
                     <StackLayout.Spacing>
                         <OnPlatform
                             x:TypeArguments="x:Double">
@@ -266,7 +319,8 @@
                     OutlineColor="#174668"
                     HasShadow="false"
                     IsVisible="{Binding IsLoading}"
-                    Grid.RowSpan="9">
+                    Grid.RowSpan="9"
+                    Grid.ColumnSpan="2">
                     <ActivityIndicator
                         IsRunning="{Binding IsLoading}"
                         Color="#174668" />
