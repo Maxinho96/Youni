@@ -55,32 +55,10 @@ namespace Youni
         }
         public string RegName { get; set; }
         public string RegSurname { get; set; }
-        private string regEmail;
-        public string RegEmail
-        {
-            get
-            {
-                return this.regEmail;
-            }
-            set
-            {
-                this.regEmail = value + "@stud.uniroma3.it";
-            }
-        }
+        public string RegEmail { get; set; }
         public string RegPassword { get; set; }
         public string RegPasswordConfirm { get; set; }
-        private string logEmail;
-        public string LogEmail
-        {
-            get
-            {
-                return this.logEmail;
-            }
-            set
-            {
-                this.logEmail = value + "@stud.uniroma3.it";
-            }
-        }
+        public string LogEmail { get; set; }
         public string LogPassword { get; set; }
         private DataBaseHandler DBHandler;
         public INavigation Navigation;
@@ -100,6 +78,7 @@ namespace Youni
                this.IsLoading = true;
                try
                {
+                   string fullEmail = this.LogEmail + "@stud.uniroma3.it";
                    bool noEmal = String.IsNullOrWhiteSpace(this.LogEmail), noPassword = String.IsNullOrWhiteSpace(this.LogPassword);
                    if (noEmal && noPassword)
                    {
@@ -116,12 +95,12 @@ namespace Youni
                        this.IsLoading = false;
                        await Application.Current.MainPage.DisplayAlert("Attenzione", "Devi inserire la password", "Riprova");
                    }
-                   else if (!(await DBHandler.IsRegisteredAsync(this.LogEmail)))
+                   else if (!(await DBHandler.IsRegisteredAsync(fullEmail)))
                    {
                        this.IsLoading = false;
                        await Application.Current.MainPage.DisplayAlert("Errore", "Email non registrata", "Riprova");
                    }
-                   else if (await this.DBHandler.CheckCredentialsAsync(this.LogEmail, this.LogPassword))
+                   else if (await this.DBHandler.CheckCredentialsAsync(fullEmail, this.LogPassword))
                    {
                        Application.Current.Properties["UserEmail"] = this.LogEmail;
                        Application.Current.Properties["IsLoggedIn"] = true;
@@ -145,6 +124,7 @@ namespace Youni
             this.RegisterCommand = new Command(async () =>
             {
                 this.IsLoading = true;
+                string fullEmail = this.RegEmail + "@stud.uniroma3.it";
                 try
                 {
                     if (String.IsNullOrWhiteSpace(this.RegEmail) || String.IsNullOrWhiteSpace(this.RegPassword) || String.IsNullOrWhiteSpace(this.RegName) || String.IsNullOrWhiteSpace(this.RegSurname))
@@ -157,7 +137,7 @@ namespace Youni
                         this.IsLoading = false;
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Le due password devono coincidere", "Riprova");
                     }
-                    else if (await this.DBHandler.IsRegisteredAsync(this.RegEmail))
+                    else if (await this.DBHandler.IsRegisteredAsync(fullEmail))
                     {
                         this.IsLoading = false;
                         await Application.Current.MainPage.DisplayAlert("Attenzione", "Questa email risulta già registrata", "OK");

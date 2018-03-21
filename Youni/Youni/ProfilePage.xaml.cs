@@ -11,5 +11,22 @@ namespace Youni
         {
             InitializeComponent();
         }
-    }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if ((bool)Application.Current.Properties["IsLoggedIn"])
+            {
+                await ((ProfileViewModel)this.BindingContext).LoadUser();
+            }
+        }
+
+		protected override void OnDisappearing()
+		{
+            base.OnDisappearing();
+
+            ((ProfileViewModel)this.BindingContext).Clear();
+		}
+	}
 }

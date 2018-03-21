@@ -9,7 +9,7 @@ namespace Youni
     public class DataBaseHandler
     {
         private string ConnString;
-        
+
         public DataBaseHandler()
         {
             this.ConnString = "Host=younidb.cw9vlhucwihr.eu-central-1.rds.amazonaws.com;Port=5432;Username=younidbmaster;Password=Y982fZhd9B8r;Database=younidb";
@@ -30,7 +30,7 @@ namespace Youni
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@email", email);
-                    string hashedPassword = (string) await cmd.ExecuteScalarAsync();
+                    string hashedPassword = (string)await cmd.ExecuteScalarAsync();
                     return (hashedPassword != null) && (BCrypt.Net.BCrypt.Verify(password, hashedPassword));
                 }
             }
@@ -81,6 +81,53 @@ namespace Youni
             }
         }
 
+        /// <summary>Updates a user's information (it must exist already)</summary>
+        /// <param name="email">The email of the user to update</param>
+        /// <param name="newName">The new name to update</param>
+        /// <param name="newSurname">The new surname to update</param>
+        /// <param name="newEmail">The new email to update</param>
+        /// <param name="newPassword">The new password to update (optional)</param>
+        /// <returns>true if the user is updated, false otherwise</returns>
+        /// <exception cref="Npgsql.PostgresException">Thrown if the user doesn't exist</exception>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task<bool> UpdateUserAsync(string email, string newName, string newSurname, string newEmail, string newPassword = null)
+        {
+            if (newPassword != null)
+            {
+                string commandText = "UPDATE utenti SET email=@newEmail, password=@newPassword, nome=@newName, cognome=@newSurname WHERE email=@email";
+                using (var conn = new NpgsqlConnection(this.ConnString))
+                {
+                    await conn.OpenAsync();
+                    using (var cmd = new NpgsqlCommand(commandText, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@newEmail", newEmail);
+                        cmd.Parameters.AddWithValue("@newPassword", BCrypt.Net.BCrypt.HashPassword(newPassword));
+                        cmd.Parameters.AddWithValue("@newName", newName);
+                        cmd.Parameters.AddWithValue("@newSurname", newSurname);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        return (await cmd.ExecuteNonQueryAsync()) > 0;
+                    }
+                }
+            }
+            else
+            {
+                string commandText = "UPDATE utenti SET email=@newEmail, nome=@newName, cognome=@newSurname WHERE email=@email";
+                using (var conn = new NpgsqlConnection(this.ConnString))
+                {
+                    await conn.OpenAsync();
+                    using (var cmd = new NpgsqlCommand(commandText, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@newEmail", newEmail);
+                        cmd.Parameters.AddWithValue("@newName", newName);
+                        cmd.Parameters.AddWithValue("@newSurname", newSurname);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        return (await cmd.ExecuteNonQueryAsync()) > 0;
+                    }
+                }
+            }
+        }
+
         /// <summary>Used to get all the faculties from the DataBase</summary>
         /// <returns>An ObservableCollection of Faculties, taken from the DataBase</returns>
         /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
@@ -93,10 +140,10 @@ namespace Youni
                 await conn.OpenAsync();
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
-                    using(var reader = await cmd.ExecuteReaderAsync())
+                    using (var reader = await cmd.ExecuteReaderAsync())
                     {
                         ObservableCollection<Faculty> faculties = new ObservableCollection<Faculty>();
-                        while(await reader.ReadAsync())
+                        while (await reader.ReadAsync())
                         {
                             faculties.Add(new Faculty(reader.GetString(0), reader.GetString(1)));
                         }
@@ -172,7 +219,7 @@ namespace Youni
             using (var conn = new NpgsqlConnection(this.ConnString))
             {
                 await conn.OpenAsync();
-                foreach(Class c in classes)
+                foreach (Class c in classes)
                 {
                     using (var cmd = new NpgsqlCommand(commandText, conn))
                     {
@@ -181,6 +228,42 @@ namespace Youni
                         cmd.Parameters.AddWithValue("@class", c.Name);
                         await cmd.ExecuteNonQueryAsync();
                     }
+                }
+            }
+        }
+
+        /// <summary>Used to get the name associated to a given email</summary>
+        /// <returns>The name of the user</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task<string> GetNameAsync(string email)
+        {
+            string query = "SELECT nome FROM utenti WHERE email=@email";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    return ((string) await cmd.ExecuteScalarAsync());
+                }
+            }
+        }
+
+        /// <summary>Used to get the surname associated to a given email</summary>
+        /// <returns>The surname of the user</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task<string> GetSurameAsync(string email)
+        {
+            string query = "SELECT cognome FROM utenti WHERE email=@email";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    return ((string)await cmd.ExecuteScalarAsync());
                 }
             }
         }

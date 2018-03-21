@@ -5,14 +5,10 @@
     xmlns:local="clr-namespace:Youni"
     xmlns:naxam="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Controls.Forms"
     x:Class="Youni.MainPage">
-    <NavigationPage
+    <local:ProfilePage
         Title="Profilo">
-        <x:Arguments>
-            <local:ProfilePage>
-                <local:ProfilePage.BindingContext>
-                    <local:ProfileViewModel />
-                </local:ProfilePage.BindingContext>
-            </local:ProfilePage>
-        </x:Arguments>
-    </NavigationPage>
+        <local:ProfilePage.BindingContext>
+            <local:ProfileViewModel />
+        </local:ProfilePage.BindingContext>
+    </local:ProfilePage>
 </naxam:BottomTabbedPage>

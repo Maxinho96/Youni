@@ -110,7 +110,7 @@ namespace Youni
                 this.IsLoading = true;
                 try
                 {
-                    await this.DBHandler.InsertUserAsync(this.RegName, this.RegSurname, this.RegEmail, this.RegPassword);
+                    await this.DBHandler.InsertUserAsync(this.RegName, this.RegSurname, this.RegEmail + "@stud.uniroma3.it", this.RegPassword);
                     Application.Current.Properties["IsLoggedIn"] = true;
                     await Application.Current.SavePropertiesAsync();
                     await Application.Current.MainPage.Navigation.PopModalAsync();
@@ -128,8 +128,8 @@ namespace Youni
                 this.IsLoading = true;
                 try
                 {
-                    await this.DBHandler.InsertUserAsync(this.RegName, this.RegSurname, this.RegEmail, this.RegPassword);
-                    await this.DBHandler.InsertFavouritesAsync(this.RegEmail, this.TappedFaculty, this.SelectedClasses);
+                    await this.DBHandler.InsertUserAsync(this.RegName, this.RegSurname, this.RegEmail + "@stud.uniroma3.it", this.RegPassword);
+                    await this.DBHandler.InsertFavouritesAsync(this.RegEmail + "@stud.uniroma3.it", this.TappedFaculty, this.SelectedClasses);
                     Application.Current.Properties["UserEmail"] = this.RegEmail;
                     Application.Current.Properties["IsLoggedIn"] = true;
                     await Application.Current.SavePropertiesAsync();
