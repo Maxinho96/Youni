@@ -12,6 +12,20 @@ namespace Youni
             InitializeComponent();
         }
 
+        void Logout_Handle_Pressed_Android(object sender, System.EventArgs e)
+        {
+            var button = (Button)sender;
+            button.TextColor = Color.Gray;
+            button.Opacity = 0.1;
+        }
+
+        async void Logout_Handle_Released_Android(object sender, System.EventArgs e)
+        {
+            var button = (Button)sender;
+            button.TextColor = Color.Red;
+            await button.FadeTo(1, 500);
+        }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();

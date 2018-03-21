@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="Youni.ClassChooserPage"
+    BackgroundColor="White"
     Title="Corsi">
     <ContentPage.ToolbarItems>
         <ToolbarItem

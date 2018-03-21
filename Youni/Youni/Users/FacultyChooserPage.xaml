@@ -5,6 +5,7 @@
     xmlns:local="clr-namespace:Youni"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="Youni.FacultyChooserPage"
+    BackgroundColor="White"
     Title="Facoltà">
     <Grid>
         <Grid.RowDefinitions>

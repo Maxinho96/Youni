@@ -5,8 +5,7 @@
     xmlns:local="clr-namespace:Youni"
     xmlns:naxam="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Controls.Forms"
     x:Class="Youni.MainPage">
-    <local:ProfilePage
-        Title="Profilo">
+    <local:ProfilePage>
         <local:ProfilePage.BindingContext>
             <local:ProfileViewModel />
         </local:ProfilePage.BindingContext>
