@@ -43,6 +43,23 @@
                 </Setter>
             </Style>
             <Style
+                TargetType="Entry">
+                <Setter
+                    Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="x:String">
+                            <On
+                                Platform="iOS"
+                                Value="OpenSans-Regular" />
+                            <On
+                                Platform="Android"
+                                Value="OpenSans-Regular.ttf#OpenSans-Regular" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style
                 TargetType="entryCustomReturn:CustomReturnEntry">
                 <Setter
                     Property="FontFamily">

@@ -5,24 +5,14 @@
     xmlns:local="clr-namespace:Youni"
     xmlns:naxam="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Controls.Forms"
     x:Class="Youni.MainPage">
-<!--    <NavigationPage
-        Title="Corsi">
+    <NavigationPage
+        Title="Profilo">
         <x:Arguments>
-            <local:LoginRegistrationPage>
-                <local:ClassChooserPage.BindingContext>
-                    <local:LoginRegistrationViewModel />
-                </local:ClassChooserPage.BindingContext>
-            </local:LoginRegistrationPage>
+            <local:ProfilePage>
+                <local:ProfilePage.BindingContext>
+                    <local:ProfileViewModel />
+                </local:ProfilePage.BindingContext>
+            </local:ProfilePage>
         </x:Arguments>
     </NavigationPage>
-    <NavigationPage
-        Title="Corsi">
-        <x:Arguments>
-            <local:LoginRegistrationPage>
-                <local:ClassChooserPage.BindingContext>
-                    <local:LoginRegistrationViewModel />
-                </local:ClassChooserPage.BindingContext>
-            </local:LoginRegistrationPage>
-        </x:Arguments>
-    </NavigationPage>-->
 </naxam:BottomTabbedPage>

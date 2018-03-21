@@ -46,7 +46,6 @@
                         Grid.Column="0" />
                     <Label
                         Text="@stud.uniroma3.it"
-                        FontSize="Large"
                         HorizontalOptions="Fill"
                         VerticalOptions="Fill"
                         HorizontalTextAlignment="Start"
@@ -155,7 +154,6 @@
                     Grid.Column="0" />
                 <Label
                     Text="@stud.uniroma3.it"
-                    FontSize="Large"
                     HorizontalOptions="Fill"
                     VerticalOptions="Fill"
                     HorizontalTextAlignment="Start"

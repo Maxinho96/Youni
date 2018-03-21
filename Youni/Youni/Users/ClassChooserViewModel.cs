@@ -62,17 +62,25 @@ namespace Youni
                     {
                         if (y.Key == (string)descriptionTapped)
                         {
-                            y.Clear();
-                            ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync(this.TappedFaculty, y);
-                            foreach (Class c in classes)
+
+                            if (y.Count == 0)
                             {
-                                y.Add(c);
+                                ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync(this.TappedFaculty, y);
+                                foreach (Class c in classes)
+                                {
+                                    y.Add(c);
+                                }
+                            }
+                            else
+                            {
+                                foreach (Class c in y)
+                                {
+                                    this.SelectedClasses.Remove(c);
+                                }
+                                y.Clear();
                             }
                         }
-                        else
-                        {
-                            y.Clear();
-                        }
+
                     }
                     this.IsLoading = false;
                 }
@@ -122,6 +130,7 @@ namespace Youni
                 {
                     await this.DBHandler.InsertUserAsync(this.RegName, this.RegSurname, this.RegEmail, this.RegPassword);
                     await this.DBHandler.InsertFavouritesAsync(this.RegEmail, this.TappedFaculty, this.SelectedClasses);
+                    Application.Current.Properties["UserEmail"] = this.RegEmail;
                     Application.Current.Properties["IsLoggedIn"] = true;
                     await Application.Current.SavePropertiesAsync();
                     await Application.Current.MainPage.Navigation.PopModalAsync();

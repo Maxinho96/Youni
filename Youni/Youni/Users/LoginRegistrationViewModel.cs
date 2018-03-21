@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 
 using Xamarin.Forms;
 
@@ -124,6 +123,7 @@ namespace Youni
                    }
                    else if (await this.DBHandler.CheckCredentialsAsync(this.LogEmail, this.LogPassword))
                    {
+                       Application.Current.Properties["UserEmail"] = this.LogEmail;
                        Application.Current.Properties["IsLoggedIn"] = true;
                        await Application.Current.SavePropertiesAsync();
                        await Application.Current.MainPage.Navigation.PopModalAsync();

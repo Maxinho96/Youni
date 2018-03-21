@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:entryCustomReturn="clr-namespace:EntryCustomReturn.Forms.Plugin.Abstractions;assembly=EntryCustomReturn.Forms.Plugin.Abstractions"
+    x:Class="Youni.ProfilePage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="0.2*" />
+            <RowDefinition
+                Height="0.2*" />
+            <RowDefinition
+                Height="0.2*" />
+            <RowDefinition
+                Height="0.2*" />
+            <RowDefinition
+                Height="0.3*" />
+            <RowDefinition
+                Height="0.3*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="*" />
+            <ColumnDefinition
+                Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Label
+            Text="I tuoi dati:"
+            FontSize="Large"
+            FontFamily="OpenSans-Bold"
+            HorizontalTextAlignment="Center"
+            TextColor="#174668"
+            VerticalOptions="Center"
+            Grid.Row="0"
+            Grid.ColumnSpan="2" />
+        <entryCustomReturn:CustomReturnEntry
+            Text="{Binding Name}"
+            ReturnType="Done"
+            Margin="10,0,10,0"
+            Grid.Row="1"
+            Grid.ColumnSpan="2" />
+        <entryCustomReturn:CustomReturnEntry
+            Text="{Binding Surname}"
+            ReturnType="Done"
+            Margin="10,0,10,0"
+            Grid.Row="2"
+            Grid.ColumnSpan="2" />
+        <entryCustomReturn:CustomReturnEntry
+            Text="{Binding Email}"
+            ReturnType="Done"
+            Margin="10,0,0,0"
+            Grid.Row="3" />
+        <Label
+            Text="@stud.uniroma3.it"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            HorizontalTextAlignment="Start"
+            VerticalTextAlignment="Center"
+            Margin="0,0,10,0"
+            Grid.Row="3"
+            Grid.Column="1" />
+        <entryCustomReturn:CustomReturnEntry
+            Text="{Binding Password}"
+            ReturnType="Done"
+            Margin="10,0,10,0"
+            Grid.Row="4"
+            Grid.ColumnSpan="2" />
+        <Button
+            TextColor="White"
+            BackgroundColor="#3A8FDA"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Text="{Binding ModifyText}"
+            Command="{Binding ModifyCommand}"
+            Grid.Row="5"
+            Grid.ColumnSpan="2" />
+        <Button
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Text="Logout"
+            TextColor="Red"
+            Command="{Binding LogoutCommand}"
+            Grid.Row="6"
+            Grid.ColumnSpan="2" />
+    </Grid>
+</ContentPage>
