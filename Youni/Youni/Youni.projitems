@@ -38,12 +38,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-<<<<<<< HEAD
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Materie\TemplateMateria.xaml">
-=======
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)ProfilePage.xaml">
->>>>>>> d626a12e2046ae5a9bdbbe1bb343b65a17196d36
-      <SubType>Designer</SubType>
+	<SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
