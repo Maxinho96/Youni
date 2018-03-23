@@ -4,15 +4,24 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
     x:Class="Youni.ClassChooserPage"
+    BackgroundColor="White"
     Title="Corsi">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Name="Salta"
+            Command="{Binding SkipCommand}">
+        </ToolbarItem>
+    </ContentPage.ToolbarItems>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition
                 Height="50" />
             <RowDefinition
-                Height="*" />
+                Height="Auto" />
             <RowDefinition
-                Height="2*" />
+                Height="3*" />
+            <RowDefinition
+                Height="*" />
         </Grid.RowDefinitions>
         <Image
             Source="blue_background.png"
@@ -25,11 +34,22 @@
         <Label
             Text="Scegli i tuoi corsi"
             FontSize="Large"
-            FontAttributes="Bold"
             HorizontalTextAlignment="Center"
             VerticalOptions="Center"
             TextColor="#174668"
-            Grid.Row="1" />
+            Grid.Row="1">
+            <Label.FontFamily>
+                <OnPlatform
+                    x:TypeArguments="x:String">
+                    <On
+                        Platform="iOS"
+                        Value="OpenSans-Bold" />
+                    <On
+                        Platform="Android"
+                        Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                </OnPlatform>
+            </Label.FontFamily>
+        </Label>
         <flv:FlowListView
             x:Name="ClassChooserListView"
             SeparatorVisibility="None"
@@ -55,10 +75,20 @@
                                 Text="{Binding Key}"
                                 TextColor="White"
                                 FontSize="Large"
-                                FontAttributes="Bold"
                                 BackgroundColor="#3A8FDA"
                                 HorizontalTextAlignment="Center"
                                 VerticalTextAlignment="Center">
+                                <Label.FontFamily>
+                                    <OnPlatform
+                                        x:TypeArguments="x:String">
+                                        <On
+                                            Platform="iOS"
+                                            Value="OpenSans-Bold" />
+                                        <On
+                                            Platform="Android"
+                                            Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                                    </OnPlatform>
+                                </Label.FontFamily>
                             </Label>
                         </ContentView>
                     </ViewCell>
@@ -67,7 +97,7 @@
             <flv:FlowListView.FlowColumnTemplate>
                 <DataTemplate>
                     <Grid
-                        Margin="10"
+                        Margin="0, 10, 0, 0"
                         RowSpacing="0">
                         <Grid.RowDefinitions>
                             <RowDefinition
@@ -82,17 +112,28 @@
                             HasShadow="false"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
-                            HeightRequest="60"
-                            WidthRequest="60"
-                            CornerRadius="30"
+                            HeightRequest="70"
+                            WidthRequest="70"
+                            CornerRadius="35"
                             Grid.Row="0">
                             <Label
                                 Text="{Binding ShortName}"
                                 TextColor="White"
-                                FontAttributes="Bold"
                                 FontSize="Large"
                                 HorizontalOptions="Center"
-                                VerticalOptions="Center" />
+                                VerticalOptions="Center">
+                                <Label.FontFamily>
+                                    <OnPlatform
+                                        x:TypeArguments="x:String">
+                                        <On
+                                            Platform="iOS"
+                                            Value="OpenSans-Bold" />
+                                        <On
+                                            Platform="Android"
+                                            Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                                    </OnPlatform>
+                                </Label.FontFamily>
+                            </Label>
                         </Frame>
                         <Label
                             Text="{Binding Name}"
@@ -103,12 +144,24 @@
                 </DataTemplate>
             </flv:FlowListView.FlowColumnTemplate>
         </flv:FlowListView>
-        <ActivityIndicator
-            IsVisible="{Binding IsLoading}"
-            IsRunning="{Binding IsLoading}"
+        <Button
+            Command="{Binding ConfirmCommand}"
+            Text="  Conferma  "
+            TextColor="White"
+            BackgroundColor="#3A8FDA"
+            VerticalOptions="Center"
             HorizontalOptions="Center"
-            VerticalOptions="End"
-            Color="#174668"
-            Grid.Row="1" />
+            Grid.Row="3" />
+        <Frame
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            OutlineColor="#174668"
+            HasShadow="false"
+            IsVisible="{Binding IsLoading}"
+            Grid.RowSpan="4">
+            <ActivityIndicator
+                IsRunning="{Binding IsLoading}"
+                Color="#174668" />
+        </Frame>
     </Grid>
 </ContentPage>

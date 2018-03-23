@@ -221,6 +221,12 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\OpenSans-Regular.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
+    <BundleResource Include="Resources\OpenSans-Bold.ttf" />
+  </ItemGroup>
   <Import Project="..\Youni\Youni.projitems" Label="Shared" Condition="Exists('..\Youni\Youni.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

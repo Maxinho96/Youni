@@ -10,36 +10,31 @@ namespace Youni
         {
             InitializeComponent();
 
-            this.RegNameEntry.ReturnCommand = new Command(() => RegSurnameEntry.Focus());
-            this.RegSurnameEntry.ReturnCommand = new Command(() => RegEmailEntry.Focus());
-            this.RegEmailEntry.ReturnCommand = new Command(() => RegPasswordEntry.Focus());
-            this.RegPasswordEntry.ReturnCommand = new Command(() => RegPasswordConfirmEntry.Focus());
+#if __IOS__
+            this.RegNameEntryiOS.ReturnCommand = new Command(() => RegSurnameEntryiOS.Focus());
+            this.RegSurnameEntryiOS.ReturnCommand = new Command(() => RegEmailEntryiOS.Focus());
+            this.RegEmailEntryiOS.ReturnCommand = new Command(() => RegPasswordEntryiOS.Focus());
+            this.RegPasswordEntryiOS.ReturnCommand = new Command(() => RegPasswordConfirmEntryiOS.Focus());
+#elif __ANDROID__
+            this.RegNameEntryAndroid.ReturnCommand = new Command(() => RegSurnameEntryAndroid.Focus());
+            this.RegSurnameEntryAndroid.ReturnCommand = new Command(() => RegEmailEntryAndroid.Focus());
+            this.RegEmailEntryAndroid.ReturnCommand = new Command(() => RegPasswordEntryAndroid.Focus());
+            this.RegPasswordEntryAndroid.ReturnCommand = new Command(() => RegPasswordConfirmEntryAndroid.Focus());
+#endif
         }
 
-        //public RegistrationView(LoginRegistrationViewModel loginRegistrationViewModel) : this()
-        //{
-        //    this.BindingContext = loginRegistrationViewModel;
-        //}
-
-        void LoginSwitch_Handle_Pressed(object sender, System.EventArgs e)
+        void LoginSwitch_Handle_Pressed_Android(object sender, System.EventArgs e)
         {
-#if __ANDROID__
-            var button = (Button)sender; 
+            var button = (Button)sender;
             button.TextColor = Color.Gray;
             button.Opacity = 0.1;
-#endif
         }
 
-#if __ANDROID__
-            async
-#endif
-        void LoginSwitch_Handle_Released(object sender, System.EventArgs e)
+        async void LoginSwitch_Handle_Released_Android(object sender, System.EventArgs e)
         {
-#if __ANDROID__
             var button = (Button)sender;
             button.TextColor = Color.FromHex("#45BFEE");
             await button.FadeTo(1, 500);
-#endif
         }
     }
 }

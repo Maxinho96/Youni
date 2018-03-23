@@ -2,8 +2,80 @@
 <Application
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:entryCustomReturn="clr-namespace:EntryCustomReturn.Forms.Plugin.Abstractions;assembly=EntryCustomReturn.Forms.Plugin.Abstractions"
     x:Class="Youni.App">
     <Application.Resources>
         <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style
+                TargetType="Label">
+                <Setter
+                    Property="FontFamily"
+                    Value="OpenSans-Regular">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="x:String">
+                            <On
+                                Platform="iOS"
+                                Value="OpenSans-Regular" />
+                            <On
+                                Platform="Android"
+                                Value="OpenSans-Regular.ttf#OpenSans-Regular" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style
+                TargetType="Button">
+                <Setter
+                    Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="x:String">
+                            <On
+                                Platform="iOS"
+                                Value="OpenSans-Regular" />
+                            <On
+                                Platform="Android"
+                                Value="OpenSans-Regular.ttf#OpenSans-Regular" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style
+                TargetType="Entry">
+                <Setter
+                    Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="x:String">
+                            <On
+                                Platform="iOS"
+                                Value="OpenSans-Regular" />
+                            <On
+                                Platform="Android"
+                                Value="OpenSans-Regular.ttf#OpenSans-Regular" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+            <Style
+                TargetType="entryCustomReturn:CustomReturnEntry">
+                <Setter
+                    Property="FontFamily">
+                    <Setter.Value>
+                        <OnPlatform
+                            x:TypeArguments="x:String">
+                            <On
+                                Platform="iOS"
+                                Value="OpenSans-Regular" />
+                            <On
+                                Platform="Android"
+                                Value="OpenSans-Regular.ttf#OpenSans-Regular" />
+                        </OnPlatform>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

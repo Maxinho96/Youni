@@ -38,7 +38,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Materie\TemplateMateria.xaml">
+=======
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ProfilePage.xaml">
+>>>>>>> d626a12e2046ae5a9bdbbe1bb343b65a17196d36
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -79,6 +83,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Users\Class.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\Year.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\ClassChooserViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Old\" />
