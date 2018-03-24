@@ -38,7 +38,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ProfilePage.xaml">
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Users\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -76,10 +76,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Users\Class.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\Year.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\ClassChooserViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ProfilePage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Users\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ProfileViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Users\ProfileViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Old\" />

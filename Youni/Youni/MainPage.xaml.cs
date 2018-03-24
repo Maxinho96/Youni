@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
 
@@ -18,6 +17,10 @@ namespace Youni
         {
             base.OnAppearing();
 
+            if (this.CurrentPage.GetType() == typeof(ProfilePage))
+            {
+                await ((ProfilePage)this.CurrentPage).ForceAppearing();
+            }
             // Is user logged in?
             if (!(bool)Application.Current.Properties["IsLoggedIn"]) // He is not logged in
             {

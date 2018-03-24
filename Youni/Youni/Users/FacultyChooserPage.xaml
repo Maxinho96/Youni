@@ -61,7 +61,7 @@
                             RowSpacing="0">
                             <Grid.RowDefinitions>
                                 <RowDefinition
-                                    Height="*" />
+                                    Height="100" />
                                 <RowDefinition
                                     Height="Auto" />
                             </Grid.RowDefinitions>
