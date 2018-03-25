@@ -149,6 +149,10 @@
     <ImageAsset Include="Assets.xcassets\icon.imageset\icon%403x.png" />
     <ImageAsset Include="Assets.xcassets\icon.imageset\icon%401x.png" />
     <ImageAsset Include="Assets.xcassets\icon.imageset\icon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon%401x.png" />
+    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -163,6 +167,7 @@
     <Folder Include="Assets.xcassets\sof_eng_wallpaper.imageset\" />
     <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
     <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
+    <Folder Include="Assets.xcassets\profile_icon.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
