@@ -38,8 +38,12 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)ProfilePage.xaml">
-	<SubType>Designer</SubType>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Users\ProfilePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Subject\SubjectList.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -54,6 +58,7 @@
       <DependentUpon>LoginRegistrationPageOld.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Old\LoginRegistrationViewModelOld.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Subject\SubjectListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\LoginRegistrationPage.xaml.cs">
       <DependentUpon>LoginRegistrationPage.xaml</DependentUpon>
     </Compile>
@@ -72,21 +77,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)Users\RegistrationView.xaml.cs">
       <DependentUpon>RegistrationView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Materie\TemplateMateria.xaml.cs">
-      <DependentUpon>TemplateMateria.xaml</DependentUpon>
-    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Users\Faculty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\Class.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\Year.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\ClassChooserViewModel.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)ProfilePage.xaml.cs">
+    <Compile Include="$(MSBuildThisFileDirectory)Users\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)ProfileViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Users\ProfileViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Subject\SubjectList.xaml.cs">
+      <DependentUpon>SubjectList.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Old\" />
     <Folder Include="$(MSBuildThisFileDirectory)Users\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Materie\" />
   </ItemGroup>
 </Project>

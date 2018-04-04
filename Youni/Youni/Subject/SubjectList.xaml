@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
+             x:Class="Youni.SubjectList"
+             Title="Corsi">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ContentView Grid.Row="0" Padding="30">
+                <Label Text="I tuoi corsi" FontSize="Large" HorizontalTextAlignment="Center" TextColor="#174668">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="x:String">
+                            <On Platform="iOS" Value="OpenSans-Bold" />
+                            <On Platform="Android" Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+            </ContentView>
+
+   
+            <flv:FlowListView Grid.Row="1" FlowItemsSource="{Binding Classes}" FlowColumnCount="3" SeparatorVisibility="None" Margin="30,0,30,0" HasUnevenRows="True">
+                <flv:FlowListView.FlowColumnTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0, 10, 0, 0" RowSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Frame Grid.Row="0" Padding="0" Margin="5,8,5,8" BackgroundColor="{Binding ButtonColor}" HasShadow="false" HorizontalOptions="Center" VerticalOptions="Center" 
+                                           HeightRequest="70" WidthRequest="70" CornerRadius="35">
+                                <Label Text="{Binding ShortName}" TextColor="White" FontSize="Large" HorizontalOptions="Center" VerticalOptions="Center">
+                                    <Label.FontFamily>
+                                        <OnPlatform x:TypeArguments="x:String">
+                                            <On Platform="iOS" Value="OpenSans-Bold" />
+                                            <On Platform="Android" Value="OpenSans-Bold.ttf#OpenSans-Bold" />
+                                        </OnPlatform>
+                                    </Label.FontFamily>
+                                </Label>
+                            </Frame>
+                            <Label Grid.Row="1" Text="{Binding Name}" HorizontalTextAlignment="Center" TextColor="#174668" />
+                        </Grid>
+                    </DataTemplate>
+                </flv:FlowListView.FlowColumnTemplate>
+            </flv:FlowListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

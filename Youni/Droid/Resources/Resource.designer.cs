@@ -4311,6 +4311,7 @@ namespace Youni.Droid
 			global::EntryCustomReturn.Forms.Plugin.Android.Resource.Styleable.ViewStubCompat_android_id = global::Youni.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::EntryCustomReturn.Forms.Plugin.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Youni.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::EntryCustomReturn.Forms.Plugin.Android.Resource.Styleable.ViewStubCompat_android_layout = global::Youni.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Youni.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
@@ -10,6 +11,10 @@ namespace Youni
         public ProfilePage()
         {
             InitializeComponent();
+        }
+        public async Task ForceAppearing()
+        {
+            await Task.Run(() => OnAppearing());
         }
 
         void Logout_Handle_Pressed_Android(object sender, System.EventArgs e)
