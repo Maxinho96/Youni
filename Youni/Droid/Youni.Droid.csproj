@@ -216,10 +216,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Tabbar.axml">
+    <AndroidResource Include="layout\Tabbar.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Toolbar.axml" />
+    <AndroidResource Include="layout\Toolbar.axml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\drawable\login_icon.png" />
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -238,6 +238,12 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\OpenSans-Bold.ttf" />
     <AndroidAsset Include="Assets\OpenSans-Regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\book.png" />
   </ItemGroup>
   <Import Project="..\Youni\Youni.projitems" Label="Shared" Condition="Exists('..\Youni\Youni.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
