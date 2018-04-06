@@ -280,7 +280,7 @@ namespace Youni
         /// <returns>The surname of the user</returns>
         /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
-        public async Task<string> GetSurameAsync(string email)
+        public async Task<string> GetSurnameAsync(string email)
         {
             string query = "SELECT cognome FROM utenti WHERE email=@email";
             using (var conn = new NpgsqlConnection(this.ConnString))

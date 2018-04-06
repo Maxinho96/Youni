@@ -12,10 +12,6 @@ namespace Youni
         {
             InitializeComponent();
         }
-        public async Task ForceAppearing()
-        {
-            await Task.Run(() => OnAppearing());
-        }
 
         void Logout_Handle_Pressed_Android(object sender, System.EventArgs e)
         {
@@ -41,11 +37,9 @@ namespace Youni
             }
         }
 
-		protected override void OnDisappearing()
-		{
-            base.OnDisappearing();
-
-            ((ProfileViewModel)this.BindingContext).Clear();
-		}
+        public async Task ForceAppearing()
+        {
+            await Task.Run(() => OnAppearing());
+        }
 	}
 }

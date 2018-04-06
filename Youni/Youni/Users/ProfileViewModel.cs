@@ -131,6 +131,7 @@ namespace Youni
                     BarBackgroundColor = Color.FromHex("#3A8FDA"),
                     BarTextColor = Color.White
                 });
+                this.Clear();
             });
 
             this.ModifyCommand = new Command(async () =>
@@ -172,19 +173,22 @@ namespace Youni
 
         public async Task LoadUser()
         {
-            try
+            if (this.Name == null || this.Surname == null || this.Email == null)
             {
-                this.IsLoading = true;
-                string userEmail = (string)Application.Current.Properties["UserEmail"];
-                this.Name = await this.DBHandler.GetNameAsync(userEmail + "@stud.uniroma3.it");
-                this.Surname = await this.DBHandler.GetSurameAsync(userEmail + "@stud.uniroma3.it");
-                this.Email = userEmail;
-                this.IsLoading = false;
-            }
-            catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
-            {
-                await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
-                await this.LoadUser();
+                try
+                {
+                    this.IsLoading = true;
+                    string userEmail = (string)Application.Current.Properties["UserEmail"];
+                    this.Name = await this.DBHandler.GetNameAsync(userEmail + "@stud.uniroma3.it");
+                    this.Surname = await this.DBHandler.GetSurnameAsync(userEmail + "@stud.uniroma3.it");
+                    this.Email = userEmail;
+                    this.IsLoading = false;
+                }
+                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
+                {
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                    await this.LoadUser();
+                }
             }
         }
 
