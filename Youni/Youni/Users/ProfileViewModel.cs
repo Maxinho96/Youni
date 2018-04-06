@@ -180,7 +180,7 @@ namespace Youni
                     this.IsLoading = true;
                     string userEmail = (string)Application.Current.Properties["UserEmail"];
                     this.Name = await this.DBHandler.GetNameAsync(userEmail + "@stud.uniroma3.it");
-                    this.Surname = await this.DBHandler.GetSurameAsync(userEmail + "@stud.uniroma3.it");
+                    this.Surname = await this.DBHandler.GetSurnameAsync(userEmail + "@stud.uniroma3.it");
                     this.Email = userEmail;
                     this.IsLoading = false;
                 }
