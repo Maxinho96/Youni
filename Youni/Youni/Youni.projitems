@@ -14,10 +14,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Old\LoginRegistrationPageOld.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)Users\LoginRegistrationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -54,10 +50,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Old\LoginRegistrationPageOld.xaml.cs">
-      <DependentUpon>LoginRegistrationPageOld.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Old\LoginRegistrationViewModelOld.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Subject\SubjectListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\LoginRegistrationPage.xaml.cs">
       <DependentUpon>LoginRegistrationPage.xaml</DependentUpon>
@@ -90,7 +82,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Old\" />
     <Folder Include="$(MSBuildThisFileDirectory)Users\" />
   </ItemGroup>
 </Project>
