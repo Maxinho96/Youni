@@ -12,10 +12,6 @@ namespace Youni
         {
             InitializeComponent();
         }
-        public async Task ForceAppearing()
-        {
-            await Task.Run(() => OnAppearing());
-        }
 
         void Logout_Handle_Pressed_Android(object sender, System.EventArgs e)
         {

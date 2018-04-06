@@ -30,7 +30,19 @@ namespace Youni
 
         public async Task GetClasses()
         {
-            this.Classes = await this.DBHandler.RetrieveFavouritesAsync((string)Application.Current.Properties["UserEmail"]+"@stud.uniroma3.it");
+            try
+            {
+                // Is user logged in?
+                if ((bool)Application.Current.Properties["IsLoggedIn"]) // He is logged in
+                {
+                    this.Classes = await this.DBHandler.RetrieveFavouritesAsync((string)Application.Current.Properties["UserEmail"] + "@stud.uniroma3.it");
+                }
+            }
+            catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
+            {
+                await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                await this.GetClasses();
+            }
         }
 
     }
