@@ -10,20 +10,15 @@ namespace Youni
 {
 	public partial class SubjectList : ContentPage
 	{
-		public SubjectList ()
+		public SubjectList()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 		}
         public async Task ForceAppearing()
         {
             await Task.Run(() => OnAppearing());
         }
 
-        public SubjectList(SubjectListViewModel subjectListViewModel) : this()
-        {
-            subjectListViewModel.Navigation = this.Navigation;
-            this.BindingContext = subjectListViewModel;
-        }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
