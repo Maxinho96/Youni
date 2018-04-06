@@ -9,6 +9,7 @@ using Android.Widget;
 using Android.OS;
 
 using CarouselView.FormsPlugin.Android;
+using Naxam.Controls.Platform.Droid;
 
 namespace Youni.Droid
 {
@@ -27,6 +28,7 @@ namespace Youni.Droid
 
             CarouselViewRenderer.Init(); // Makes CarouselView work
             EntryCustomReturn.Forms.Plugin.Android.CustomReturnEntryRenderer.Init(); // Makes CustomReturnEntry work
+            BottomTabbedRenderer.ItemAlign = ItemAlignFlags.Center;
 
             LoadApplication(new App());
         }

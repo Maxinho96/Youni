@@ -228,6 +228,7 @@
     <AndroidResource Include="Resources\drawable\ele_eng_wallpaper.jpeg" />
     <AndroidResource Include="Resources\drawable\mec_eng_wallpaper.jpeg" />
     <AndroidResource Include="Resources\drawable\sof_eng_wallpaper.jpeg" />
+    <AndroidResource Include="Resources\drawable\profile_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\" />

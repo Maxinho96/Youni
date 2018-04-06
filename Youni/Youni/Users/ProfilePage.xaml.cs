@@ -41,11 +41,9 @@ namespace Youni
             }
         }
 
-		protected override void OnDisappearing()
-		{
-            base.OnDisappearing();
-
-            ((ProfileViewModel)this.BindingContext).Clear();
-		}
+        public async Task ForceAppearing()
+        {
+            await Task.Run(() => OnAppearing());
+        }
 	}
 }
