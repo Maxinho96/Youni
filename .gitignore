@@ -318,3 +318,8 @@ ASALocalRun/
 
 # MSBuild Binary and Structured Log
 *.binlog
+Youni/Droid/Resources/Resource.designer.cs.orig
+Youni/iOS/Youni.iOS.csproj.orig
+Youni/Youni/MainPage.xaml.cs.orig
+Youni/Youni/Youni.projitems.orig
+Youni/Youni/Users/FacultyChooserPage.xaml.orig
