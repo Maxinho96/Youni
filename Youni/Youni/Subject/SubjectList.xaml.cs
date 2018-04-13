@@ -14,6 +14,11 @@ namespace Youni
 		{
 			InitializeComponent();
 		}
+        public SubjectList(SubjectListViewModel subjectListViewModel) : this()
+        {
+            subjectListViewModel.Navigation = this.Navigation;
+            this.BindingContext = subjectListViewModel;
+        }
         public async Task ForceAppearing()
         {
             await Task.Run(() => OnAppearing());

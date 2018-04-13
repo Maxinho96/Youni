@@ -7,6 +7,8 @@ namespace Youni
     public class SubjectListViewModel : BindableObject
     {
         public INavigation Navigation;
+        public Command ClassChoosedCommand { get; set; }
+        public Class TappedClass { get; set; }
         private DataBaseHandler DBHandler;
         private ObservableCollection<Class> classes;
         public ObservableCollection<Class> Classes
@@ -24,7 +26,12 @@ namespace Youni
 
         public SubjectListViewModel()
         {
+     
             this.DBHandler = new DataBaseHandler();
+            this.ClassChoosedCommand = new Command(async () =>
+            {
+                    await this.Navigation.PushAsync(new SubjectPage(new SubjectPageViewModel(this.TappedClass.Name)));
+            });
 
         }
 

@@ -24,7 +24,8 @@
                 </Label>
             </ContentView>
 
-            <flv:FlowListView Grid.Row="1" FlowItemsSource="{Binding Classes}" FlowColumnCount="3" SeparatorVisibility="None" Margin="30,0,30,0" HasUnevenRows="True">
+            <flv:FlowListView Grid.Row="1" FlowItemsSource="{Binding Classes}"  FlowItemTappedCommand="{Binding ClassChoosedCommand}"
+                FlowLastTappedItem="{Binding TappedClass}" FlowColumnCount="3" SeparatorVisibility="None" Margin="30,0,30,0" HasUnevenRows="True">
                 <flv:FlowListView.FlowColumnTemplate>
                     <DataTemplate>
                         <Grid Margin="0, 10, 0, 0" RowSpacing="0">

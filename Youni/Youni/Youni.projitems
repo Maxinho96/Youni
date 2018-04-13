@@ -92,6 +92,5 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Users\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Old\" />
   </ItemGroup>
 </Project>
