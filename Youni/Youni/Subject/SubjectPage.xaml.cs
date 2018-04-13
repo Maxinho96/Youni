@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xamarin.Forms;
+
+namespace Youni
+{
+    public partial class SubjectPage : NavigationPage
+    {
+        public SubjectPage()
+        {
+            InitializeComponent();
+        }
+        public async Task ForceAppearing()
+        {
+            await Task.Run(() => OnAppearing());
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            await ((SubjectPageViewModel)this.BindingContext).GetResources();
+        }
+
+    }
+}

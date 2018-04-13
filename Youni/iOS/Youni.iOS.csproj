@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Xamarin.Forms.2.5.0.280555\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.280555\build\netstandard1.0\Xamarin.Forms.props')" />
   <Import Project="..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.122203\build\netstandard1.0\Xamarin.Forms.props')" />
@@ -130,52 +130,134 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\login_icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iTunesArtwork%402x.png" />
-    <ImageAsset Include="Assets.xcassets\blue_background.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\blue_background.imageset\blue_background.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\sof_eng_wallpaper.jpeg" />
-    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\ele_eng_wallpaper.jpeg" />
-    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\civ_eng_wallpaper.jpeg" />
-    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\mec_eng_wallpaper.jpeg" />
-    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%401x.png" />
-    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%402x.png" />
-    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%403x.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%401x.png" />
-    <ImageAsset Include="Assets.xcassets\icon.imageset\icon%402x.png" />
-    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon%401x.png" />
-    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon%402x.png" />
-    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon%403x.png" />
-    <ImageAsset Include="Assets.xcassets\book.imageset\book.png" />
-    <ImageAsset Include="Assets.xcassets\book.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\plus.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\plus.imageset\plus.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\iTunesArtwork@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\blue_background.imageset\blue_background.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\book.imageset\book.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\civ_eng_wallpaper.jpeg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\ele_eng_wallpaper.jpeg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\favourites_off.imageset\favourites_off.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\favourites_on.imageset\favourites_on.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\group.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\group.imageset\group.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon@1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon.imageset\icon@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\favourites_on.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\favourites_off.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_off.imageset\notification_off.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_on.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_off.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon@1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\login_icon.imageset\login_icon@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\mec_eng_wallpaper.jpeg">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\notification_on.imageset\notification_on.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\plus.imageset\plus.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon@1x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon@2x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\profile_icon@3x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\search.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\login_icon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\blue_background.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\icon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\civ_eng_wallpaper.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ele_eng_wallpaper.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\search.imageset\search.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\mec_eng_wallpaper.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\profile_icon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\book.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\plus.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\sof_eng_wallpaper.jpeg">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets.xcassets\AppIcon.appiconset\" />
-    <Folder Include="Assets.xcassets\blue_background.imageset\" />
-    <Folder Include="Assets.xcassets\civ_eng_wallpaper.imageset\" />
-    <Folder Include="Assets.xcassets\ele_eng_wallpaper.imageset\" />
-    <Folder Include="Assets.xcassets\Icon.imageset\" />
-    <Folder Include="Assets.xcassets\login_icon.imageset\" />
-    <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
-    <Folder Include="Assets.xcassets\sof_eng_wallpaper.imageset\" />
-    <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
-    <Folder Include="Assets.xcassets\mec_eng_wallpaper.imageset\" />
-    <Folder Include="Assets.xcassets\profile_icon.imageset\" />
-    <Folder Include="Assets.xcassets\book.imageset\" />
-    <Folder Include="Assets.xcassets\plus.imageset\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
