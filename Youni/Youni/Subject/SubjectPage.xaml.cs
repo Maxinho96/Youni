@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Youni
 {
-    public partial class SubjectPage : NavigationPage
+    public partial class SubjectPage : ContentPage
     {
         public SubjectPage()
         {

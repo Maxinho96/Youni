@@ -5,11 +5,11 @@
     xmlns:local="clr-namespace:Youni"
     xmlns:naxam="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Controls.Forms"
     x:Class="Youni.MainPage">
-    <local:SubjectList>
-        <local:SubjectList.BindingContext>
-            <local:SubjectListViewModel />
-        </local:SubjectList.BindingContext>
-    </local:SubjectList>
+    <NavigationPage>
+        <x:Arguments>
+            <local:SubjectList/>
+        </x:Arguments>
+    </NavigationPage>
     <local:ProfilePage>
         <local:ProfilePage.BindingContext>
             <local:ProfileViewModel />

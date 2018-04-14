@@ -8,17 +8,16 @@ using Xamarin.Forms;
 
 namespace Youni
 {
-	public partial class SubjectList : ContentPage
+    public partial class SubjectList : ContentPage
 	{
 		public SubjectList()
 		{
 			InitializeComponent();
-		}
-        public SubjectList(SubjectListViewModel subjectListViewModel) : this()
-        {
+
+            SubjectListViewModel subjectListViewModel = new SubjectListViewModel();
             subjectListViewModel.Navigation = this.Navigation;
             this.BindingContext = subjectListViewModel;
-        }
+		}
         public async Task ForceAppearing()
         {
             await Task.Run(() => OnAppearing());

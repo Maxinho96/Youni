@@ -30,7 +30,7 @@ namespace Youni
             this.DBHandler = new DataBaseHandler();
             this.ClassChoosedCommand = new Command(async () =>
             {
-                    await this.Navigation.PushAsync(new SubjectPage(new SubjectPageViewModel(this.TappedClass.Name)));
+                await this.Navigation.PushAsync(new SubjectPage(new SubjectPageViewModel(this.TappedClass.Name)));
             });
 
         }
