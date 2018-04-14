@@ -5,7 +5,7 @@
     xmlns:local="clr-namespace:Youni"
     xmlns:naxam="clr-namespace:Naxam.Controls.Forms;assembly=Naxam.Controls.Forms"
     x:Class="Youni.MainPage">
-    <NavigationPage>
+    <NavigationPage Icon="book.png" Title="Corsi">
         <x:Arguments>
             <local:SubjectList/>
         </x:Arguments>

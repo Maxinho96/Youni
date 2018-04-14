@@ -2,9 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:flv="clr-namespace:DLToolkit.Forms.Controls;assembly=DLToolkit.Forms.Controls.FlowListView"
-             x:Class="Youni.SubjectList"
-             Title="Corsi"
-             Icon="book.png">
+             x:Class="Youni.SubjectList">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -53,8 +51,8 @@
                 </flv:FlowListView.FlowColumnTemplate>
             </flv:FlowListView>
 
-            <ContentView Grid.Row="2">
-                <Frame Padding="0" Margin="0,10,0,10" BackgroundColor="#3a8fda" HasShadow="true" HeightRequest="70" 
+            <ContentView Grid.Row="2" Margin="5">
+                <Frame Padding="0" BackgroundColor="#3a8fda" HasShadow="true" HeightRequest="70" 
                        WidthRequest="70" CornerRadius="35" HorizontalOptions="Center">
                     <Image Source="plus.png" Margin="16,16,16,16"/>
                 </Frame>
