@@ -15,11 +15,11 @@ namespace Youni
         {
         }
 
-        public Document(string documentTitle, Image documentImage, int documentUpvote) : this()
+        public Document(string documentTitle/*, Image documentImage, int documentUpvote*/) : this()
         {
             this.DocumentTitle = documentTitle;
-            this.DocumentImage = documentImage;
-            this.DocumentUpvote = documentUpvote;
+            /*this.DocumentImage = documentImage;
+            this.DocumentUpvote = documentUpvote;*/
         }
     }
 }
