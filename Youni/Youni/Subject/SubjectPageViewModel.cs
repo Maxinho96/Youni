@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -8,10 +6,13 @@ using Xamarin.Forms;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System.IO;
+#if __ANDROID__
 using Android.Content;
 using Android.Widget;
+#elif __IOS__
 using UIKit;
 using Foundation;
+#endif
 
 namespace Youni
 {
@@ -64,7 +65,7 @@ namespace Youni
 
         public async Task GetDocument(string documentTitle)
         {
-            
+
             GetObjectRequest request = new GetObjectRequest
             {
                 BucketName = this.SubjectName.ToLower().Replace(' ', '.'),
@@ -74,91 +75,98 @@ namespace Youni
             string filePath;
 
             using (GetObjectResponse response = await client.GetObjectAsync(request))
-            {   
-                switch (Device.RuntimePlatform)
-                {
-                    case Device.iOS:
-                        filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"..", "Personal", documentTitle);
-                        break;
-                    case Device.Android:
-                        filePath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath,"Youni", documentTitle);
-                        break;
-                    default:
-                        filePath = "piattaforma non supportata";
-                        break;
-                }
+            {
+                //switch (Device.RuntimePlatform)
+                //{
+                //case Device.iOS:
+#if __IOS__
+                filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Personal", documentTitle);
+#elif __ANDROID__
+                //break;
+                //case Device.Android:
+                filePath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "Youni", documentTitle);
+                //break;
+                //default:
+#else
+                filePath = "piattaforma non supportata";
+#endif
+                //break;
+                //}
 
                 //scrivo su file
-                await response.WriteResponseStreamToFileAsync(filePath,false);
+                await response.WriteResponseStreamToFileAsync(filePath, false);
             }
 
             try
             {
-                switch (Device.RuntimePlatform)
+                //switch (Device.RuntimePlatform)
+                //{
+                //case Device.iOS:
+#if __IOS__
+
+                var PreviewController = UIDocumentInteractionController.FromUrl(NSUrl.FromFilename(filePath));
+                PreviewController.Delegate = new UIDocumentInteractionControllerDelegateClass(UIApplication.SharedApplication.KeyWindow.RootViewController);
+                Device.BeginInvokeOnMainThread(() =>
                 {
-                    case Device.iOS:
+                    PreviewController.PresentPreview(true);
+                });
 
-                        var PreviewController = UIDocumentInteractionController.FromUrl(NSUrl.FromFilename(filePath));
-                        PreviewController.Delegate = new UIDocumentInteractionControllerDelegateClass(UIApplication.SharedApplication.KeyWindow.RootViewController);
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            PreviewController.PresentPreview(true);
-                        });
+                //break;
 
+                //case Device.Android:
+#elif __ANDROID__
+
+                var bytes = File.ReadAllBytes(filePath);
+
+                string application = "";
+
+                string extension = Path.GetExtension(filePath);
+
+                switch (extension.ToLower())
+                {
+                    case ".doc":
+                    case ".docx":
+                        application = "application/msword";
                         break;
-
-                    case Device.Android:
-
-                        var bytes = File.ReadAllBytes(filePath);
-
-                        string application = "";
-
-                        string extension = Path.GetExtension(filePath);
-
-                        switch (extension.ToLower())
-                        {
-                            case ".doc":
-                            case ".docx":
-                                application = "application/msword";
-                                break;
-                            case ".pdf":
-                                application = "application/pdf";
-                                break;
-                            case ".xls":
-                            case ".xlsx":
-                                application = "application/vnd.ms-excel";
-                                break;
-                            case ".jpg":
-                            case ".jpeg":
-                            case ".png":
-                                application = "image/jpeg";
-                                break;
-                            default:
-                                application = "*/*";
-                                break;
-                        }
-
-                        Java.IO.File file = new Java.IO.File(filePath);
-                        file.SetReadable(true);
-
-                        Android.Net.Uri uri = Android.Net.Uri.FromFile(file);
-                        Intent intent = new Intent(Intent.ActionView);
-                        intent.SetDataAndType(uri, application);
-                        intent.SetFlags(ActivityFlags.ClearWhenTaskReset | ActivityFlags.NewTask);
-
-                        try
-                        {
-                            Forms.Context.StartActivity(intent);
-                        }
-                        catch (Exception)
-                        {
-                            Toast.MakeText(Forms.Context, "No Application Available to View PDF", ToastLength.Short).Show();
-                        }
+                    case ".pdf":
+                        application = "application/pdf";
                         break;
-
+                    case ".xls":
+                    case ".xlsx":
+                        application = "application/vnd.ms-excel";
+                        break;
+                    case ".jpg":
+                    case ".jpeg":
+                    case ".png":
+                        application = "image/jpeg";
+                        break;
                     default:
+                        application = "*/*";
                         break;
                 }
+
+                Java.IO.File file = new Java.IO.File(filePath);
+                file.SetReadable(true);
+
+                Android.Net.Uri uri = Android.Net.Uri.FromFile(file);
+                Intent intent = new Intent(Intent.ActionView);
+                intent.SetDataAndType(uri, application);
+                intent.SetFlags(ActivityFlags.ClearWhenTaskReset | ActivityFlags.NewTask);
+
+                try
+                {
+                    Forms.Context.StartActivity(intent);
+                }
+                catch (Exception)
+                {
+                    Toast.MakeText(Forms.Context, "No Application Available to View PDF", ToastLength.Short).Show();
+                }
+                //break;
+
+#endif
+                //default:
+                //break;
+                //}
             }
             catch (Exception ex)
             {
@@ -183,7 +191,7 @@ namespace Youni
                     // Process response.
                     foreach (S3Object entry in response.S3Objects)
                     {
-                        this.DocumentsList.Add(new Document(entry.Key,new Random().Next(0,299))); //sostituire il numero random con un valore nel db
+                        this.DocumentsList.Add(new Document(entry.Key, new Random().Next(0, 299))); //sostituire il numero random con un valore nel db
                     }
 
                     request.ContinuationToken = response.NextContinuationToken;
