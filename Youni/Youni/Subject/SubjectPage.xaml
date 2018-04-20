@@ -35,7 +35,7 @@
 
         </Grid>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding DocumentsList}" HasUnevenRows="True" >
+        <ListView Grid.Row="1" ItemsSource="{Binding DocumentsList}" HasUnevenRows="True" x:Name="DocumentsList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -46,29 +46,28 @@
                                 <ColumnDefinition Width="10*"/>
                             </Grid.ColumnDefinitions>
 
-                            <Image Grid.Column="0" Source="{Binding DocumentImage}"/>
+                            <Image Grid.Column="0" Source="pdf.png" Margin="8"/>
 
                             <Grid Grid.Column="1">
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding DocumentTitle}" Command="{Binding Path=BindingContext.DocumentTapped, Source={x:Reference Name=DocumentsList}}"/>
+                                </Grid.GestureRecognizers>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="80*"/>
-                                    <RowDefinition Height="20*"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="{Binding DocumentTitle}" FontSize="15" VerticalOptions="CenterAndExpand" TextColor="#45565c">
-                                    <Label.GestureRecognizers>
-                                        <TapGestureRecognizer Tapped="OnDocumentTapped" NumberOfTapsRequired="1" />
-                                    </Label.GestureRecognizers>
-                                </Label>
+                                <Label Grid.Row="0" Text="{Binding DocumentTitle}" FontSize="21" VerticalOptions="CenterAndExpand" TextColor="#45565c" Margin="0,15,0,0"/>
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*"/>
-                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
                                     </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Source="hat.png" WidthRequest="10" HeightRequest="10"/>
+                                    <Image Grid.Column="0" Source="hat.png" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
                                     <Label Grid.Column="1" Text="{Binding DocumentUpvote}"/>
                                 </Grid>
                             </Grid>
 
-                            <Image Grid.Column="2" Source="info.png" WidthRequest="30" HeightRequest="10"/>
+                            <Image Grid.Column="2" Source="info.png" Margin="5"/>
 
                         </Grid>
                     </ViewCell>

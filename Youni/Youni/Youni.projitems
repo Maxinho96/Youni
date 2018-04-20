@@ -61,6 +61,7 @@
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Subject\SubjectListViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Subject\SubjectPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Subject\UIDocumentInteractionControllerDelegateClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Users\LoginRegistrationPage.xaml.cs">
       <DependentUpon>LoginRegistrationPage.xaml</DependentUpon>
     </Compile>

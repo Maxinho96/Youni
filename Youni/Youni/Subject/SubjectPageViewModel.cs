@@ -8,6 +8,10 @@ using Xamarin.Forms;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System.IO;
+using Android.Content;
+using Android.Widget;
+using UIKit;
+using Foundation;
 
 namespace Youni
 {
@@ -17,6 +21,7 @@ namespace Youni
         public Command NotifyTapped { get; set; }
         public Command FavouritesTapped { get; set; }
         public Command SearchCommand { get; set; }
+        public Command DocumentTapped { get; set; }
         public string SubjectName { get; set; }
         private ObservableCollection<Document> documentsList;
         public ObservableCollection<Document> DocumentsList
@@ -51,6 +56,10 @@ namespace Youni
             {
                 await Application.Current.MainPage.DisplayAlert("titolo", "RICERCA", "cancel");
             });
+            this.DocumentTapped = new Command(async (docTitle) =>
+            {
+                await this.GetDocument((string)docTitle);
+            });
         }
 
         public async Task GetDocument(string documentTitle)
@@ -62,24 +71,98 @@ namespace Youni
                 Key = documentTitle
             };
 
-            using (GetObjectResponse response = await client.GetObjectAsync(request))
-            {
-                string dest;
+            string filePath;
 
+            using (GetObjectResponse response = await client.GetObjectAsync(request))
+            {   
                 switch (Device.RuntimePlatform)
                 {
                     case Device.iOS:
-                        dest = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"..", "Personal", documentTitle);
+                        filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),"..", "Personal", documentTitle);
                         break;
                     case Device.Android:
-                        dest = Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal), documentTitle);
+                        filePath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath,"Youni", documentTitle);
                         break;
                     default:
-                        dest = "piattaforma non supportata";
+                        filePath = "piattaforma non supportata";
                         break;
                 }
 
-                await response.WriteResponseStreamToFileAsync(dest,false);
+                //scrivo su file
+                await response.WriteResponseStreamToFileAsync(filePath,false);
+            }
+
+            try
+            {
+                switch (Device.RuntimePlatform)
+                {
+                    case Device.iOS:
+
+                        var PreviewController = UIDocumentInteractionController.FromUrl(NSUrl.FromFilename(filePath));
+                        PreviewController.Delegate = new UIDocumentInteractionControllerDelegateClass(UIApplication.SharedApplication.KeyWindow.RootViewController);
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            PreviewController.PresentPreview(true);
+                        });
+
+                        break;
+
+                    case Device.Android:
+
+                        var bytes = File.ReadAllBytes(filePath);
+
+                        string application = "";
+
+                        string extension = Path.GetExtension(filePath);
+
+                        switch (extension.ToLower())
+                        {
+                            case ".doc":
+                            case ".docx":
+                                application = "application/msword";
+                                break;
+                            case ".pdf":
+                                application = "application/pdf";
+                                break;
+                            case ".xls":
+                            case ".xlsx":
+                                application = "application/vnd.ms-excel";
+                                break;
+                            case ".jpg":
+                            case ".jpeg":
+                            case ".png":
+                                application = "image/jpeg";
+                                break;
+                            default:
+                                application = "*/*";
+                                break;
+                        }
+
+                        Java.IO.File file = new Java.IO.File(filePath);
+                        file.SetReadable(true);
+
+                        Android.Net.Uri uri = Android.Net.Uri.FromFile(file);
+                        Intent intent = new Intent(Intent.ActionView);
+                        intent.SetDataAndType(uri, application);
+                        intent.SetFlags(ActivityFlags.ClearWhenTaskReset | ActivityFlags.NewTask);
+
+                        try
+                        {
+                            Forms.Context.StartActivity(intent);
+                        }
+                        catch (Exception)
+                        {
+                            Toast.MakeText(Forms.Context, "No Application Available to View PDF", ToastLength.Short).Show();
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
 
@@ -100,7 +183,7 @@ namespace Youni
                     // Process response.
                     foreach (S3Object entry in response.S3Objects)
                     {
-                        this.DocumentsList.Add(new Document(entry.Key));
+                        this.DocumentsList.Add(new Document(entry.Key,new Random().Next(0,299))); //sostituire il numero random con un valore nel db
                     }
 
                     request.ContinuationToken = response.NextContinuationToken;
