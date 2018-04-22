@@ -238,7 +238,7 @@ namespace Youni
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<ObservableCollection<Class>> RetrieveFavouritesAsync(string email)
         {
-            string query = "SELECT esame, nome_corto FROM preferiti, esami WHERE utente=@email AND preferiti.esame=esami.nome";
+            string query = "SELECT esame, nome_corto FROM preferiti, esami WHERE utente=@email AND preferiti.esame=esami.nome AND preferiti.facolta=esami.facolta";
             using (var conn = new NpgsqlConnection(this.ConnString))
             {
                 await conn.OpenAsync();
