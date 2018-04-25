@@ -31,11 +31,11 @@ namespace Youni
             this.DBHandler = new DataBaseHandler();
             this.ClassChoosedCommand = new Command(async () =>
             {
-                await this.Navigation.PushAsync(new SubjectPage(new SubjectPageViewModel(this.TappedClass.Name)));
+                await this.Navigation.PushAsync(new SubjectPage(new SubjectPageViewModel(this.TappedClass)));
             });
             this.AddClassesTapped = new Command(async () =>
             {
-                await this.Navigation.PushAsync(new FacultyChooserPage(new FacultyChooserViewModel(Application.Current.Properties["UserEmail"] + "@stud.uniroma3.it")));
+                await this.Navigation.PushAsync(new FacultyChooserPage(new FacultyChooserViewModel((string)Application.Current.Properties["UserEmail"] + "@stud.uniroma3.it")));
             });
 
         }
@@ -52,7 +52,7 @@ namespace Youni
             }
             catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
             {
-                await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                await Application.Current.MainPage.DisplayAlert("Errore", "AOAOAProblema di connessione", "Riprova");
                 await this.GetClasses();
             }
         }

@@ -19,11 +19,15 @@ namespace Youni
     public class SubjectPageViewModel : BindableObject
     {
         public INavigation Navigation;
+
+        public DataBaseHandler DBHandler;
+
         public Command NotifyTapped { get; set; }
         public Command FavouritesTapped { get; set; }
         public Command SearchCommand { get; set; }
         public Command DocumentTapped { get; set; }
         public string SubjectName { get; set; }
+        public string FacultyName { get; set; }
         private ObservableCollection<Document> documentsList;
         public ObservableCollection<Document> DocumentsList
         {
@@ -38,20 +42,67 @@ namespace Youni
             }
         }
 
+        private string notification_icon;
+        public string Notification_icon
+        {
+            get
+            {
+                return this.notification_icon;
+            }
+            set
+            {
+                this.notification_icon = value;
+                OnPropertyChanged("Notification_icon");
+            }
+        }
+
+        private string favourites_icon;
+        public string Favourites_icon
+        {
+            get
+            {
+                return this.favourites_icon;
+            }
+            set
+            {
+                this.favourites_icon = value;
+                OnPropertyChanged("Favourites_icon");
+            }
+        }
+
+
         private static IAmazonS3 client = new AmazonS3Client("AKIAJHHUXNC3T47W4KVQ", "D1sqEmlpFxhxkMe7z9XErIWU8B6IRDBC76bWG95/", Amazon.RegionEndpoint.EUCentral1);
 
-        public SubjectPageViewModel(string subjectName)
+        public SubjectPageViewModel(Class tappedClass)
         {
-            this.SubjectName = subjectName;
+            this.SubjectName = tappedClass.Name;
+            this.FacultyName = tappedClass.Faculty;
             this.DocumentsList = new ObservableCollection<Document>();
+            this.DBHandler = new DataBaseHandler();
+            
+            this.Notification_icon = "notification_off";
+            this.Favourites_icon = "favourites_on";
 
-            this.NotifyTapped = new Command(async () =>
+            this.NotifyTapped = new Command(() =>
             {
-                await Application.Current.MainPage.DisplayAlert("titolo", "NOTIFICHE", "cancel");
+                if (this.Notification_icon.Equals("notification_off"))
+                    this.Notification_icon = "notification_on";
+                else
+                    this.Notification_icon = "notification_off";
+
             });
             this.FavouritesTapped = new Command(async () =>
             {
-                await Application.Current.MainPage.DisplayAlert("titolo", "PREFERITI", "cancel");
+                if (this.Favourites_icon.Equals("favourites_off"))
+                {
+                    this.Favourites_icon = "favourites_on";
+                    await this.DBHandler.InsertFavouriteAsync((string)Application.Current.Properties["UserEmail"] + "@stud.uniroma3.it", this.FacultyName, this.SubjectName);
+                }
+                else
+                {
+                    this.Favourites_icon = "favourites_off";
+                    await this.DBHandler.RemoveFavouriteAsync((string)Application.Current.Properties["UserEmail"] + "@stud.uniroma3.it", this.FacultyName, this.SubjectName);
+                }
             });
             this.SearchCommand = new Command(async () =>
             {
@@ -68,7 +119,7 @@ namespace Youni
 
             GetObjectRequest request = new GetObjectRequest
             {
-                BucketName = this.SubjectName.ToLower().Replace(' ', '.'),
+                BucketName = this.SubjectName.ToLower().Replace(' ', '.').Replace('\'', '.'),
                 Key = documentTitle
             };
 
@@ -180,7 +231,7 @@ namespace Youni
             {
                 ListObjectsV2Request request = new ListObjectsV2Request
                 {
-                    BucketName = this.SubjectName.ToLower().Replace(' ', '.')
+                    BucketName = this.SubjectName.ToLower().Replace(' ', '.').Replace('\'','.')
                 };
 
                 ListObjectsV2Response response;
@@ -196,11 +247,6 @@ namespace Youni
 
                     request.ContinuationToken = response.NextContinuationToken;
                 } while (response.IsTruncated == true);
-
-                /*foreach (Document doc in this.DocumentsList)
-                {
-                    Console.WriteLine(doc.DocumentTitle);
-                }*/
 
             }
             catch (AmazonS3Exception amazonS3Exception)

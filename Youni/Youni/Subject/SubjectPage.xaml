@@ -4,8 +4,8 @@
              x:Class="Youni.SubjectPage"
              BackgroundColor="White">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Notify" Icon="notification_off" Command="{Binding NotifyTapped}"></ToolbarItem>
-        <ToolbarItem Name="Favourites" Icon="favourites_off" Command="{Binding FavouritesTapped}"></ToolbarItem>
+        <ToolbarItem Name="Notify" Icon="{Binding Notification_icon}" Command="{Binding NotifyTapped}"></ToolbarItem>
+        <ToolbarItem Name="Favourites" Icon="{Binding Favourites_icon}" Command="{Binding FavouritesTapped}"></ToolbarItem>
     </ContentPage.ToolbarItems>
     
     <Grid>
