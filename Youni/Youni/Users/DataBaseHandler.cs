@@ -232,6 +232,37 @@ namespace Youni
             }
         }
 
+        /// <summary>Used to get all the classes of a given faculty in a given year that aren't already into favourites</summary>
+        /// <returns>An ObservableCollection of Classes, taken from the DataBase</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task<ObservableCollection<Class>> GetClassesAsyncWithoutFavourites(Faculty faculty, Year year, string email)
+        {
+            string query = "SELECT nome, nome_corto FROM esami WHERE facolta=@faculty AND anno=@year EXCEPT " +
+                            "SELECT esame, nome_corto FROM preferiti, esami WHERE utente=@email AND preferiti.esame=esami.nome AND preferiti.facolta=esami.facolta";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@faculty", faculty.Name);
+                    cmd.Parameters.AddWithValue("@year", year.Code);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        ObservableCollection<Class> classes = new ObservableCollection<Class>();
+                        while (await reader.ReadAsync())
+                        {
+                            classes.Add(new Class(reader.GetString(0), reader.GetString(1)));
+                        }
+                        return classes;
+                    }
+                }
+            }
+        }
+
+
+
         /// <summary>Used to get the favourites classes associated to a given email</summary>
         /// <returns>An ObservableCollection of classes, taken from the DataBase</returns>
         /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>

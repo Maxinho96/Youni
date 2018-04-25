@@ -8,6 +8,7 @@ namespace Youni
     {
         public INavigation Navigation;
         public Command ClassChoosedCommand { get; set; }
+        public Command AddClassesTapped { get; set; }
         public Class TappedClass { get; set; }
         private DataBaseHandler DBHandler;
         private ObservableCollection<Class> classes;
@@ -31,6 +32,10 @@ namespace Youni
             this.ClassChoosedCommand = new Command(async () =>
             {
                 await this.Navigation.PushAsync(new SubjectPage(new SubjectPageViewModel(this.TappedClass.Name)));
+            });
+            this.AddClassesTapped = new Command(async () =>
+            {
+                await this.Navigation.PushAsync(new FacultyChooserPage(new FacultyChooserViewModel(Application.Current.Properties["UserEmail"] + "@stud.uniroma3.it")));
             });
 
         }
