@@ -6691,26 +6691,26 @@ namespace Youni.Droid
 			// aapt resource value: 0x7f020053
 			public const int avd_hide_password = 2130837587;
 			
-			// aapt resource value: 0x7f020146
-			public const int avd_hide_password_1 = 2130837830;
-			
 			// aapt resource value: 0x7f020147
-			public const int avd_hide_password_2 = 2130837831;
+			public const int avd_hide_password_1 = 2130837831;
 			
 			// aapt resource value: 0x7f020148
-			public const int avd_hide_password_3 = 2130837832;
+			public const int avd_hide_password_2 = 2130837832;
+			
+			// aapt resource value: 0x7f020149
+			public const int avd_hide_password_3 = 2130837833;
 			
 			// aapt resource value: 0x7f020054
 			public const int avd_show_password = 2130837588;
 			
-			// aapt resource value: 0x7f020149
-			public const int avd_show_password_1 = 2130837833;
-			
 			// aapt resource value: 0x7f02014a
-			public const int avd_show_password_2 = 2130837834;
+			public const int avd_show_password_1 = 2130837834;
 			
 			// aapt resource value: 0x7f02014b
-			public const int avd_show_password_3 = 2130837835;
+			public const int avd_show_password_2 = 2130837835;
+			
+			// aapt resource value: 0x7f02014c
+			public const int avd_show_password_3 = 2130837836;
 			
 			// aapt resource value: 0x7f020055
 			public const int blue_background = 2130837589;
@@ -7396,11 +7396,11 @@ namespace Youni.Droid
 			// aapt resource value: 0x7f020138
 			public const int notification_on = 2130837816;
 			
-			// aapt resource value: 0x7f020144
-			public const int notification_template_icon_bg = 2130837828;
-			
 			// aapt resource value: 0x7f020145
-			public const int notification_template_icon_low_bg = 2130837829;
+			public const int notification_template_icon_bg = 2130837829;
+			
+			// aapt resource value: 0x7f020146
+			public const int notification_template_icon_low_bg = 2130837830;
 			
 			// aapt resource value: 0x7f020139
 			public const int notification_tile_bg = 2130837817;
@@ -7427,13 +7427,16 @@ namespace Youni.Droid
 			public const int sof_eng_wallpaper = 2130837824;
 			
 			// aapt resource value: 0x7f020141
-			public const int tooltip_frame_dark = 2130837825;
+			public const int splashscreen = 2130837825;
 			
 			// aapt resource value: 0x7f020142
-			public const int tooltip_frame_light = 2130837826;
+			public const int tooltip_frame_dark = 2130837826;
 			
 			// aapt resource value: 0x7f020143
-			public const int Up = 2130837827;
+			public const int tooltip_frame_light = 2130837827;
+			
+			// aapt resource value: 0x7f020144
+			public const int Up = 2130837828;
 			
 			static Drawable()
 			{
@@ -8611,8 +8614,8 @@ namespace Youni.Droid
 			// aapt resource value: 0x7f0b016e
 			public const int Animation_Design_BottomSheetDialog = 2131427694;
 			
-			// aapt resource value: 0x7f0b0194
-			public const int AppCompatDialogStyle = 2131427732;
+			// aapt resource value: 0x7f0b0195
+			public const int AppCompatDialogStyle = 2131427733;
 			
 			// aapt resource value: 0x7f0b00a9
 			public const int Base_AlertDialog_AppCompat = 2131427497;
@@ -9115,11 +9118,11 @@ namespace Youni.Droid
 			// aapt resource value: 0x7f0b000e
 			public const int CardView_Light = 2131427342;
 			
-			// aapt resource value: 0x7f0b0192
-			public const int MyTheme = 2131427730;
-			
 			// aapt resource value: 0x7f0b0193
-			public const int MyTheme_Base = 2131427731;
+			public const int MyTheme = 2131427731;
+			
+			// aapt resource value: 0x7f0b0194
+			public const int MyTheme_Base = 2131427732;
 			
 			// aapt resource value: 0x7f0b002d
 			public const int Platform_AppCompat = 2131427373;
@@ -9807,6 +9810,9 @@ namespace Youni.Droid
 			
 			// aapt resource value: 0x7f0b000a
 			public const int Widget_MediaRouter_MediaRouteButton = 2131427338;
+			
+			// aapt resource value: 0x7f0b0192
+			public const int Youni_Splash = 2131427730;
 			
 			static Style()
 			{
