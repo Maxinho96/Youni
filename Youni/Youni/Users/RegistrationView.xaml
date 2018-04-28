@@ -167,163 +167,177 @@
             </ScrollView>
         </OnPlatform.iOS>
         <OnPlatform.Android>
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="0.7*" />
-                    <RowDefinition
-                        Height="0.3*" />
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="Auto" />
-                    <RowDefinition
-                        Height="0.3*" />
-                    <RowDefinition
-                        Height="0.3*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="*" />
-                    <ColumnDefinition
-                        Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <Image
-                    Source="blue_background.png"
-                    Aspect="Fill"
-                    Grid.Row="0"
-                    Grid.ColumnSpan="2" />
-                <Image
-                    Source="icon.png"
-                    Grid.Row="0"
-                    VerticalOptions="Center"
-                    Grid.ColumnSpan="2" />
-                <Label
-                    Text="Unisciti a Youni!"
-                    FontSize="Large"
-                    FontFamily="OpenSans-Bold.ttf#OpenSans-Bold"
-                    HorizontalTextAlignment="Center"
-                    TextColor="#174668"
-                    Grid.Row="1"
-                    VerticalOptions="Center"
-                    Grid.ColumnSpan="2" />
-                <entryCustomReturn:CustomReturnEntry
-                    x:Name="RegNameEntryAndroid"
-                    Text="{Binding RegName}"
-                    Placeholder="Nome"
-                    VerticalOptions="FillAndExpand"
-                    ReturnType="Next"
-                    Margin="10,0,10,0"
-                    Grid.Row="2"
-                    Grid.ColumnSpan="2" />
-                <entryCustomReturn:CustomReturnEntry
-                    x:Name="RegSurnameEntryAndroid"
-                    Text="{Binding RegSurname}"
-                    Placeholder="Cognome"
-                    VerticalOptions="FillAndExpand"
-                    ReturnType="Next"
-                    Margin="10,0,10,0"
-                    Grid.Row="3"
-                    Grid.ColumnSpan="2" />
-                <entryCustomReturn:CustomReturnEntry
-                    x:Name="RegEmailEntryAndroid"
-                    Text="{Binding RegEmail}"
-                    Placeholder="Email"
-                    Keyboard="Email"
-                    VerticalOptions="FillAndExpand"
-                    ReturnType="Next"
-                    Margin="10,0,0,0"
-                    Grid.Row="4"
-                    Grid.Column="0" />
-                <Label
-                    Text="@stud.uniroma3.it"
-                    HorizontalOptions="Fill"
-                    VerticalOptions="Fill"
-                    HorizontalTextAlignment="Start"
-                    VerticalTextAlignment="Center"
-                    Margin="0,0,10,0"
-                    Grid.Row="4"
-                    Grid.Column="1" />
-                <entryCustomReturn:CustomReturnEntry
-                    x:Name="RegPasswordEntryAndroid"
-                    Text="{Binding RegPassword}"
-                    Placeholder="Password"
-                    IsPassword="true"
-                    VerticalOptions="FillAndExpand"
-                    ReturnType="Next"
-                    Margin="10,0,10,0"
-                    Grid.Row="5"
-                    Grid.ColumnSpan="2" />
-                <entryCustomReturn:CustomReturnEntry
-                    x:Name="RegPasswordConfirmEntryAndroid"
-                    Text="{Binding RegPasswordConfirm}"
-                    Placeholder="Conferma password"
-                    IsPassword="true"
-                    VerticalOptions="FillAndExpand"
-                    ReturnType="Go"
-                    ReturnCommand="{Binding RegisterCommand}"
-                    Margin="10,0,10,0"
-                    Grid.Row="6"
-                    Grid.ColumnSpan="2" />
-                <Button
-                    Command="{Binding RegisterCommand}"
-                    Text="  Registrati  "
-                    TextColor="White"
-                    BackgroundColor="#3A8FDA"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Grid.Row="7"
-                    Grid.ColumnSpan="2" />
-                <StackLayout
-                    Orientation="Horizontal"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Grid.Row="8"
-                    Grid.ColumnSpan="2">
-                    <StackLayout.Spacing>
-                        <OnPlatform
-                            x:TypeArguments="x:Double">
-                            <On
-                                Platform="Android"
-                                Value="-10" />
-                            <On
-                                Platform="iOS"
-                                Value="3" />
-                        </OnPlatform>
-                    </StackLayout.Spacing>
+            <ScrollView
+                Padding="0, 0, 0, 100">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <!--                        <RowDefinition
+                            Height="0.7*" />
+                        <RowDefinition
+                            Height="0.3*" />-->
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <RowDefinition
+                            Height="Auto" />
+                        <!--                        <RowDefinition
+                            Height="0.3*" />
+                        <RowDefinition
+                            Height="0.3*" />-->
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        Source="blue_background.png"
+                        Aspect="Fill"
+                        Grid.Row="0"
+                        Grid.ColumnSpan="2" />
+                    <Image
+                        Source="icon.png"
+                        Grid.Row="0"
+                        VerticalOptions="Center"
+                        Grid.ColumnSpan="2" />
                     <Label
-                        Text="Sei già registrato?"
-                        FontSize="Small"
+                        Text="Unisciti a Youni!"
+                        FontSize="Large"
+                        FontFamily="OpenSans-Bold.ttf#OpenSans-Bold"
+                        HorizontalTextAlignment="Center"
+                        TextColor="#174668"
+                        Grid.Row="1"
+                        VerticalOptions="Center"
+                        Grid.ColumnSpan="2" />
+                    <entryCustomReturn:CustomReturnEntry
+                        x:Name="RegNameEntryAndroid"
+                        Text="{Binding RegName}"
+                        Placeholder="Nome"
+                        VerticalOptions="FillAndExpand"
+                        ReturnType="Next"
+                        Margin="10,0,10,0"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2" />
+                    <entryCustomReturn:CustomReturnEntry
+                        x:Name="RegSurnameEntryAndroid"
+                        Text="{Binding RegSurname}"
+                        Placeholder="Cognome"
+                        VerticalOptions="FillAndExpand"
+                        ReturnType="Next"
+                        Margin="10,0,10,0"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2" />
+                    <entryCustomReturn:CustomReturnEntry
+                        x:Name="RegEmailEntryAndroid"
+                        Text="{Binding RegEmail}"
+                        Placeholder="Email"
+                        Keyboard="Email"
+                        VerticalOptions="FillAndExpand"
+                        ReturnType="Next"
+                        Margin="10,0,0,0"
+                        Grid.Row="4"
+                        Grid.Column="0" />
+                    <Label
+                        Text="@stud.uniroma3.it"
+                        FontSize="Medium"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill"
+                        HorizontalTextAlignment="Start"
                         VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center" />
+                        Margin="0,0,10,0"
+                        Grid.Row="4"
+                        Grid.Column="1" />
+                    <entryCustomReturn:CustomReturnEntry
+                        x:Name="RegPasswordEntryAndroid"
+                        Text="{Binding RegPassword}"
+                        Placeholder="Password"
+                        IsPassword="true"
+                        VerticalOptions="FillAndExpand"
+                        ReturnType="Next"
+                        Margin="10,0,10,0"
+                        Grid.Row="5"
+                        Grid.ColumnSpan="2" />
+                    <entryCustomReturn:CustomReturnEntry
+                        x:Name="RegPasswordConfirmEntryAndroid"
+                        Text="{Binding RegPasswordConfirm}"
+                        Placeholder="Conferma password"
+                        IsPassword="true"
+                        VerticalOptions="FillAndExpand"
+                        ReturnType="Go"
+                        ReturnCommand="{Binding RegisterCommand}"
+                        Margin="10,0,10,0"
+                        Grid.Row="6"
+                        Grid.ColumnSpan="2" />
                     <Button
-                        Pressed="LoginSwitch_Handle_Pressed_Android"
-                        Released="LoginSwitch_Handle_Released_Android"
-                        Command="{Binding LoginSwitchCommand}"
-                        Text="Passa al login"
-                        FontSize="Small"
-                        TextColor="#45BFEE"
-                        BackgroundColor="Transparent" />
-                </StackLayout>
-                <Frame
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    OutlineColor="#174668"
-                    HasShadow="false"
-                    IsVisible="{Binding IsLoading}"
-                    Grid.RowSpan="9"
-                    Grid.ColumnSpan="2">
-                    <ActivityIndicator
-                        IsRunning="{Binding IsLoading}"
-                        Color="#174668" />
-                </Frame>
-            </Grid>
+                        Command="{Binding RegisterCommand}"
+                        Text="  Registrati  "
+                        TextColor="White"
+                        BackgroundColor="#3A8FDA"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Row="7"
+                        Grid.ColumnSpan="2" />
+                    <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Grid.Row="8"
+                        Grid.ColumnSpan="2">
+                        <StackLayout.Spacing>
+                            <OnPlatform
+                                x:TypeArguments="x:Double">
+                                <On
+                                    Platform="Android"
+                                    Value="-10" />
+                                <On
+                                    Platform="iOS"
+                                    Value="3" />
+                            </OnPlatform>
+                        </StackLayout.Spacing>
+                        <Label
+                            Text="Sei già registrato?"
+                            FontSize="Small"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center" />
+                        <Button
+                            Pressed="LoginSwitch_Handle_Pressed_Android"
+                            Released="LoginSwitch_Handle_Released_Android"
+                            Command="{Binding LoginSwitchCommand}"
+                            Text="Passa al login"
+                            FontSize="Small"
+                            TextColor="#45BFEE"
+                            BackgroundColor="Transparent" />
+                    </StackLayout>
+                    <Frame
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        OutlineColor="#174668"
+                        HasShadow="false"
+                        IsVisible="{Binding IsLoading}"
+                        Grid.RowSpan="9"
+                        Grid.ColumnSpan="2">
+                        <ActivityIndicator
+                            IsRunning="{Binding IsLoading}"
+                            Color="#174668" />
+                    </Frame>
+                </Grid>
+            </ScrollView>
         </OnPlatform.Android>
     </OnPlatform>
 </ContentView>
