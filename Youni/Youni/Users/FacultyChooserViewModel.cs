@@ -63,6 +63,21 @@ namespace Youni
             this.RegPassword = regPassword;
         }
 
+        //costruttore usato per aggiungere classes (dal bottone +)
+        public FacultyChooserViewModel(string usrEmail)
+        {
+            this.RegEmail = usrEmail;
+            this.IsLoading = true;
+            this.DBHandler = new DataBaseHandler();
+
+            this.FacultyChoosedCommand = new Command(async () =>
+            {
+                await this.Navigation.PushAsync(new ClassChooserPage(new ClassChooserViewModel(this.RegEmail, this.TappedFaculty)));
+                this.Faculties.Clear();
+                this.IsLoading = true;
+            });
+        }
+
         public async Task LoadFaculties()
         {
             try

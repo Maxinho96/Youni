@@ -7,6 +7,7 @@ namespace Youni
     {
         public string Name { get; set; }
         public string ShortName { get; set; }
+        public string Faculty { get; set; }
         private string buttonColor;
         public string ButtonColor {
             get
@@ -24,10 +25,11 @@ namespace Youni
         {
         }
 
-        public Class(string name, string shortName) : this()
+        public Class(string name, string shortName, string faculty) : this()
         {
             this.Name = name;
             this.ShortName = shortName;
+            this.Faculty = faculty;
             this.ButtonColor = "#174668";
         }
 

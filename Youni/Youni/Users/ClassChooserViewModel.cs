@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
+using System.Collections.Generic;
 
 namespace Youni
 {
@@ -151,6 +152,93 @@ namespace Youni
             this.RegEmail = regEmail;
             this.RegPassword = regPassword;
             this.TappedFaculty = tappedFaculty;
+        }
+
+        //costruttore usato per aggiungere classes (dal bottone +)
+        public ClassChooserViewModel(string usrEmail, Faculty tappedFaculty)
+        {
+            this.IsLoading = true;
+            this.DBHandler = new DataBaseHandler();
+            this.SelectedClasses = new Collection<Class>();
+            this.RegEmail = usrEmail;
+            this.TappedFaculty = tappedFaculty;
+
+            this.YearTappedCommand = new Command(async (descriptionTapped) =>
+            {
+                this.IsLoading = true;
+                try
+                {
+                    foreach (Year y in this.Years)
+                    {
+                        if (y.Key == (string)descriptionTapped)
+                        {
+
+                            if (y.Count == 0)
+                            {
+                                ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsyncWithoutFavourites(this.TappedFaculty, y,this.RegEmail);
+                                
+                                foreach (Class c in classes)
+                                {
+                                    y.Add(c);
+                                }
+                            }
+                            else
+                            {
+                                foreach (Class c in y)
+                                {
+                                    this.SelectedClasses.Remove(c);
+                                }
+                                y.Clear();
+                            }
+                        }
+
+                    }
+                    this.IsLoading = false;
+                }
+                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
+                {
+                    this.IsLoading = false;
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                    await this.LoadYears();
+                }
+            });
+
+            this.ClassChoosedCommand = new Command(() =>
+            {
+                this.TappedClass.ChangeButtonColor();
+                if (this.SelectedClasses.Contains(this.TappedClass))
+                {
+                    this.SelectedClasses.Remove(this.TappedClass);
+                }
+                else
+                {
+                    this.SelectedClasses.Add(this.TappedClass);
+                }
+            });
+
+            //modificato
+            this.SkipCommand = new Command(async () =>
+            {
+                await this.Navigation.PopToRootAsync();
+                this.IsLoading = false;
+            });
+
+            //modificato
+            this.ConfirmCommand = new Command(async () =>
+            {
+                this.IsLoading = true;
+                try
+                {
+                    await this.DBHandler.InsertFavouritesAsync(this.RegEmail, this.TappedFaculty, this.SelectedClasses);
+                    await this.Navigation.PopToRootAsync();
+                    this.IsLoading = false;
+                }
+                catch (Exception ex) when (ex is System.Net.Sockets.SocketException || ex is Npgsql.NpgsqlException)
+                {
+                    this.IsLoading = false;
+                    await Application.Current.MainPage.DisplayAlert("Errore", "Problema di connessione", "Riprova");
+                }
+            });
         }
 
         public async Task LoadYears()

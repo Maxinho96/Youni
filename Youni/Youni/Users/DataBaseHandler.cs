@@ -159,7 +159,7 @@ namespace Youni
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<ObservableCollection<Class>> GetClassesAsync(Faculty faculty, Year year)
         {
-            string query = "SELECT nome, nome_corto FROM esami WHERE facolta=@faculty AND anno=@year";
+            string query = "SELECT nome, nome_corto, facolta FROM esami WHERE facolta=@faculty AND anno=@year";
             using (var conn = new NpgsqlConnection(this.ConnString))
             {
                 await conn.OpenAsync();
@@ -172,7 +172,7 @@ namespace Youni
                         ObservableCollection<Class> classes = new ObservableCollection<Class>();
                         while (await reader.ReadAsync())
                         {
-                            classes.Add(new Class(reader.GetString(0), reader.GetString(1)));
+                            classes.Add(new Class(reader.GetString(0), reader.GetString(1), reader.GetString(2)));
                         }
                         return classes;
                     }
@@ -232,13 +232,93 @@ namespace Youni
             }
         }
 
+        /// <summary>Inserts a class of a given faculty as favourite for a given user (the favourite mustn't exist already)</summary>
+        /// <param name="email">The user email to insert</param>
+        /// <param name="faculty">The faculty of the class to insert</param>
+        /// <param name="classes">The class to insert</param>
+        /// <exception cref="Npgsql.PostgresException">Thrown if one of the favourites already exists</exception>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task InsertFavouriteAsync(string email, string facultyName, string className)
+        {
+            string commandText = "INSERT INTO preferiti (utente, facolta, esame) VALUES (@email, @faculty, @class)";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+
+                using (var cmd = new NpgsqlCommand(commandText, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@faculty", facultyName);
+                    cmd.Parameters.AddWithValue("@class", className);
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
+
+        /// <summary>Remove a class of a given faculty from the favourites of a user (the favourite must exist already)</summary>
+        /// <param name="email">The user email</param>
+        /// <param name="faculty">The faculty of the class to remove</param>
+        /// <param name="classes">The class to remove</param>
+        /// <exception cref="Npgsql.PostgresException">Thrown if one of the favourites already exists</exception>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task RemoveFavouriteAsync(string email, string facultyName, string className)
+        {
+            string commandText = "DELETE FROM preferiti WHERE utente=@email AND facolta=@faculty AND esame=@class";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+
+                using (var cmd = new NpgsqlCommand(commandText, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@faculty", facultyName);
+                    cmd.Parameters.AddWithValue("@class", className);
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+        }
+
+
+        /// <summary>Used to get all the classes of a given faculty in a given year that aren't already into favourites</summary>
+        /// <returns>An ObservableCollection of Classes, taken from the DataBase</returns>
+        /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
+        /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
+        public async Task<ObservableCollection<Class>> GetClassesAsyncWithoutFavourites(Faculty faculty, Year year, string email)
+        {            
+            string query = "SELECT nome, nome_corto, facolta FROM esami WHERE facolta=@faculty AND anno=@year EXCEPT " +
+                            "SELECT esame, nome_corto, preferiti.facolta FROM preferiti, esami WHERE utente=@email AND preferiti.esame=esami.nome AND preferiti.facolta=esami.facolta";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@email", email);
+                    cmd.Parameters.AddWithValue("@faculty", faculty.Name);
+                    cmd.Parameters.AddWithValue("@year", year.Code);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        ObservableCollection<Class> classes = new ObservableCollection<Class>();
+                        while (await reader.ReadAsync())
+                        {
+                            classes.Add(new Class(reader.GetString(0), reader.GetString(1), reader.GetString(2)));
+                        }
+                        return classes;
+                    }
+                }
+            }
+        }
+
+
         /// <summary>Used to get the favourites classes associated to a given email</summary>
         /// <returns>An ObservableCollection of classes, taken from the DataBase</returns>
         /// <exception cref="Npgsql.NpgsqlException">Thrown if unable to connect to database</exception>
         /// <exception cref="System.Net.Sockets.SocketException">Thrown if unable to connect to database</exception>
         public async Task<ObservableCollection<Class>> RetrieveFavouritesAsync(string email)
         {
-            string query = "SELECT esame, nome_corto FROM preferiti, esami WHERE utente=@email AND preferiti.esame=esami.nome";
+            string query = "SELECT esame, nome_corto, preferiti.facolta FROM preferiti, esami WHERE utente=@email AND preferiti.esame=esami.nome AND preferiti.facolta=esami.facolta";
             using (var conn = new NpgsqlConnection(this.ConnString))
             {
                 await conn.OpenAsync();
@@ -250,7 +330,7 @@ namespace Youni
                         ObservableCollection<Class> classes = new ObservableCollection<Class>();
                         while(await reader.ReadAsync())
                         {
-                            classes.Add(new Class(reader.GetString(0), reader.GetString(1)));
+                            classes.Add(new Class(reader.GetString(0), reader.GetString(1),reader.GetString(2)));
                         }
                         return classes;
                     }

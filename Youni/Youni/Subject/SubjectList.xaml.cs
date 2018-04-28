@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
 namespace Youni
 {
-	public partial class SubjectList : ContentPage
+    public partial class SubjectList : ContentPage
 	{
 		public SubjectList()
 		{
 			InitializeComponent();
+
+            SubjectListViewModel subjectListViewModel = new SubjectListViewModel();
+            subjectListViewModel.Navigation = this.Navigation;
+            this.BindingContext = subjectListViewModel;
 		}
         public async Task ForceAppearing()
         {
