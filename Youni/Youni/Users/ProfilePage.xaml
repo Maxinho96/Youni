@@ -231,6 +231,7 @@
                     Grid.Column="0" />
                 <Label
                     Text="@stud.uniroma3.it"
+                    FontSize="Medium"
                     HorizontalOptions="Fill"
                     VerticalOptions="Fill"
                     HorizontalTextAlignment="Start"

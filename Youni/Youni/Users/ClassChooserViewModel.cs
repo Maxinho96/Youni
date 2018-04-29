@@ -63,21 +63,23 @@ namespace Youni
                     {
                         if (y.Key == (string)descriptionTapped)
                         {
-
                             if (y.Count == 0)
                             {
                                 ObservableCollection<Class> classes = await this.DBHandler.GetClassesAsync(this.TappedFaculty, y);
                                 foreach (Class c in classes)
                                 {
+                                    foreach (Class cs in this.SelectedClasses)
+                                    {
+                                        if (c.Name == cs.Name)
+                                        {
+                                            c.ChangeButtonColor();
+                                        }
+                                    }
                                     y.Add(c);
                                 }
                             }
                             else
                             {
-                                foreach (Class c in y)
-                                {
-                                    this.SelectedClasses.Remove(c);
-                                }
                                 y.Clear();
                             }
                         }

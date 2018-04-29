@@ -4504,6 +4504,10 @@ namespace Youni.Droid
 			global::EntryCustomReturn.Forms.Plugin.Android.Resource.Styleable.ViewStubCompat_android_id = global::Youni.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::EntryCustomReturn.Forms.Plugin.Android.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Youni.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::EntryCustomReturn.Forms.Plugin.Android.Resource.Styleable.ViewStubCompat_android_layout = global::Youni.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::PCLCrypto.Resource.String.ApplicationName = global::Youni.Droid.Resource.String.ApplicationName;
+			global::PCLCrypto.Resource.String.Hello = global::Youni.Droid.Resource.String.Hello;
+			global::PCLStorage.Resource.String.ApplicationName = global::Youni.Droid.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::Youni.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Youni.Droid.Resource.Attribute.actionBarSize;
 		}
 		
