@@ -7,7 +7,10 @@
   </style>
   
 	<style name="MyTheme" parent="MyTheme.Base">
+    <item name="android:colorActivatedHighlight">@color/ListViewSelected</item>
 	</style>
+  <color name="ListViewSelected">#FFFFFF</color>
+  
 	<!-- Base theme applied no matter what API -->
 	<style name="MyTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
 		<!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
