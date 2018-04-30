@@ -24,6 +24,5 @@ namespace Youni
             base.OnAppearing();
             await ((SubjectListViewModel)this.BindingContext).GetClasses();
         }
-
     }
 }

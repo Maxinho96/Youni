@@ -18,7 +18,7 @@
         </Grid.ColumnDefinitions>-->
         <Label Grid.Row="0" Text="{Binding SubjectName}" TextColor="White" FontSize="30" Margin="20,20,20,5" VerticalOptions="Fill" HorizontalOptions="Fill" HorizontalTextAlignment="Start"
             VerticalTextAlignment="Center" />
-        <SearchBar Grid.Row="1" CancelButtonColor="White" BackgroundColor="#3a8fda" Margin="20,0,20,0" Placeholder="Ricerca" PlaceholderColor="#45565c" SearchCommand="{Binding SearchCommand}" />
+        <SearchBar Grid.Row="1" CancelButtonColor="White" BackgroundColor="#3a8fda" Margin="20,0,20,0" Placeholder="Ricerca" PlaceholderColor="#45565c" TextChanged="SearchBar_TextChanged"/>
         <!--<Frame Grid.Row="1" Grid.Column="1" Padding="0" Margin="20" BackgroundColor="Transparent" OutlineColor="#174668" HasShadow="true" HeightRequest="60" WidthRequest="60" CornerRadius="30">
             <Image Source="group.png" Margin="15" />
         </Frame>-->
@@ -41,7 +41,7 @@
                 </Frame>
             </Grid>
         </Grid>-->
-        <ListView BackgroundColor="White" Grid.Row="2" ItemsSource="{Binding DocumentsList}" HasUnevenRows="true" x:Name="DocumentsList">
+        <ListView BackgroundColor="White" Grid.Row="2" ItemsSource="{Binding SearchedDocumentsList}" HasUnevenRows="true" x:Name="DocumentsList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

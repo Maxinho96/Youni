@@ -8,7 +8,6 @@ namespace Youni
     public class Document : BindableObject
     {
         public string DocumentTitle { get; set; }
-        //public Image DocumentImage { get; set; } per il momento uso l'icona del pdf invece del thumbnail del documento
         public int DocumentUpvote { get; set; }
 
         public Document()
