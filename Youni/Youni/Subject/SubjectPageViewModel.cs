@@ -263,7 +263,7 @@ namespace Youni
             }
         }
         
-        public async Task Search_Async(object sender, TextChangedEventArgs e)
+        public void Search_Async(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrEmpty(e.NewTextValue))
             {
