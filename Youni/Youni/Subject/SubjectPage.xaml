@@ -1,79 +1,80 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Youni.SubjectPage"
-             BackgroundColor="White">
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Youni.SubjectPage" BackgroundColor="White">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Name="Notify" Icon="{Binding Notification_icon}" Command="{Binding NotifyTapped}"></ToolbarItem>
-        <ToolbarItem Name="Favourites" Icon="{Binding Favourites_icon}" Command="{Binding FavouritesTapped}"></ToolbarItem>
+        <ToolbarItem Name="Notify" Icon="{Binding Notification_icon}" Command="{Binding NotifyTapped}">
+        </ToolbarItem>
+        <ToolbarItem Name="Favourites" Icon="{Binding Favourites_icon}" Command="{Binding FavouritesTapped}">
+        </ToolbarItem>
     </ContentPage.ToolbarItems>
-    
-    <Grid>
+    <Grid BackgroundColor="#3a8fda" RowSpacing="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="38*"/>
-            <RowDefinition Height="62*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-
-        <Grid Grid.Row="0" BackgroundColor="#3a8fda">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="100" />
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.ColumnSpan="2" Text="{Binding SubjectName}" TextColor="White" FontSize="30" FontAttributes="Bold" Margin="20,20,20,5" VerticalOptions="Fill" HorizontalOptions="Fill" HorizontalTextAlignment="Start"
+            VerticalTextAlignment="Center" />
+        <SearchBar Grid.Row="1" Grid.Column="0" BackgroundColor="#3a8fda" Placeholder="Ricerca" PlaceholderColor="#45565c" SearchCommand="{Binding SearchCommand}" />
+        <Frame Grid.Row="1" Grid.Column="1" Padding="0" Margin="20" BackgroundColor="Transparent" OutlineColor="#174668" HasShadow="true" HeightRequest="60" WidthRequest="60" CornerRadius="30">
+            <Image Source="group.png" Margin="15" />
+        </Frame>
+        <BoxView Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#3a8fda" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="Fill" />
+        <BoxView Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#3a8fda" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Fill" />
+        <!--<Grid Grid.Row="0" BackgroundColor="#3a8fda">
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="105" />
             </Grid.RowDefinitions>
-            
-            <Label Grid.Row="0" Text="{Binding SubjectName}" TextColor="White" FontSize="30" FontAttributes="Bold" Margin="20,20,20,5" VerticalOptions="CenterAndExpand"/>
-            
+            <Label Grid.Row="0" Text="{Binding SubjectName}" TextColor="White" FontSize="30" FontAttributes="Bold" Margin="20,20,20,5" VerticalOptions="CenterAndExpand" />
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="70*" />
-                    <ColumnDefinition Width="30*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="112" />
                 </Grid.ColumnDefinitions>
-                <SearchBar BackgroundColor="#3a8fda" Grid.Column="0" Placeholder="ricerca" PlaceholderColor="#45565c" SearchCommand="{Binding SearchCommand}"/>
-                <Frame Grid.Column="1" Padding="15" Margin="27,20,27,20" BackgroundColor="Transparent" OutlineColor="#174668" HasShadow="true" CornerRadius="35">
-                    <Image Source="group.png"/>
+                <SearchBar Grid.Column="0" BackgroundColor="#3a8fda" Placeholder="Ricerca" PlaceholderColor="#45565c" SearchCommand="{Binding SearchCommand}" />
+                <Frame Grid.Column="1" Padding="15" Margin="27,20,27,20" BackgroundColor="Transparent" OutlineColor="#174668" HasShadow="true" HeightRequest="70" WidthRequest="70" CornerRadius="35">
+                    <Image Source="group.png" />
                 </Frame>
             </Grid>
-
-        </Grid>
-
-        <ListView Grid.Row="1" ItemsSource="{Binding DocumentsList}" HasUnevenRows="True" x:Name="DocumentsList">
+        </Grid>-->
+        <ListView BackgroundColor="White" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding DocumentsList}" HasUnevenRows="True" x:Name="DocumentsList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="15*"/>
-                                <ColumnDefinition Width="75*"/>
-                                <ColumnDefinition Width="10*"/>
+                                <ColumnDefinition Width="15*" />
+                                <ColumnDefinition Width="75*" />
+                                <ColumnDefinition Width="10*" />
                             </Grid.ColumnDefinitions>
-
-                            <Image Grid.Column="0" Source="pdf.png" Margin="8"/>
-
+                            <Image Grid.Column="0" Source="pdf.png" Margin="8" />
                             <Grid Grid.Column="1">
                                 <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer CommandParameter="{Binding DocumentTitle}" Command="{Binding Path=BindingContext.DocumentTapped, Source={x:Reference Name=DocumentsList}}"/>
+                                    <TapGestureRecognizer CommandParameter="{Binding DocumentTitle}" Command="{Binding Path=BindingContext.DocumentTapped, Source={x:Reference Name=DocumentsList}}" />
                                 </Grid.GestureRecognizers>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <Label Grid.Row="0" Text="{Binding DocumentTitle}" FontSize="21" VerticalOptions="CenterAndExpand" TextColor="#45565c" Margin="0,15,0,0"/>
+                                <Label Grid.Row="0" Text="{Binding DocumentTitle}" FontSize="21" VerticalOptions="CenterAndExpand" TextColor="#45565c" Margin="0,15,0,0" />
                                 <Grid Grid.Row="1">
                                     <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="Auto"/>
-                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
                                     </Grid.ColumnDefinitions>
-                                    <Image Grid.Column="0" Source="hat.png" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
-                                    <Label Grid.Column="1" Text="{Binding DocumentUpvote}"/>
+                                    <Image Grid.Column="0" Source="hat.png" VerticalOptions="Center" HorizontalOptions="CenterAndExpand" />
+                                    <Label Grid.Column="1" Text="{Binding DocumentUpvote}" />
                                 </Grid>
                             </Grid>
-
-                            <Image Grid.Column="2" Source="info.png" Margin="5"/>
-
+                            <Image Grid.Column="2" Source="info.png" Margin="5" />
                         </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        
     </Grid>
 </ContentPage>
