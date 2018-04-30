@@ -31,5 +31,10 @@ namespace Youni
             base.OnAppearing();
             await ((SubjectPageViewModel)this.BindingContext).GetResources();
         }
+
+        public async void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            await ((SubjectPageViewModel)this.BindingContext).Search_Async(sender, e);
+        }
     }
 }

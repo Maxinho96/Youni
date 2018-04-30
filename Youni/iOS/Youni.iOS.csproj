@@ -292,17 +292,23 @@
     <ImageAsset Include="Assets.xcassets\plus.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\sof_eng_wallpaper.imageset\sof_eng_wallpaper.jpeg">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\LaunchImage-1.launchimage\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\1 - landingPage %282%29.png" />
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\1 - landingPage (2).png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\SplashScreen.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Subject\" />
-    <Folder Include="Assets.xcassets\SplashScreen.launchimage\" />
     <Folder Include="Assets.xcassets\SplashScreen.imageset\" />
+    <Folder Include="Assets.xcassets\SplashScreen.launchimage\" />
+    <Folder Include="Subject\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />

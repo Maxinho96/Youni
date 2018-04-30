@@ -6,6 +6,8 @@ using Xamarin.Forms;
 using Amazon.S3;
 using Amazon.S3.Model;
 using System.IO;
+using System.Collections;
+using System.Collections.Generic;
 #if __ANDROID__
 using Android.Content;
 using Android.Widget;
@@ -24,7 +26,6 @@ namespace Youni
 
         public Command NotifyTapped { get; set; }
         public Command FavouritesTapped { get; set; }
-        public Command SearchCommand { get; set; }
         public Command DocumentTapped { get; set; }
         public string SubjectName { get; set; }
         public string FacultyName { get; set; }
@@ -41,6 +42,22 @@ namespace Youni
                 OnPropertyChanged("DocumentsList");
             }
         }
+
+        private ObservableCollection<Document> searchedDocumentsList;
+        public ObservableCollection<Document> SearchedDocumentsList
+        {
+            get
+            {
+                return this.searchedDocumentsList;
+            }
+            set
+            {
+                this.searchedDocumentsList = value;
+                OnPropertyChanged("SearchedDocumentsList");
+            }
+        }
+
+        public bool isDocumentTappedEnabled = true;
 
         private string notification_icon;
         public string Notification_icon
@@ -78,6 +95,7 @@ namespace Youni
             this.SubjectName = tappedClass.Name;
             this.FacultyName = tappedClass.Faculty;
             this.DocumentsList = new ObservableCollection<Document>();
+            this.SearchedDocumentsList = new ObservableCollection<Document>();
             this.DBHandler = new DataBaseHandler();
             
             this.Notification_icon = "notification_off";
@@ -104,13 +122,14 @@ namespace Youni
                     await this.DBHandler.RemoveFavouriteAsync((string)Application.Current.Properties["UserEmail"] + "@stud.uniroma3.it", this.FacultyName, this.SubjectName);
                 }
             });
-            this.SearchCommand = new Command(async () =>
-            {
-                await Application.Current.MainPage.DisplayAlert("titolo", "RICERCA", "cancel");
-            });
             this.DocumentTapped = new Command(async (docTitle) =>
             {
-                await this.GetDocument((string)docTitle);
+                if (this.isDocumentTappedEnabled)
+                {
+                    this.isDocumentTappedEnabled = false;
+                    await this.GetDocument((string)docTitle);
+                    
+                }
             });
         }
 
@@ -127,33 +146,19 @@ namespace Youni
 
             using (GetObjectResponse response = await client.GetObjectAsync(request))
             {
-                //switch (Device.RuntimePlatform)
-                //{
-                //case Device.iOS:
 #if __IOS__
                 filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Youni", documentTitle);
-                //filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Personal", documentTitle);
 #elif __ANDROID__
-                //break;
-                //case Device.Android:
                 filePath = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "Youni", documentTitle);
-                //break;
-                //default:
 #else
                 filePath = "piattaforma non supportata";
 #endif
-                //break;
-                //}
-
-                //scrivo su file
                 await response.WriteResponseStreamToFileAsync(filePath, false);
+                this.isDocumentTappedEnabled = true;
             }
 
             try
             {
-                //switch (Device.RuntimePlatform)
-                //{
-                //case Device.iOS:
 #if __IOS__
 
                 var PreviewController = UIDocumentInteractionController.FromUrl(NSUrl.FromFilename(filePath));
@@ -162,10 +167,6 @@ namespace Youni
                 {
                     PreviewController.PresentPreview(true);
                 });
-
-                //break;
-
-                //case Device.Android:
 #elif __ANDROID__
 
                 var bytes = File.ReadAllBytes(filePath);
@@ -213,12 +214,7 @@ namespace Youni
                 {
                     Toast.MakeText(Forms.Context, "No Application Available to View PDF", ToastLength.Short).Show();
                 }
-                //break;
-
 #endif
-                //default:
-                //break;
-                //}
             }
             catch (Exception ex)
             {
@@ -249,6 +245,8 @@ namespace Youni
                     request.ContinuationToken = response.NextContinuationToken;
                 } while (response.IsTruncated == true);
 
+                this.SearchedDocumentsList = this.DocumentsList;
+
             }
             catch (AmazonS3Exception amazonS3Exception)
             {
@@ -261,6 +259,25 @@ namespace Youni
                 else
                 {
                     Console.WriteLine("Error occurred. Message:'{0}' when listing objects", amazonS3Exception.Message);
+                }
+            }
+        }
+        
+        public async Task Search_Async(object sender, TextChangedEventArgs e)
+        {
+            if (string.IsNullOrEmpty(e.NewTextValue))
+            {
+                this.SearchedDocumentsList = this.DocumentsList;
+            }
+
+            else
+            {
+                this.SearchedDocumentsList = new ObservableCollection<Document>();
+                string searchedText = e.NewTextValue.ToLower();
+                foreach(Document d in this.DocumentsList)
+                {
+                    if (d.DocumentTitle.ToLower().Contains(searchedText))
+                        this.SearchedDocumentsList.Add(d);                  
                 }
             }
         }
