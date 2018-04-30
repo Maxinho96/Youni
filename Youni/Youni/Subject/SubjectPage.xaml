@@ -27,7 +27,7 @@
                     <ColumnDefinition Width="70*" />
                     <ColumnDefinition Width="30*" />
                 </Grid.ColumnDefinitions>
-                <SearchBar Grid.Column="0" Placeholder="ricerca" PlaceholderColor="#45565c" SearchCommand="{Binding SearchCommand}"/>
+                <SearchBar BackgroundColor="#3a8fda" Grid.Column="0" Placeholder="ricerca" PlaceholderColor="#45565c" SearchCommand="{Binding SearchCommand}"/>
                 <Frame Grid.Column="1" Padding="15" Margin="27,20,27,20" BackgroundColor="Transparent" OutlineColor="#174668" HasShadow="true" CornerRadius="35">
                     <Image Source="group.png"/>
                 </Frame>

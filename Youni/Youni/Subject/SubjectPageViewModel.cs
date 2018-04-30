@@ -131,7 +131,8 @@ namespace Youni
                 //{
                 //case Device.iOS:
 #if __IOS__
-                filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Personal", documentTitle);
+                filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Youni", documentTitle);
+                //filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "..", "Personal", documentTitle);
 #elif __ANDROID__
                 //break;
                 //case Device.Android:
