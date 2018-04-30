@@ -14,7 +14,14 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Text="{Binding SubjectName}" TextColor="White" FontSize="30" Margin="20,20,20,5" VerticalOptions="Fill" HorizontalOptions="Fill" HorizontalTextAlignment="Start"
             VerticalTextAlignment="Center" />
-        <SearchBar Grid.Row="1" CancelButtonColor="White" BackgroundColor="#3a8fda" Margin="20,0,20,0" Placeholder="Ricerca" PlaceholderColor="#45565c" TextChanged="SearchBar_TextChanged"/>
+        <SearchBar Grid.Row="1" CancelButtonColor="White" BackgroundColor="#3a8fda" Placeholder="Ricerca" PlaceholderColor="#45565c" TextChanged="SearchBar_TextChanged">
+            <SearchBar.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="Android" Value="0" />
+                    <On Platform="iOS" Value="20,0,20,0" />
+                </OnPlatform>
+            </SearchBar.Margin>
+        </SearchBar>
         <BoxView Grid.Row="1" BackgroundColor="#3a8fda" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="Fill" />
         <BoxView Grid.Row="1" BackgroundColor="#3a8fda" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Fill" />
         <ListView BackgroundColor="White" Grid.Row="2" ItemsSource="{Binding SearchedDocumentsList}" HasUnevenRows="true" x:Name="DocumentsList">
