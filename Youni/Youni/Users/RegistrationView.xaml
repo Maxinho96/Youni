@@ -168,7 +168,7 @@
         </OnPlatform.iOS>
         <OnPlatform.Android>
             <ScrollView
-                Padding="0, 0, 0, 100">
+                Padding="0, 0, 0, 200">
                 <Grid>
                     <Grid.RowDefinitions>
                         <!--                        <RowDefinition
