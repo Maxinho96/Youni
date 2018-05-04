@@ -6,6 +6,7 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="90" />
+                <!--RowDefinition Height="100" /-->
             </Grid.RowDefinitions>
             <ContentView Grid.Row="0" Margin="0,30,0,10">
                 <Label Text="I tuoi corsi" FontSize="22" HorizontalTextAlignment="Center" TextColor="#174668">
@@ -46,7 +47,9 @@
                 </Frame.GestureRecognizers>
                 <Image Source="plus.png" Margin="10" />
             </Frame>
-            <ActivityIndicator Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="#174668" />
+
+            <!--Button Grid.Row="3" Command="{Binding caricaRobba}">carica la robba</-->
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

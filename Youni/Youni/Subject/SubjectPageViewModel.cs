@@ -20,11 +20,39 @@ namespace Youni
 {
     public class SubjectPageViewModel : BindableObject
     {
+        private bool isLoading;
+        public bool IsLoading
+        {
+            get
+            {
+                return this.isLoading;
+            }
+            set
+            {
+                this.isLoading = value;
+                OnPropertyChanged("IsLoading");
+            }
+        }
+        private bool isRefreshing;
+        public bool IsRefreshing
+        {
+            get
+            {
+                return this.isRefreshing;
+            }
+            set
+            {
+                this.isRefreshing = value;
+                OnPropertyChanged("IsRefreshing");
+            }
+        }
+
         public INavigation Navigation;
 
         public DataBaseHandler DBHandler;
 
         public Command NotifyTapped { get; set; }
+        public Command RefreshListCommand { get; set; }
         public Command FavouritesTapped { get; set; }
         public Command DocumentTapped { get; set; }
         public string SubjectName { get; set; }
@@ -92,6 +120,7 @@ namespace Youni
 
         public SubjectPageViewModel(Class tappedClass)
         {
+            this.IsLoading = true;
             this.SubjectName = tappedClass.Name;
             this.FacultyName = tappedClass.Faculty;
             this.DocumentsList = new ObservableCollection<Document>();
@@ -111,6 +140,7 @@ namespace Youni
             });
             this.FavouritesTapped = new Command(async () =>
             {
+                this.IsLoading = true;
                 if (this.Favourites_icon.Equals("favourites_off"))
                 {
                     this.Favourites_icon = "favourites_on";
@@ -121,6 +151,7 @@ namespace Youni
                     this.Favourites_icon = "favourites_off";
                     await this.DBHandler.RemoveFavouriteAsync((string)Application.Current.Properties["UserEmail"] + "@stud.uniroma3.it", this.FacultyName, this.SubjectName);
                 }
+                this.IsLoading = false;
             });
             this.DocumentTapped = new Command(async (docTitle) =>
             {
@@ -128,14 +159,24 @@ namespace Youni
                 {
                     this.isDocumentTappedEnabled = false;
                     await this.GetDocument((string)docTitle);
-                    
+                    await this.DBHandler.AddOneView((string)docTitle);
+                    await this.GetResources();
                 }
             });
+
+            this.RefreshListCommand = new Command(async () =>
+            {
+                this.IsRefreshing = true;
+                await this.GetResources();
+                this.IsRefreshing = false;
+            });
+
+            this.IsLoading = false;
         }
 
         public async Task GetDocument(string documentTitle)
         {
-
+            this.IsLoading = true;
             GetObjectRequest request = new GetObjectRequest
             {
                 BucketName = this.SubjectName.ToLower().Replace(' ', '.').Replace('\'', '.'),
@@ -220,15 +261,18 @@ namespace Youni
             {
                 Console.WriteLine(ex.Message);
             }
+            this.IsLoading = false;
         }
 
         public async Task GetResources()
         {
+            this.IsLoading = true;
+            /*string bucketName = this.SubjectName.ToLower().Replace(' ', '.').Replace('\'', '.');
             try
             {
                 ListObjectsV2Request request = new ListObjectsV2Request
                 {
-                    BucketName = this.SubjectName.ToLower().Replace(' ', '.').Replace('\'','.')
+                    BucketName = bucketName
                 };
 
                 ListObjectsV2Response response;
@@ -236,10 +280,19 @@ namespace Youni
                 {
                     response = await client.ListObjectsV2Async(request);
 
+                    Dictionary<string, int> documentsDictionary =  await this.DBHandler.GetAllDocumentsOfSubjectAsync(bucketName);
+
                     // Process response.
                     foreach (S3Object entry in response.S3Objects)
                     {
-                        this.DocumentsList.Add(new Document(entry.Key, new Random().Next(0, 299))); //sostituire il numero random con un valore nel db
+                        //int docViews = 0;
+
+                        //if (documentsDictionary.ContainsKey(entry.Key))
+                        int docViews = documentsDictionary[entry.Key];
+
+                        this.DocumentsList.Add(new Document(entry.Key, docViews));
+
+
                     }
 
                     request.ContinuationToken = response.NextContinuationToken;
@@ -260,7 +313,15 @@ namespace Youni
                 {
                     Console.WriteLine("Error occurred. Message:'{0}' when listing objects", amazonS3Exception.Message);
                 }
-            }
+            }*/
+
+            string bucketName = this.SubjectName.ToLower().Replace(' ', '.').Replace('\'', '.');
+            ObservableCollection<Document> documents= await this.DBHandler.GetAllDocumentsOfSubjectAsync(bucketName);
+
+            this.DocumentsList = documents;
+            this.SearchedDocumentsList = this.DocumentsList;
+
+            this.IsLoading = false;
         }
         
         public void Search_Async(object sender, TextChangedEventArgs e)
@@ -281,5 +342,17 @@ namespace Youni
                 }
             }
         }
+
+        /*public async Task UpdateViews()
+        {
+            await Application.Current.MainPage.DisplayAlert(" ", " ", " okkk");
+            string bucketName = this.SubjectName.ToLower().Replace(' ', '.').Replace('\'', '.');
+            Dictionary<string, int> views = await this.DBHandler.GetUpdatedViews(bucketName);
+            foreach(Document doc in this.DocumentsList)
+            {
+                if (views.ContainsKey(doc.DocumentTitle))
+                    doc.TotViews = views[doc.DocumentTitle];
+            }
+        }*/
     }
 }

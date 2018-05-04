@@ -8,16 +8,29 @@ namespace Youni
     public class Document : BindableObject
     {
         public string DocumentTitle { get; set; }
-        public int DocumentUpvote { get; set; }
+
+        private int totViews;
+        public int TotViews
+        {
+            get
+            {
+                return this.totViews;
+            }
+            set
+            {
+                this.totViews = value;
+                OnPropertyChanged("TotViews");
+            }
+        }
 
         public Document()
         {
         }
 
-        public Document(string documentTitle, int documentUpvote) : this()
+        public Document(string documentTitle, int totViews) : this()
         {
             this.DocumentTitle = documentTitle;
-            this.DocumentUpvote = documentUpvote; 
+            this.TotViews = totViews; 
         }
     }
 }
