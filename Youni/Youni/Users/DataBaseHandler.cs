@@ -12,7 +12,7 @@ namespace Youni
 
         public DataBaseHandler()
         {
-            this.ConnString = "Host=younidb.cw9vlhucwihr.eu-central-1.rds.amazonaws.com;Port=5432;Username=younidbmaster;Password=Y982fZhd9B8r;Database=younidb";
+            this.ConnString = "Host=younidb.cw9vlhucwihr.eu-central-1.rds.amazonaws.com;Port=5432;Username=younidbmaster;Password=PU99LA86Qa3A;Database=younidb";
         }
 
         /// <summary>Checks if credentials are correct</summary>

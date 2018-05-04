@@ -46,6 +46,7 @@
                 </Frame.GestureRecognizers>
                 <Image Source="plus.png" Margin="10" />
             </Frame>
+            <ActivityIndicator Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="#174668" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
