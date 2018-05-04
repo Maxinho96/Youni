@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
 using Npgsql;
+using System.Collections.Generic;
 
 namespace Youni
 {
@@ -12,7 +13,7 @@ namespace Youni
 
         public DataBaseHandler()
         {
-            this.ConnString = "Host=younidb.cw9vlhucwihr.eu-central-1.rds.amazonaws.com;Port=5432;Username=younidbmaster;Password=Y982fZhd9B8r;Database=younidb";
+            this.ConnString = "Host=younidb.cw9vlhucwihr.eu-central-1.rds.amazonaws.com;Port=5432;Username=younidbmaster;Password=PU99LA86Qa3A;Database=younidb";
         }
 
         /// <summary>Checks if credentials are correct</summary>
@@ -179,6 +180,51 @@ namespace Youni
                 }
             }
         }
+
+
+        public async Task<ObservableCollection<Document>> GetAllDocumentsOfSubjectAsync(String bucketName)
+        {
+            string query = "SELECT nome_file, visite FROM documenti WHERE nome_bucket=@bucketName ORDER BY nome_file";
+            
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@bucketName", bucketName);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        ObservableCollection <Document> docs = new ObservableCollection<Document>();
+                        while (await reader.ReadAsync())
+                        {
+                            docs.Add(new Document(reader.GetString(0), reader.GetInt32(1)));
+                        }
+                        return docs;
+                    }
+                }
+            }
+        }
+
+        //temp
+        /*public async Task caricaRobba(String nome_file, String nome_bucket, String esame)
+        {
+            string query = "INSERT INTO documenti (nome_file, nome_bucket, visite, esame, facolta) VALUES (@nome_file, @nome_bucket, @visite, @esame, @facolta)";
+
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nome_file", nome_file);
+                    cmd.Parameters.AddWithValue("@nome_bucket", nome_bucket);
+                    cmd.Parameters.AddWithValue("@esame", esame);
+                    cmd.Parameters.AddWithValue("@visite", (int)(new Random().Next(0, 15)));
+                    cmd.Parameters.AddWithValue("@facolta", "Ingegneria Informatica");
+                    await cmd.ExecuteNonQueryAsync();
+                }
+            }
+        }*/
+
 
         /// <summary>Used to get all the years of a given faculty</summary>
         /// <returns>An ObservableCollection of years, taken from the DataBase</returns>
@@ -370,6 +416,44 @@ namespace Youni
                 {
                     cmd.Parameters.AddWithValue("@email", email);
                     return ((string)await cmd.ExecuteScalarAsync());
+                }
+            }
+        }
+
+
+        /*public async Task<Dictionary<string,int>> GetUpdatedViews(string bucketName)
+        {
+            string query = "SELECT nome_file, visite FROM documenti WHERE nome_bucket=@bucketName";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@bucketName", bucketName);
+                    using (var reader = await cmd.ExecuteReaderAsync())
+                    {
+                        Dictionary<string, int> views = new Dictionary<string, int>();
+
+                        while (await reader.ReadAsync())
+                        {
+                            views.Add(reader.GetString(0), reader.GetInt32(1));
+                        }
+                        return views;
+                    }
+                }
+            }
+        }*/
+
+        public async Task AddOneView(string nome_file)
+        {
+            string query = "UPDATE documenti SET visite=visite + 1 WHERE nome_file=@nome_file";
+            using (var conn = new NpgsqlConnection(this.ConnString))
+            {
+                await conn.OpenAsync();
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@nome_file", nome_file);
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }

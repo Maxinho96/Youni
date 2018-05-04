@@ -29,7 +29,8 @@ namespace Youni
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            await ((SubjectPageViewModel)this.BindingContext).GetResources();
+            if(((SubjectPageViewModel)this.BindingContext).DocumentsList.Count() == 0)
+                await ((SubjectPageViewModel)this.BindingContext).GetResources();
         }
 
         public void SearchBar_TextChanged(object sender, TextChangedEventArgs e)

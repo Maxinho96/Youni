@@ -17,7 +17,7 @@
         <SearchBar Grid.Row="1" CancelButtonColor="White" BackgroundColor="#3a8fda" Margin="20,0,20,0" Placeholder="Ricerca" PlaceholderColor="#45565c" TextChanged="SearchBar_TextChanged"/>
         <BoxView Grid.Row="1" BackgroundColor="#3a8fda" HeightRequest="1" VerticalOptions="Start" HorizontalOptions="Fill" />
         <BoxView Grid.Row="1" BackgroundColor="#3a8fda" HeightRequest="1" VerticalOptions="End" HorizontalOptions="Fill" />
-        <ListView BackgroundColor="White" Grid.Row="2" ItemsSource="{Binding SearchedDocumentsList}" HasUnevenRows="true" x:Name="DocumentsList">
+        <ListView IsPullToRefreshEnabled="True" RefreshCommand="{Binding RefreshListCommand}" IsRefreshing="{Binding IsRefreshing}" BackgroundColor="White" Grid.Row="2" ItemsSource="{Binding SearchedDocumentsList}" HasUnevenRows="true" x:Name="DocumentsList">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -35,7 +35,7 @@
                             <Label Grid.Row="0" Grid.Column="1" Text="{Binding DocumentTitle}" FontSize="21" TextColor="#45565c" Margin="0,15,0,0" />
                             <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" VerticalOptions="End" Orientation="Horizontal">
                                 <Image Source="hat.png" HorizontalOptions="Start" />
-                                <Label Text="{Binding DocumentUpvote}" HorizontalOptions="Start" />
+                                <Label Text="{Binding TotViews}" HorizontalOptions="Start" />
                             </StackLayout>
                             <Image Grid.RowSpan="2" Grid.Column="2" Source="info.png" Margin="5" VerticalOptions="Center" />
                             <ContentView Grid.RowSpan="2" Grid.ColumnSpan="2">
