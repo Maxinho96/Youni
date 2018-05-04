@@ -49,7 +49,9 @@
             </Frame>
 
             <!--Button Grid.Row="3" Command="{Binding caricaRobba}">carica la robba</-->
-            <ActivityIndicator Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsLoading}" IsRunning="{Binding IsLoading}" Color="#174668" />
+            <Frame Grid.RowSpan="3" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding IsLoading}" OutlineColor="#174668" HasShadow="false">
+                <ActivityIndicator IsRunning="{Binding IsLoading}" Color="#174668" />
+            </Frame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

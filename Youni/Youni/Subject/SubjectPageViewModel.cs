@@ -170,8 +170,6 @@ namespace Youni
                 await this.GetResources();
                 this.IsRefreshing = false;
             });
-
-            this.IsLoading = false;
         }
 
         public async Task GetDocument(string documentTitle)
@@ -266,7 +264,8 @@ namespace Youni
 
         public async Task GetResources()
         {
-            this.IsLoading = true;
+            if(!this.IsRefreshing)
+                this.IsLoading = true;
             /*string bucketName = this.SubjectName.ToLower().Replace(' ', '.').Replace('\'', '.');
             try
             {
