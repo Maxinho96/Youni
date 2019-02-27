@@ -13,3 +13,5 @@ Technologies involved:
 - Cloud storage AWS S3.
 
 - BCrypt, for secure storage of passwords using hash + salt.
+
+Contributors: Marco Berbeglia
