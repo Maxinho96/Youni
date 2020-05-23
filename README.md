@@ -5,7 +5,10 @@ A user can search classes of a faculty and add them to his favourites. At any ti
 Every class has a dedicated page, where the student can see a list of resources and open them and every resource has a visualizations indicator. There is also a search bar to easily find resources.
 The user can modify his personal data through his profile page.
 
-Technologies involved:
+# Watch the video
+[![Watch the video](https://img.youtube.com/vi/zOVLcKpoUto/maxresdefault.jpg)](https://www.youtube.com/watch?v=zOVLcKpoUto)
+
+# Technologies involved
 
 - Xamarin.Forms, Xamarin.Android, Xamarin.iOS, XAML, C#, SQL
 
