@@ -6,7 +6,10 @@ Every class has a dedicated page, where the student can see a list of resources 
 The user can modify his personal data through his profile page.
 
 # Watch the video
+## iOS
 [![Watch the video](https://img.youtube.com/vi/zOVLcKpoUto/maxresdefault.jpg)](https://www.youtube.com/watch?v=zOVLcKpoUto)
+## Android
+[![Watch the video](https://img.youtube.com/vi/CLMQ1Fog6O0/maxresdefault.jpg)](https://www.youtube.com/watch?v=CLMQ1Fog6O0)
 
 # Technologies involved
 
